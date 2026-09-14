@@ -1,0 +1,2148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pertemuan 6 — Diksi, Definisi, dan Pemanfaatan Kamus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --gold-1:#f5d98a;
+    --gold-2:#d4af37;
+    --gold-3:#b8860b;
+    --gold-4:#8b6914;
+    --ink-1:#0a0e1a;
+    --ink-2:#111626;
+    --ink-3:#1a1f35;
+    --cream:#f8f4ec;
+    --ivory:#fdfaf3;
+    --muted:#9aa0b4;
+    --line:rgba(212,175,55,.25);
+    --shadow-gold: 0 20px 60px -20px rgba(212,175,55,.35);
+    --shadow-deep: 0 30px 80px -30px rgba(0,0,0,.6);
+    --success:#4ade80;
+    --error:#f87171;
+    --info:#60a5fa;
+  }
+  html,body{ background:var(--ink-1); color:var(--cream); font-family:'Inter',sans-serif; line-height:1.7; scroll-behavior:smooth; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      radial-gradient(1000px 600px at 10% -10%, rgba(212,175,55,.10), transparent 60%),
+      radial-gradient(800px 500px at 110% 10%, rgba(212,175,55,.06), transparent 60%),
+      radial-gradient(700px 500px at 50% 120%, rgba(90,60,10,.12), transparent 60%);
+    z-index:-1;
+    pointer-events:none;
+  }
+
+  /* NAVBAR */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(14px);
+    background:rgba(10,14,26,.85);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1200px; margin:0 auto;
+    padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:16px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:'Playfair Display', serif;
+    font-weight:700; font-size:1.05rem;
+  }
+  .brand-mark{
+    width:36px; height:36px; border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    display:grid; place-items:center;
+    color:var(--ink-1); font-weight:900; font-family:'Playfair Display';
+    box-shadow: 0 0 20px rgba(212,175,55,.4);
+  }
+  .nav-links{ display:flex; gap:24px; font-size:.88rem; color:var(--muted); flex-wrap:wrap; }
+  .nav-links a{ transition:color .3s; }
+  .nav-links a:hover{ color:var(--gold-2); }
+
+  /* HERO */
+  .hero{
+    max-width:1200px; margin:0 auto;
+    padding:80px 32px 50px;
+    text-align:center;
+    position:relative;
+  }
+  .chapter-tag{
+    display:inline-block;
+    font-size:.75rem; letter-spacing:4px; text-transform:uppercase;
+    color:var(--gold-2); font-weight:600;
+    padding:8px 20px; border:1px solid var(--line); border-radius:999px;
+    background:rgba(212,175,55,.05);
+    margin-bottom:24px;
+  }
+  h1.chapter-title{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:clamp(2rem, 4.5vw, 3.4rem);
+    line-height:1.15;
+    margin-bottom:18px;
+    letter-spacing:-.5px;
+  }
+  h1.chapter-title .accent{
+    background:linear-gradient(135deg,var(--gold-1) 0%,var(--gold-2) 50%,var(--gold-3) 100%);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+    font-style:italic;
+  }
+  .chapter-subtitle{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.2rem; color:var(--muted);
+    font-style:italic; max-width:780px; margin:0 auto 36px;
+  }
+  .hero-actions{
+    display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:13px 24px; border-radius:999px;
+    font-size:.88rem; font-weight:500; letter-spacing:.5px;
+    transition:all .35s ease; cursor:pointer;
+    border:1px solid transparent;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1); font-weight:600;
+    box-shadow: var(--shadow-gold);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow: 0 25px 70px -20px rgba(212,175,55,.55); }
+  .btn-ghost{
+    border:1px solid var(--line); color:var(--cream);
+    background:rgba(255,255,255,.02);
+  }
+  .btn-ghost:hover{ border-color:var(--gold-2); color:var(--gold-1); }
+
+  /* TABLE OF CONTENTS */
+  .toc{
+    max-width:900px; margin:0 auto 40px;
+    padding:28px 32px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(26,31,53,.6), rgba(17,22,38,.4));
+    backdrop-filter: blur(10px);
+  }
+  .toc h3{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.2rem;
+    margin-bottom:16px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .toc ol{
+    list-style:none; counter-reset:toc;
+    display:grid; grid-template-columns: 1fr 1fr;
+    gap:8px 24px;
+  }
+  @media (max-width:640px){ .toc ol{ grid-template-columns:1fr; } }
+  .toc li{
+    counter-increment:toc;
+    padding:8px 0 8px 36px;
+    position:relative;
+    color:var(--cream);
+    font-size:.9rem;
+    border-bottom:1px dashed rgba(212,175,55,.1);
+  }
+  .toc li::before{
+    content:counter(toc, decimal-leading-zero);
+    position:absolute; left:0; top:8px;
+    color:var(--gold-2); font-weight:600;
+    font-family:'Playfair Display', serif;
+  }
+  .toc a{ transition:color .3s; }
+  .toc a:hover{ color:var(--gold-1); }
+
+  /* CONTENT */
+  .content{ max-width:900px; margin:0 auto; padding:40px 32px; }
+  .content h2{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(1.6rem, 3vw, 2.2rem);
+    font-weight:700;
+    margin:50px 0 20px;
+    color:var(--cream);
+    position:relative;
+    padding-left:24px;
+  }
+  .content h2::before{
+    content:""; position:absolute; left:0; top:10px; bottom:10px; width:4px;
+    background:linear-gradient(180deg,var(--gold-1),var(--gold-3));
+    border-radius:2px;
+  }
+  .content h3{
+    font-family:'Playfair Display', serif;
+    font-size:1.35rem; font-weight:600;
+    color:var(--gold-1);
+    margin:32px 0 14px;
+  }
+  .content h4{
+    font-family:'Playfair Display', serif;
+    font-size:1.1rem; font-weight:600;
+    color:var(--gold-2);
+    margin:22px 0 10px;
+  }
+  .content p{
+    color:var(--cream); margin-bottom:16px;
+    text-align:justify;
+  }
+  .content p.lead{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.2rem; font-style:italic;
+    color:var(--muted);
+    border-left:2px solid var(--gold-2);
+    padding:12px 20px;
+    margin:24px 0;
+    background:rgba(212,175,55,.03);
+    border-radius:0 8px 8px 0;
+  }
+  .content ul, .content ol{
+    margin:14px 0 20px 24px;
+    color:var(--cream);
+  }
+  .content li{ margin-bottom:8px; }
+  .content strong{ color:var(--gold-1); font-weight:600; }
+
+  /* QURAN BOX */
+  .quran-box{
+    margin:36px 0;
+    padding:32px;
+    border:2px solid var(--gold-2);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(212,175,55,.10), rgba(139,105,20,.04));
+    position:relative;
+    text-align:center;
+  }
+  .quran-box::before{
+    content:"﷽"; position:absolute; top:-20px; left:50%;
+    transform:translateX(-50%);
+    background:var(--ink-1); padding:0 14px;
+    font-size:1.5rem; color:var(--gold-2);
+    font-family:'Amiri', serif;
+  }
+  .quran-box .arabic{
+    font-size:1.8rem; line-height:2.2;
+    color:var(--gold-1);
+    font-family:'Amiri', 'Traditional Arabic', serif;
+    direction:rtl;
+    margin-bottom:16px;
+    margin-top:10px;
+  }
+  .quran-box .translation{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.1rem; font-style:italic;
+    color:var(--cream);
+    margin-bottom:12px;
+    padding:0 20px;
+  }
+  .quran-box .reference{
+    font-size:.85rem;
+    color:var(--gold-2);
+    letter-spacing:1px;
+    font-weight:500;
+  }
+  .quran-box .tafsir{
+    margin-top:18px; padding-top:18px;
+    border-top:1px dashed var(--line);
+    font-size:.9rem;
+    color:var(--muted);
+    text-align:left;
+    font-style:normal;
+  }
+
+  /* VIDEO BOX */
+  .video-box{
+    margin:36px 0;
+    padding:32px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(26,31,53,.7), rgba(17,22,38,.5));
+    backdrop-filter: blur(10px);
+    text-align:center;
+  }
+  .video-box .icon{
+    width:70px; height:70px; border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    display:grid; place-items:center;
+    color:var(--ink-1); font-size:1.8rem; font-weight:900;
+    margin:0 auto 16px;
+    box-shadow: var(--shadow-gold);
+  }
+  .video-box h4{
+    font-family:'Playfair Display', serif;
+    font-size:1.2rem; color:var(--cream); margin-bottom:8px;
+  }
+  .video-box p{ color:var(--muted); font-size:.9rem; }
+
+  /* CONCEPT KEY */
+  .concept-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--gold-2);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(212,175,55,.08), rgba(139,105,20,.03));
+    position:relative;
+  }
+  .concept-box::before{
+    content:"🔑"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .concept-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+  .concept-box ul{ list-style:none; margin:0; padding:0; }
+  .concept-box li{
+    padding:10px 0 10px 28px;
+    border-bottom:1px dashed var(--line);
+    position:relative;
+    color:var(--cream);
+  }
+  .concept-box li:last-child{ border-bottom:none; }
+  .concept-box li::before{
+    content:"◆"; position:absolute; left:0; top:12px;
+    color:var(--gold-2); font-size:.7rem;
+  }
+  .concept-box li strong{ color:var(--gold-1); }
+
+  /* CASE STUDY */
+  .case-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(180deg, rgba(26,31,53,.6), rgba(17,22,38,.4));
+    position:relative;
+  }
+  .case-box::before{
+    content:"📖"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .case-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+  .case-box .insight{
+    margin-top:16px; padding:14px 18px;
+    background:rgba(212,175,55,.06);
+    border-left:3px solid var(--gold-2);
+    border-radius:0 8px 8px 0;
+    font-style:italic;
+    color:var(--cream);
+  }
+  .case-box .insight strong{ color:var(--gold-1); font-style:normal; }
+
+  /* REFLECTION */
+  .reflection-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(212,175,55,.04), transparent);
+    position:relative;
+  }
+  .reflection-box::before{
+    content:"💭"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .reflection-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+
+  /* TIPS */
+  .tips-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(74,222,128,.06), rgba(74,222,128,.02));
+    border-left:3px solid var(--success);
+    position:relative;
+  }
+  .tips-box::before{
+    content:"💡"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .tips-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+
+  /* WARNING */
+  .warning-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(248,113,113,.06), rgba(248,113,113,.02));
+    border-left:3px solid var(--error);
+    position:relative;
+  }
+  .warning-box::before{
+    content:"⚠️"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .warning-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+
+  /* INFO BOX */
+  .info-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(96,165,250,.06), rgba(96,165,250,.02));
+    border-left:3px solid var(--info);
+    position:relative;
+  }
+  .info-box::before{
+    content:"ℹ️"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .info-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+
+  /* TABLE */
+  .table-wrap{
+    margin:24px 0;
+    overflow-x:auto;
+    border:1px solid var(--line);
+    border-radius:12px;
+  }
+  table{
+    width:100%; border-collapse:collapse;
+    background:rgba(26,31,53,.5);
+  }
+  thead{
+    background:linear-gradient(135deg, rgba(212,175,55,.15), rgba(139,105,20,.08));
+  }
+  th{
+    padding:14px 18px;
+    text-align:left;
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    color:var(--gold-1);
+    font-size:.95rem;
+    border-bottom:1px solid var(--line);
+  }
+  td{
+    padding:12px 18px;
+    color:var(--cream);
+    font-size:.9rem;
+    border-bottom:1px solid rgba(212,175,55,.1);
+  }
+  tr:last-child td{ border-bottom:none; }
+  tr:hover{ background:rgba(212,175,55,.03); }
+
+  /* EXAMPLE BOX */
+  .example-box{
+    margin:24px 0;
+    padding:22px 26px;
+    border-left:4px solid var(--gold-2);
+    background:rgba(212,175,55,.04);
+    border-radius:0 12px 12px 0;
+  }
+  .example-box .label{
+    display:inline-block;
+    font-size:.75rem; letter-spacing:2px;
+    color:var(--gold-2); font-weight:600;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .example-box p{ margin-bottom:10px; font-size:.92rem; }
+  .example-box p:last-child{ margin-bottom:0; }
+  .example-box .correct{
+    color:var(--success);
+    font-weight:500;
+  }
+  .example-box .wrong{
+    color:var(--error);
+    text-decoration:line-through;
+    font-weight:500;
+  }
+
+  /* THEORY BOX */
+  .theory-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(26,31,53,.7), rgba(17,22,38,.5));
+    position:relative;
+  }
+  .theory-box::before{
+    content:"📚"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .theory-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.2rem;
+    margin-bottom:6px;
+  }
+  .theory-box .author{
+    font-size:.85rem; color:var(--gold-2);
+    font-style:italic;
+    margin-bottom:14px;
+  }
+  .theory-box p{ font-size:.92rem; }
+
+  /* REFERENCES */
+  .references{
+    margin:40px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:rgba(26,31,53,.4);
+  }
+  .references h3{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.3rem;
+    margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .references h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-2); font-size:1rem;
+    margin:18px 0 10px;
+    padding-bottom:6px;
+    border-bottom:1px dashed var(--line);
+  }
+  .references ol{
+    margin:0; padding-left:24px;
+    color:var(--muted); font-size:.88rem;
+  }
+  .references li{ margin-bottom:10px; }
+
+  /* FOOTER NAV */
+  .footer-nav{
+    max-width:900px; margin:40px auto;
+    padding:30px 32px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:16px;
+  }
+  .footer-nav a{
+    display:inline-flex; align-items:center; gap:8px;
+    color:var(--gold-2); font-weight:500;
+    transition:color .3s;
+  }
+  .footer-nav a:hover{ color:var(--gold-1); }
+
+  /* =========================================================
+     UJI FORMATIF
+     ========================================================= */
+  .quiz-section{
+    max-width:1000px; margin:60px auto;
+    padding:50px 32px;
+    background:linear-gradient(135deg, rgba(26,31,53,.7), rgba(17,22,38,.5));
+    border:1px solid var(--line);
+    border-radius:24px;
+    backdrop-filter: blur(12px);
+    position:relative;
+    overflow:hidden;
+  }
+  .quiz-section::before{
+    content:""; position:absolute; top:-50%; right:-20%;
+    width:400px; height:400px; border-radius:50%;
+    background:radial-gradient(circle, rgba(212,175,55,.10), transparent 70%);
+  }
+  .quiz-head{
+    text-align:center; margin-bottom:36px;
+    position:relative; z-index:2;
+  }
+  .quiz-head .icon{
+    width:64px; height:64px; border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    display:grid; place-items:center;
+    color:var(--ink-1); font-size:1.6rem; font-weight:900;
+    margin:0 auto 16px;
+    box-shadow: var(--shadow-gold);
+  }
+  .quiz-head h2{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(1.5rem, 3vw, 2rem);
+    color:var(--cream); margin-bottom:10px;
+    padding:0;
+  }
+  .quiz-head h2::before{ display:none; }
+  .quiz-head .meta{
+    display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+    color:var(--muted); font-size:.85rem; margin-bottom:14px;
+  }
+  .quiz-head .meta span{
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .quiz-head .warning{
+    display:inline-block;
+    padding:10px 20px;
+    background:rgba(248,113,113,.1);
+    border:1px solid rgba(248,113,113,.3);
+    border-radius:999px;
+    color:#fca5a5;
+    font-size:.85rem;
+    font-weight:500;
+  }
+
+  .quiz-block{
+    margin-bottom:36px;
+    position:relative; z-index:2;
+  }
+  .quiz-block h3{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.25rem;
+    margin-bottom:6px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .quiz-block .desc{
+    color:var(--muted); font-size:.88rem;
+    margin-bottom:20px;
+    padding-left:30px;
+  }
+
+  /* FORM */
+  .form-grid{
+    display:grid; grid-template-columns: 1fr 1fr;
+    gap:16px;
+    margin-bottom:24px;
+  }
+  @media (max-width:640px){ .form-grid{ grid-template-columns:1fr; } }
+  .form-field{ display:flex; flex-direction:column; gap:6px; }
+  .form-field label{
+    font-size:.82rem; color:var(--gold-1);
+    font-weight:500; letter-spacing:.5px;
+  }
+  .form-field input, .form-field select, .form-field textarea{
+    padding:12px 14px;
+    background:rgba(10,14,26,.6);
+    border:1px solid var(--line);
+    border-radius:10px;
+    color:var(--cream);
+    font-family:'Inter', sans-serif;
+    font-size:.9rem;
+    transition:all .3s;
+  }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus{
+    outline:none;
+    border-color:var(--gold-2);
+    box-shadow:0 0 0 3px rgba(212,175,55,.15);
+  }
+  .form-field textarea{ min-height:100px; resize:vertical; }
+  .form-field select{ cursor:pointer; }
+  .form-field select option{ background:var(--ink-2); color:var(--cream); }
+
+  /* QUESTION */
+  .question{
+    margin-bottom:24px;
+    padding:22px;
+    background:rgba(10,14,26,.5);
+    border:1px solid var(--line);
+    border-radius:14px;
+    transition:all .3s;
+  }
+  .question:hover{ border-color:rgba(212,175,55,.4); }
+  .question.correct{
+    border-color:var(--success);
+    background:rgba(74,222,128,.06);
+  }
+  .question.wrong{
+    border-color:var(--error);
+    background:rgba(248,113,113,.06);
+  }
+  .question .q-num{
+    display:inline-block;
+    padding:4px 12px;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1);
+    font-weight:700; font-size:.78rem;
+    border-radius:999px;
+    margin-bottom:12px;
+    letter-spacing:1px;
+  }
+  .question .q-text{
+    color:var(--cream); font-size:.95rem;
+    margin-bottom:14px; line-height:1.6;
+  }
+  .options{ display:flex; flex-direction:column; gap:8px; }
+  .option{
+    display:flex; align-items:flex-start; gap:10px;
+    padding:10px 14px;
+    background:rgba(26,31,53,.5);
+    border:1px solid transparent;
+    border-radius:10px;
+    cursor:pointer;
+    transition:all .3s;
+  }
+  .option:hover{
+    background:rgba(212,175,55,.06);
+    border-color:var(--line);
+  }
+  .option input{ margin-top:3px; accent-color:var(--gold-2); cursor:pointer; }
+  .option label{ cursor:pointer; color:var(--cream); font-size:.9rem; flex:1; }
+  .option.selected{
+    background:rgba(212,175,55,.1);
+    border-color:var(--gold-2);
+  }
+  .option.correct-answer{
+    background:rgba(74,222,128,.12);
+    border-color:var(--success);
+  }
+  .option.wrong-answer{
+    background:rgba(248,113,113,.12);
+    border-color:var(--error);
+  }
+
+  .essay-area{
+    width:100%;
+    min-height:120px;
+    padding:14px;
+    background:rgba(10,14,26,.6);
+    border:1px solid var(--line);
+    border-radius:10px;
+    color:var(--cream);
+    font-family:'Inter', sans-serif;
+    font-size:.9rem;
+    resize:vertical;
+    transition:all .3s;
+  }
+  .essay-area:focus{
+    outline:none;
+    border-color:var(--gold-2);
+    box-shadow:0 0 0 3px rgba(212,175,55,.15);
+  }
+
+  /* RESULT */
+  .result-panel{
+    margin-top:30px;
+    padding:30px;
+    background:linear-gradient(135deg, rgba(212,175,55,.08), rgba(139,105,20,.03));
+    border:1px solid var(--gold-2);
+    border-radius:18px;
+    text-align:center;
+    display:none;
+  }
+  .result-panel.show{ display:block; animation:fadeIn .6s ease; }
+  @keyframes fadeIn{
+    from{ opacity:0; transform:translateY(20px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .result-panel h3{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.4rem;
+    margin-bottom:20px;
+  }
+  .score-grid{
+    display:grid; grid-template-columns: repeat(3,1fr);
+    gap:16px; margin-bottom:24px;
+  }
+  @media (max-width:640px){ .score-grid{ grid-template-columns:1fr; } }
+  .score-item{
+    padding:20px;
+    background:rgba(10,14,26,.5);
+    border:1px solid var(--line);
+    border-radius:14px;
+  }
+  .score-item .label{
+    font-size:.75rem; letter-spacing:2px; text-transform:uppercase;
+    color:var(--muted); margin-bottom:8px;
+  }
+  .score-item .value{
+    font-family:'Playfair Display', serif;
+    font-size:2rem; font-weight:700;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .total-score{
+    font-family:'Playfair Display', serif;
+    font-size:3rem; font-weight:900;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin:10px 0;
+  }
+  .grade-badge{
+    display:inline-block;
+    padding:8px 24px;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1);
+    font-weight:700;
+    border-radius:999px;
+    font-size:1rem;
+    letter-spacing:2px;
+    margin-top:10px;
+  }
+
+  /* ACTION BUTTONS */
+  .action-row{
+    display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+    margin-top:24px;
+  }
+  .btn-action{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px;
+    border-radius:999px;
+    font-size:.85rem; font-weight:500;
+    cursor:pointer;
+    border:1px solid var(--line);
+    background:rgba(26,31,53,.5);
+    color:var(--cream);
+    transition:all .3s;
+  }
+  .btn-action:hover{
+    border-color:var(--gold-2);
+    color:var(--gold-1);
+    transform:translateY(-2px);
+  }
+  .btn-action.primary{
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1);
+    font-weight:600;
+    border:none;
+    box-shadow: var(--shadow-gold);
+  }
+  .btn-action.primary:hover{ box-shadow: 0 20px 50px -15px rgba(212,175,55,.5); }
+
+  /* FOOTER */
+  footer{
+    border-top:1px solid var(--line);
+    padding:40px 32px;
+    text-align:center;
+    color:var(--muted);
+    font-size:.85rem;
+  }
+  footer .brand-foot{
+    font-family:'Playfair Display', serif;
+    color:var(--cream); font-size:1.1rem; margin-bottom:8px;
+  }
+  footer em{ color:var(--gold-2); font-style:italic; }
+
+  /* SCROLL TOP */
+  .scroll-top{
+    position:fixed; bottom:30px; right:30px;
+    width:48px; height:48px; border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1);
+    display:grid; place-items:center;
+    cursor:pointer;
+    box-shadow: var(--shadow-gold);
+    opacity:0; pointer-events:none;
+    transition:all .3s;
+    z-index:100;
+    border:none;
+    font-size:1.2rem;
+    font-weight:900;
+  }
+  .scroll-top.show{ opacity:1; pointer-events:auto; }
+  .scroll-top:hover{ transform:translateY(-4px); }
+
+  /* PROGRESS BAR */
+  .progress-bar{
+    position:fixed; top:0; left:0; right:0;
+    height:3px;
+    background:linear-gradient(90deg,var(--gold-1),var(--gold-3));
+    z-index:100;
+    transform-origin:left;
+    transform:scaleX(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAVBAR -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-mark">B</div>
+      <span>Bahasa Indonesia — PTI</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Beranda</a>
+      <a href="index.html#tentang">Tentang</a>
+      <a href="index.html#pertemuan">Daftar Pertemuan</a>
+      <a href="index.html#penulis">Penulis</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <span class="chapter-tag">Pertemuan 06 · Diksi & Kamus</span>
+  <h1 class="chapter-title">
+    Diksi, Definisi, dan<br/>
+    <span class="accent">Pemanfaatan Kamus</span>
+  </h1>
+  <p class="chapter-subtitle">
+    Menguasai seni memilih kata yang tepat (diksi), memahami berbagai jenis definisi, dan memanfaatkan kamus sebagai alat utama dalam komunikasi tulis akademik yang presisi dan bermartabat.
+  </p>
+  <div class="hero-actions">
+    <a href="5.html" class="btn btn-ghost">← Pertemuan Sebelumnya</a>
+    <a href="#mulai" class="btn btn-primary">Mulai Membaca</a>
+    <a href="7.html" class="btn btn-ghost">Pertemuan Selanjutnya →</a>
+  </div>
+</header>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h3>📑 Daftar Isi Pertemuan 6</h3>
+  <ol>
+    <li><a href="#pendahuluan">Pendahuluan</a></li>
+    <li><a href="#landasan-spiritual">Landasan Spiritual</a></li>
+    <li><a href="#hakikat">6.1 Hakikat Diksi, Definisi, dan Kamus</a></li>
+    <li><a href="#landasan-teoretis">6.2 Landasan Teoretis</a></li>
+    <li><a href="#diksi">6.3 Pengertian dan Klasifikasi Diksi</a></li>
+    <li><a href="#definisi">6.4 Pengertian dan Jenis Definisi</a></li>
+    <li><a href="#kamus">6.5 Pengertian dan Jenis Kamus</a></li>
+    <li><a href="#ketepatan">6.6 Syarat Ketepatan dan Kesesuaian Diksi</a></li>
+    <li><a href="#hubungan">6.7 Hubungan Diksi, Definisi, dan Kamus</a></li>
+    <li><a href="#analisis">6.8 Analisis Kesalahan Umum</a></li>
+    <li><a href="#kesimpulan">Kesimpulan</a></li>
+  </ol>
+</div>
+
+<!-- CONTENT -->
+<main class="content" id="mulai">
+
+  <h2 id="pendahuluan">Pendahuluan</h2>
+  <p class="lead">
+    Setelah menguasai ejaan pada Pertemuan 4 dan 5, kita melangkah ke ranah yang lebih halus namun sama pentingnya: <strong>seni memilih kata</strong>. Kata yang tepat bukan hanya soal makna, melainkan juga soal <em>rasa bahasa</em>, <em>konteks</em>, dan <em>dampak</em> yang ditimbulkannya pada pembaca.
+  </p>
+  <p>
+    <strong>Diksi</strong> (pilihan kata) adalah kemampuan penulis atau pembicara untuk memilih kata yang paling tepat dalam menyampaikan gagasan. Seorang penulis akademik yang handal tidak hanya tahu <em>apa</em> yang ingin disampaikan, tetapi juga <em>bagaimana</em> cara menyampaikannya dengan kata yang paling presisi, santun, dan efektif.
+  </p>
+  <p>
+    Sementara itu, <strong>definisi</strong> adalah alat untuk memperjelas makna kata, dan <strong>kamus</strong> adalah rujukan utama yang memuat ribuan definisi tersebut. Ketiga unsur ini — diksi, definisi, dan kamus — saling terkait dan membentuk fondasi komunikasi tulis yang berkualitas.
+  </p>
+  <p>
+    Berdasarkan penelitian <strong>Keraf (1990)</strong> dan <strong>Moeliono (2001)</strong>, penguasaan diksi yang baik akan meningkatkan kualitas tulisan secara signifikan, mengurangi ambiguitas, dan memperkuat kredibilitas penulis. Di era informasi digital saat ini, kemampuan memilih kata yang tepat menjadi kompetensi yang semakin krusial.
+  </p>
+
+  <div class="info-box">
+    <h4>🎯 Tujuan Pembelajaran Pertemuan 6</h4>
+    <p>Setelah mengikuti pertemuan ini, mahasiswa diharapkan mampu:</p>
+    <ol>
+      <li>Mendefinisikan pengertian diksi, definisi, dan kamus secara tepat</li>
+      <li>Mengklasifikasikan kosakata berdasarkan jenis diksi (denotatif, konotatif, umum, khusus, abstrak, konkret)</li>
+      <li>Menganalisis kalimat atau paragraf untuk menilai ketepatan kata dan kesesuaian diksi</li>
+      <li>Menjelaskan hubungan antara diksi, definisi, dan kamus</li>
+      <li>Memanfaatkan berbagai jenis kamus (KBBI, tesaurus, kamus istilah) dalam penulisan akademik</li>
+      <li>Menunjukkan sikap keteladanan dan tanggung jawab dalam memilih kata yang tepat</li>
+    </ol>
+  </div>
+
+  <h2 id="landasan-spiritual">Landasan Spiritual: Etika Berbicara dalam Al-Qur'an</h2>
+  <p>
+    Dalam Islam, pemilihan kata yang tepat bukan hanya soal estetika bahasa, melainkan juga <strong>amanah etika</strong>. Al-Qur'an secara eksplisit memberikan panduan tentang bagaimana seorang muslim seharusnya berbicara — dengan kata-kata yang <em>qawlan sadida</em> (perkataan yang benar/lurus) dan <em>qawlan ma'rufa</em> (perkataan yang baik).
+  </p>
+
+  <div class="quran-box">
+    <div class="arabic">يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱتَّقُوا۟ ٱللَّهَ وَقُولُوا۟ قَوْلًا سَدِيدًا يُصْلِحْ لَكُمْ أَعْمَـٰلَكُمْ وَيَغْفِرْ لَكُمْ ذُنُوبَكُمْ ۗ وَمَن يُطِعِ ٱللَّهَ وَرَسُولَهُۥ فَقَدْ فَازَ فَوْزًا عَظِيمًا</div>
+    <div class="translation">"Wahai orang-orang yang beriman! Bertakwalah kamu kepada Allah dan ucapkanlah perkataan yang benar (qawlan sadida), niscaya Dia akan memperbaiki untukmu amal-amalmu dan mengampuni dosa-dosamu. Dan barangsiapa mentaati Allah dan Rasul-Nya, maka sungguh ia menang dengan kemenangan yang agung."</div>
+    <div class="reference">— Q.S. Al-Ahzab [33]: 70-71</div>
+    <div class="tafsir">
+      <strong>Tafsir Ringkas:</strong> Ayat ini menekankan pentingnya <em>qawlan sadida</em> — perkataan yang benar, lurus, tepat, dan tidak menyimpang. Dalam konteks kebahasaan, ini berarti seorang muslim harus memilih kata yang <strong>tepat makna</strong> (denotatif), <strong>sesuai konteks</strong>, dan <strong>tidak menyesatkan</strong>. Pilihan kata yang salah dapat menyebabkan dosa jariyah jika tulisan tersebut dibaca oleh orang lain dan menimbulkan kesalahpahaman. Sebagai mahasiswa PTI, menguasai diksi yang baik adalah wujud ketakwaan dan tanggung jawab akademik.
+    </div>
+  </div>
+
+  <div class="video-box">
+    <div class="icon">▶</div>
+    <h4>Video: Seni Memilih Kata (Diksi) dalam Komunikasi</h4>
+    <p>Simak penjelasan singkat ini untuk memahami pentingnya diksi dalam komunikasi lisan dan tulisan.</p>
+    <p style="margin-top:10px; font-size:.8rem; color:var(--gold-2);">Sumber: Kanal Badan Bahasa Kemendikbudristek · Durasi: 11 menit</p>
+  </div>
+
+  <div class="concept-box">
+    <h4>Konsep Kunci Pertemuan 6</h4>
+    <ul>
+      <li><strong>Diksi (Pilihan Kata):</strong> Seni memilih kata yang paling tepat untuk menyampaikan gagasan tertentu dalam konteks tertentu.</li>
+      <li><strong>Definisi:</strong> Penjelasan tentang makna suatu kata atau konsep, biasanya digunakan untuk memperjelas istilah yang digunakan.</li>
+      <li><strong>Kamus:</strong> Rujukan sistematis yang memuat kosakata suatu bahasa beserta makna, ejaan, dan cara pengucapannya.</li>
+      <li><strong>Makna Denotatif:</strong> Makna sebenarnya (lugas) dari suatu kata, sesuai dengan kamus.</li>
+      <li><strong>Makna Konotatif:</strong> Makna tambahan (kiasan) yang melekat pada suatu kata, berkaitan dengan nilai rasa atau konteks budaya.</li>
+      <li><strong>Ketepatan Diksi:</strong> Kemampuan memilih kata yang sesuai dengan konteks, audiens, dan tujuan komunikasi.</li>
+    </ul>
+  </div>
+
+  <h2 id="hakikat">6.1 Hakikat Diksi, Definisi, dan Kamus</h2>
+  <p>
+    <strong>Diksi</strong>, <strong>definisi</strong>, dan <strong>kamus</strong> adalah tiga konsep yang saling terkait dalam ilmu kebahasaan. Ketiganya membentuk segitiga emas komunikasi tulis yang efektif: diksi sebagai seni memilih kata, definisi sebagai alat memperjelas makna, dan kamus sebagai rujukan utama.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Konsep</th>
+          <th>Pengertian</th>
+          <th>Fungsi Utama</th>
+          <th>Contoh</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Diksi</strong></td>
+          <td>Seni memilih kata yang paling tepat</td>
+          <td>Menyampaikan gagasan dengan presisi dan dampak yang diinginkan</td>
+          <td>Memilih "wafat" (halus) daripada "mati" (kasar) untuk tokoh yang dihormati</td>
+        </tr>
+        <tr>
+          <td><strong>Definisi</strong></td>
+          <td>Penjelasan makna kata atau konsep</td>
+          <td>Memperjelas istilah yang digunakan agar tidak ambigu</td>
+          <td>"Paragraf adalah satuan gramatikal yang terdiri atas beberapa kalimat..."</td>
+        </tr>
+        <tr>
+          <td><strong>Kamus</strong></td>
+          <td>Rujukan sistematis kosakata suatu bahasa</td>
+          <td>Menyediakan informasi ejaan, makna, dan penggunaan kata</td>
+          <td>KBBI, Tesaurus Indonesia, Kamus Istilah Matematika</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="case-box">
+    <h4>📖 Studi Kasus 1: Kesalahan Diksi yang Mengubah Makna</h4>
+    <p>
+      Seorang mahasiswa menulis dalam skripsinya: <em>"Hasil penelitian ini <strong>menunjukkan</strong> bahwa metode pembelajaran tersebut <strong>gagal</strong> meningkatkan prestasi siswa."</em> Kata "gagal" memiliki konotasi negatif yang sangat kuat. Seharusnya, mahasiswa tersebut dapat menggunakan kata yang lebih netral seperti <em>"belum berhasil"</em> atau <em>"tidak signifikan"</em> untuk menghindari kesan yang terlalu keras.
+    </p>
+    <div class="insight">
+      <strong>Pembelajaran:</strong> Pilihan kata bukan hanya soal makna, tetapi juga <strong>nilai rasa</strong> dan <strong>dampak psikologis</strong>. Kata yang tepat akan membuat tulisan lebih objektif, santun, dan profesional. Kesalahan diksi dapat mengubah persepsi pembaca terhadap keseluruhan tulisan.
+    </div>
+  </div>
+
+  <h2 id="landasan-teoretis">6.2 Landasan Teoretis</h2>
+
+  <div class="theory-box">
+    <h4>Teori Semantik (Lyons)</h4>
+    <div class="author">Lyons, J. (1977). <em>Semantics</em></div>
+    <p>
+      <strong>Konsep Utama:</strong> Semantik adalah cabang linguistik yang mempelajari makna kata. Lyons membedakan antara <strong>makna referensial</strong> (hubungan kata dengan objek di dunia nyata) dan <strong>makna relasional</strong> (hubungan antar kata dalam sistem bahasa).
+    </p>
+    <p>
+      <strong>Relevansi:</strong> Teori ini membantu kita memahami mengapa satu kata dapat memiliki banyak makna (polisemi) dan mengapa konteks sangat penting dalam menentukan makna yang dimaksud.
+    </p>
+  </div>
+
+  <div class="theory-box">
+    <h4>Teori Pilihan Kata (Keraf)</h4>
+    <div class="author">Keraf, G. (1990). <em>Diksi dan Gaya Bahasa</em></div>
+    <p>
+      <strong>Konsep Utama:</strong> Keraf menekankan bahwa diksi yang baik harus memenuhi dua syarat: <strong>ketepatan</strong> (accuracy) dan <strong>kesesuaian</strong> (appropriateness). Ketepatan berarti kata yang dipilih benar-benar mewakili gagasan yang ingin disampaikan. Kesesuaian berarti kata tersebut sesuai dengan konteks, audiens, dan tujuan komunikasi.
+    </p>
+    <p>
+      <strong>Relevansi:</strong> Teori ini menjadi landasan utama dalam pembelajaran diksi di Indonesia. Setiap pemilihan kata harus dipertimbangkan dari dua dimensi tersebut.
+    </p>
+  </div>
+
+  <div class="theory-box">
+    <h4>Teori Leksikologi (Chaer)</h4>
+    <div class="author">Chaer, A. (2003). <em>Analisis Semantik</em></div>
+    <p>
+      <strong>Konsep Utama:</strong> Leksikologi adalah cabang linguistik yang mempelajari kosakata (leksikon) suatu bahasa. Chaer mengklasifikasikan kata berdasarkan berbagai dimensi: makna (denotatif, konotatif), cakupan (umum, khusus), dan sifat (abstrak, konkret).
+    </p>
+    <p>
+      <strong>Relevansi:</strong> Klasifikasi ini membantu mahasiswa memahami bahwa setiap kata memiliki "karakter" tersendiri, dan pemilihan kata yang tepat harus mempertimbangkan karakteristik tersebut.
+    </p>
+  </div>
+
+  <h2 id="diksi">6.3 Pengertian dan Klasifikasi Diksi</h2>
+  <p>
+    <strong>Diksi</strong> berasal dari bahasa Latin <em>dictio</em> yang berarti "perkataan" atau "ucapan". Dalam linguistik, diksi merujuk pada pilihan kata yang dibuat oleh penulis atau pembicara untuk menyampaikan gagasan tertentu.
+  </p>
+
+  <h3>6.3.1 Klasifikasi Diksi Berdasarkan Makna</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Jenis Diksi</th>
+          <th>Pengertian</th>
+          <th>Contoh</th>
+          <th>Konteks Penggunaan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Denotatif</strong></td>
+          <td>Makna sebenarnya (lugas), sesuai kamus</td>
+          <td>"Ia <strong>meninggal</strong> kemarin" → makna sebenarnya: mati</td>
+          <td>Tulisan ilmiah, berita, laporan resmi</td>
+        </tr>
+        <tr>
+          <td><strong>Konotatif</strong></td>
+          <td>Makna tambahan (kiasan), berkaitan dengan nilai rasa</td>
+          <td>"Ia <strong>berpulang</strong> kemarin" → makna halus, sopan</td>
+          <td>Tulisan sastra, pidato, ucapan duka</td>
+        </tr>
+        <tr>
+          <td><strong>Umum</strong></td>
+          <td>Kata yang cakupannya luas</td>
+          <td>"<strong>Kendaraan</strong>" → mencakup mobil, motor, sepeda</td>
+          <td>Percakapan sehari-hari, tulisan populer</td>
+        </tr>
+        <tr>
+          <td><strong>Khusus</strong></td>
+          <td>Kata yang cakupannya sempit/spesifik</td>
+          <td>"<strong>Sedan</strong>" → hanya mobil jenis sedan</td>
+          <td>Tulisan teknis, akademik, profesional</td>
+        </tr>
+        <tr>
+          <td><strong>Abstrak</strong></td>
+          <td>Kata yang merujuk pada konsep, tidak dapat ditangkap indra</td>
+          <td>"<strong>Keadilan</strong>, <strong>cinta</strong>, <strong>kebijaksanaan</strong>"</td>
+          <td>Tulisan filosofis, teoritis</td>
+        </tr>
+        <tr>
+          <td><strong>Konkret</strong></td>
+          <td>Kata yang merujuk pada objek fisik, dapat ditangkap indra</td>
+          <td>"<strong>Meja</strong>, <strong>buku</strong>, <strong>air</strong>"</td>
+          <td>Deskripsi, laporan observasi</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>6.3.2 Klasifikasi Diksi Berdasarkan Gaya Bahasa</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Gaya Bahasa</th>
+          <th>Ciri</th>
+          <th>Contoh</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Formal/Baku</strong></td>
+          <td>Mengikuti kaidah EYD, kosakata resmi</td>
+          <td>"<strong>Menggunakan</strong>", "<strong>merupakan</strong>", "<strong>dalam rangka</strong>"</td>
+        </tr>
+        <tr>
+          <td><strong>Informal/Non-baku</strong></td>
+          <td>Bebas kaidah, kosakata sehari-hari</td>
+          <td>"<strong>Pakai</strong>", "<strong>adalah</strong>", "<strong>buat</strong>"</td>
+        </tr>
+        <tr>
+          <td><strong>Ilmiah</strong></td>
+          <td>Objektif, denotatif, menggunakan istilah teknis</td>
+          <td>"<strong>Hipotesis</strong>", "<strong>variabel</strong>", "<strong>signifikan</strong>"</td>
+        </tr>
+        <tr>
+          <td><strong>Populer</strong></td>
+          <td>Mudah dipahami, menggunakan analogi</td>
+          <td>"<strong>Bagai air di daun talas</strong>", "<strong>seperti mentari pagi</strong>"</td>
+        </tr>
+        <tr>
+          <td><strong>Sastra</strong></td>
+          <td>Estetis, konotatif, menggunakan majas</td>
+          <td>"<strong>Ia bagai bunga yang layu</strong>", "<strong>senja merangkak pergi</strong>"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="example-box">
+    <div class="label">Contoh Perbandingan Diksi dalam Berbagai Konteks</div>
+    <p><strong>Konteks:</strong> Menyampaikan berita kematian.</p>
+    <p><strong>Diksi Formal/Ilmiah:</strong> "Prof. Dr. Ahmad Syafi'i <strong>meninggal dunia</strong> pada usia 78 tahun."</p>
+    <p><strong>Diksi Halus/Sopan:</strong> "Beliau telah <strong>berpulang ke rahmatullah</strong>."</p>
+    <p><strong>Diksi Kasar (TIDAK TEPAT):</strong> "Dia <strong>mati</strong> kemarin."</p>
+    <p style="margin-top:10px;"><strong>Konteks:</strong> Laporan penelitian.</p>
+    <p><span class="correct">✓ Tepat:</span> "Hasil penelitian <strong>menunjukkan</strong> bahwa..."</p>
+    <p><span class="wrong">✗ Kurang tepat:</span> "Hasil penelitian <strong>bilang</strong> bahwa..."</p>
+  </div>
+
+  <h2 id="definisi">6.4 Pengertian dan Jenis Definisi</h2>
+  <p>
+    <strong>Definisi</strong> adalah penjelasan tentang makna suatu kata, frasa, atau konsep. Definisi berfungsi untuk memperjelas istilah yang digunakan agar tidak terjadi kesalahpahaman antara penulis dan pembaca.
+  </p>
+
+  <h3>6.4.1 Jenis-Jenis Definisi</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Jenis Definisi</th>
+          <th>Pengertian</th>
+          <th>Contoh</th>
+          <th>Kapan Digunakan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Definisi Formal (Kamus)</strong></td>
+          <td>Definisi yang mengikuti format: genus + diferensia spesifik</td>
+          <td>"<strong>Paragraf</strong> (genus: satuan gramatikal) + (diferensia: yang terdiri atas beberapa kalimat yang saling terkait)"</td>
+          <td>Tulisan ilmiah, akademik</td>
+        </tr>
+        <tr>
+          <td><strong>Definisi Deskriptif</strong></td>
+          <td>Menjelaskan ciri-ciri atau karakteristik objek</td>
+          <td>"<strong>Segitiga</strong> adalah bangun datar yang memiliki tiga sisi dan tiga sudut"</td>
+          <td>Pengenalan konsep, buku teks</td>
+        </tr>
+        <tr>
+          <td><strong>Definisi Operasional</strong></td>
+          <td>Menjelaskan cara mengukur atau mengoperasikan suatu konsep</td>
+          <td>"<strong>Prestasi belajar</strong> diukur berdasarkan skor tes akhir yang diperoleh siswa"</td>
+          <td>Penelitian, metodologi</td>
+        </tr>
+        <tr>
+          <td><strong>Definisi Sinonim</strong></td>
+          <td>Menjelaskan makna dengan kata lain yang setara</td>
+          <td>"<strong>Nirguna</strong> berarti tidak berguna"</td>
+          <td>Penjelasan singkat, kamus</td>
+        </tr>
+        <tr>
+          <td><strong>Definisi Contoh</strong></td>
+          <td>Menjelaskan dengan memberikan contoh</td>
+          <td>"<strong>Buah-buahan</strong>, misalnya apel, jeruk, dan mangga"</td>
+          <td>Penjelasan untuk pemula</td>
+        </tr>
+        <tr>
+          <td><strong>Definisi Negatif</strong></td>
+          <td>Menjelaskan dengan menyebutkan apa yang BUKAN</td>
+          <td>"<strong>Abadi</strong> berarti tidak berujung dan tidak berawal"</td>
+          <td>Konsep abstrak, filosofis</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="warning-box">
+    <h4>⚠️ Kesalahan Umum dalam Memberi Definisi</h4>
+    <ul>
+      <li><strong>Definisi terlalu luas:</strong> "Manusia adalah makhluk yang hidup" (terlalu luas, karena hewan juga hidup)</li>
+      <li><strong>Definisi terlalu sempit:</strong> "Manusia adalah makhluk yang memakai baju" (terlalu sempit, tidak mencakup semua manusia)</li>
+      <li><strong>Definisi sirkular:</strong> "Keadilan adalah keadaan yang adil" (mengulang kata yang sama)</li>
+      <li><strong>Definisi ambigu:</strong> Menggunakan kata yang maknanya sendiri belum jelas</li>
+    </ul>
+  </div>
+
+  <h2 id="kamus">6.5 Pengertian dan Jenis Kamus</h2>
+  <p>
+    <strong>Kamus</strong> (bahasa Arab: <em>qamus</em>) adalah rujukan sistematis yang memuat kosakata suatu bahasa beserta informasi tentang ejaan, makna, cara pengucapan, dan penggunaan. Kamus adalah "perpustakaan mini" yang menjadi sahabat utama penulis dan pembaca.
+  </p>
+
+  <h3>6.5.1 Jenis-Jenis Kamus</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Jenis Kamus</th>
+          <th>Pengertian</th>
+          <th>Contoh</th>
+          <th>Kegunaan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Kamus Umum</strong></td>
+          <td>Memuat kosakata umum suatu bahasa</td>
+          <td>KBBI (Kamus Besar Bahasa Indonesia)</td>
+          <td>Mengetahui makna, ejaan, dan penggunaan kata umum</td>
+        </tr>
+        <tr>
+          <td><strong>Kamus Khusus/Istilah</strong></td>
+          <td>Memuat kosakata bidang tertentu</td>
+          <td>Kamus Istilah Matematika, Kamus Istilah Kedokteran</td>
+          <td>Memahami istilah teknis bidang tertentu</td>
+        </tr>
+        <tr>
+          <td><strong>Tesaurus</strong></td>
+          <td>Memuat sinonim dan antonim</td>
+          <td>Tesaurus Bahasa Indonesia</td>
+          <td>Mencari padanan kata, memperkaya diksi</td>
+        </tr>
+        <tr>
+          <td><strong>Kamus Etimologi</strong></td>
+          <td>Memuat asal-usul kata</td>
+          <td>Kamus Etimologi Bahasa Indonesia</td>
+          <td>Memahami sejarah dan asal kata</td>
+        </tr>
+        <tr>
+          <td><strong>Kamus Dwibahasa</strong></td>
+          <td>Memuat terjemahan antar dua bahasa</td>
+          <td>Kamus Inggris-Indonesia</td>
+          <td>Menerjemahkan teks antar bahasa</td>
+        </tr>
+        <tr>
+          <td><strong>Kamus Elektronik</strong></td>
+          <td>Kamus dalam format digital</td>
+          <td>KBBI Daring, Google Translate</td>
+          <td>Akses cepat dan praktis</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>6.5.2 Cara Memanfaatkan Kamus</h3>
+  <p>
+    Kamus bukan hanya untuk mencari makna kata, tetapi juga untuk:
+  </p>
+  <ul>
+    <li><strong>Memeriksa ejaan:</strong> Pastikan kata yang Anda tulis sudah baku</li>
+    <li><strong>Memahami makna:</strong> Hindari kesalahan diksi akibat salah tafsir</li>
+    <li><strong>Memperluas kosakata:</strong> Pelajari kata-kata baru setiap hari</li>
+    <li><strong>Mencari sinonim:</strong> Gunakan tesaurus untuk variasi diksi</li>
+    <li><strong>Memahami kelas kata:</strong> KBBI mencantumkan kelas kata (nomina, verba, adjektiva, dll.)</li>
+    <li><strong>Mengetahui contoh penggunaan:</strong> KBBI sering menyertakan contoh kalimat</li>
+  </ul>
+
+  <div class="tips-box">
+    <h4>💡 Tips Memanfaatkan Kamus Secara Efektif</h4>
+    <ul>
+      <li><strong>Akses KBBI Daring:</strong> Kunjungi <em>kbbi.kemdikbud.go.id</em> untuk akses cepat dan gratis</li>
+      <li><strong>Baca seluruh entri:</strong> Jangan hanya membaca makna pertama, baca semua makna karena satu kata bisa memiliki banyak arti</li>
+      <li><strong>Perhatikan kelas kata:</strong> Pastikan Anda menggunakan kata sesuai kelasnya (kata benda, kata kerja, dll.)</li>
+      <li><strong>Gunakan tesaurus:</strong> Untuk menghindari pengulangan kata yang monoton</li>
+      <li><strong>Buat kamus pribadi:</strong> Catat kata-kata baru yang Anda temui setiap hari</li>
+      <li><strong>Baca kamus seperti membaca buku:</strong> Luangkan waktu 10 menit sehari untuk membaca entri kamus</li>
+    </ul>
+  </div>
+
+  <h2 id="ketepatan">6.6 Syarat Ketepatan dan Kesesuaian Diksi</h2>
+  <p>
+    Menurut <strong>Keraf (1990)</strong>, diksi yang baik harus memenuhi dua syarat utama: <strong>ketepatan</strong> dan <strong>kesesuaian</strong>. Keduanya berbeda namun saling melengkapi.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Syarat</th>
+          <th>Pengertian</th>
+          <th>Indikator</th>
+          <th>Contoh</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Ketepatan (Accuracy)</strong></td>
+          <td>Kata yang dipilih benar-benar mewakili gagasan yang ingin disampaikan</td>
+          <td>Makna kata sesuai dengan konteks gagasan</td>
+          <td>"<strong>Menganalisis</strong>" (bukan "memeriksa") untuk kegiatan ilmiah</td>
+        </tr>
+        <tr>
+          <td><strong>Kesesuaian (Appropriateness)</strong></td>
+          <td>Kata yang dipilih sesuai dengan konteks, audiens, dan tujuan komunikasi</td>
+          <td>Gaya bahasa, tingkat formalitas, nilai rasa</td>
+          <td>"<strong>Wafat</strong>" (bukan "mati") untuk tokoh yang dihormati</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>6.6.1 Faktor-Faktor yang Memengaruhi Ketepatan Diksi</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Faktor</th>
+          <th>Pengaruh terhadap Diksi</th>
+          <th>Contoh</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Topik/Gagasan</strong></td>
+          <td>Menentukan pilihan kosakata yang relevan</td>
+          <td>Tulisan matematika → menggunakan istilah: <em>hipotenusa, integral, derivatif</em></td>
+        </tr>
+        <tr>
+          <td><strong>Audiens</strong></td>
+          <td>Menentukan tingkat formalitas dan kompleksitas kata</td>
+          <td>Untuk anak-anak → kata sederhana; untuk akademisi → istilah teknis</td>
+        </tr>
+        <tr>
+          <td><strong>Tujuan Komunikasi</strong></td>
+          <td>Menentukan gaya bahasa (persuasif, informatif, persuasif)</td>
+          <td>Tulisan persuasif → kata-kata emotif; tulisan ilmiah → kata-kata objektif</td>
+        </tr>
+        <tr>
+          <td><strong>Media</strong></td>
+          <td>Menentukan tingkat kebakuan</td>
+          <td>Jurnal ilmiah → sangat baku; media sosial → lebih bebas</td>
+        </tr>
+        <tr>
+          <td><strong>Konteks Budaya</strong></td>
+          <td>Menentukan nilai rasa dan kesantunan</td>
+          <td>Di Minangkabau → menggunakan bahasa yang halus dan sopan</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="case-box">
+    <h4>📖 Studi Kasus 2: Analisis Ketepatan Diksi</h4>
+    <p>
+      Bandingkan tiga kalimat berikut yang menyampaikan gagasan yang sama, tetapi dengan diksi yang berbeda:
+    </p>
+    <ul>
+      <li><strong>Kalimat 1:</strong> "Penelitian ini <strong>menunjukkan</strong> bahwa metode X <strong>signifikan</strong> meningkatkan prestasi siswa."</li>
+      <li><strong>Kalimat 2:</strong> "Penelitian ini <strong>bilang</strong> bahwa metode X <strong>banget</strong> naikin prestasi siswa."</li>
+      <li><strong>Kalimat 3:</strong> "Penelitian ini <strong>mengindikasikan</strong> bahwa metode X <strong>berdampak positif</strong> terhadap prestasi siswa."</li>
+    </ul>
+    <div class="insight">
+      <strong>Analisis:</strong>
+      <ul style="margin-top:10px;">
+        <li><strong>Kalimat 1:</strong> Tepat untuk tulisan ilmiah standar — menggunakan kata baku dan objektif</li>
+        <li><strong>Kalimat 2:</strong> TIDAK TEPAT untuk tulisan ilmiah — menggunakan bahasa percakapan ("bilang", "banget", "naikin")</li>
+        <li><strong>Kalimat 3:</strong> SANGAT TEPAT untuk tulisan ilmiah tingkat tinggi — menggunakan istilah yang lebih presisi ("mengindikasikan", "berdampak positif")</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="hubungan">6.7 Hubungan Diksi, Definisi, dan Kamus</h2>
+  <p>
+    Ketiga konsep ini saling terkait erat dalam membentuk komunikasi tulis yang berkualitas:
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Hubungan</th>
+          <th>Penjelasan</th>
+          <th>Contoh Penerapan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Diksi ↔ Kamus</strong></td>
+          <td>Kamus menyediakan "bank kata" yang dapat dipilih untuk diksi yang tepat</td>
+          <td>Konsultasi KBBI sebelum memilih kata untuk memastikan kebakuan</td>
+        </tr>
+        <tr>
+          <td><strong>Diksi ↔ Definisi</strong></td>
+          <td>Definisi membantu memastikan bahwa kata yang dipilih memiliki makna yang dimaksud</td>
+          <td>Memberi definisi operasional untuk istilah teknis dalam penelitian</td>
+        </tr>
+        <tr>
+          <td><strong>Definisi ↔ Kamus</strong></td>
+          <td>Kamus memuat definisi-definisi yang menjadi rujukan dalam penggunaan kata</td>
+          <td>Menggunakan definisi dari KBBI sebagai standar makna kata</td>
+        </tr>
+        <tr>
+          <td><strong>Ketiganya</strong></td>
+          <td>Membentuk segitiga emas komunikasi tulis: diksi (pilihan) → definisi (makna) → kamus (rujukan)</td>
+          <td>Penulis memilih kata (diksi) → memastikan makna (definisi) → berkonsultasi dengan kamus</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="reflection-box">
+    <h4>💭 Refleksi untuk Mahasiswa PTI</h4>
+    <p>
+      Sebagai calon pendidik matematika, Anda akan sering menggunakan istilah teknis seperti <em>hipotenusa</em>, <em>integral</em>, <em>turunan</em>, <em>matriks</em>, dll. Penguasaan diksi yang tepat dalam bidang matematika sangat penting agar Anda dapat menjelaskan konsep abstrak dengan cara yang mudah dipahami siswa. Jangan ragu untuk berkonsultasi dengan kamus istilah matematika dan KBBI setiap kali Anda ragu dengan makna atau ejaan suatu istilah. Ini adalah wujud <strong>tanggung jawab akademik</strong> dan <strong>keteladanan</strong> sebagai calon pendidik profesional.
+    </p>
+  </div>
+
+  <h2 id="analisis">6.8 Analisis Kesalahan Umum dalam Diksi</h2>
+  <p>
+    Berdasarkan penelitian <strong>Kusumaningsih (2013)</strong> dan <strong>Sugono (2009)</strong>, berikut adalah kesalahan diksi yang paling sering dilakukan mahasiswa:
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Jenis Kesalahan</th>
+          <th>Contoh Salah</th>
+          <th>Contoh Benar</th>
+          <th>Penjelasan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Konfusio (kerancuan) makna</td>
+          <td>"<strong>Anda</strong> harus datang" (dalam surat resmi)</td>
+          <td>"<strong>Saudara</strong> harus datang" atau "<strong>Bapak/Ibu</strong> harus datang"</td>
+          <td>"Anda" terlalu informal untuk surat resmi</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Penggunaan kata asing yang sudah ada padanannya</td>
+          <td>"<strong>Optimalisasi</strong> pembelajaran"</td>
+          <td>"<strong>Optimalisasi</strong>" sudah baku, tetapi "<strong>optimize</strong>" harus dimiringkan</td>
+          <td>Gunakan padanan Indonesia jika sudah ada</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Pengulangan kata yang monoton</td>
+          <td>"<strong>Baik</strong> guru <strong>baik</strong> siswa harus <strong>baik</strong>"</td>
+          <td>"<strong>Baik</strong> guru <strong>maupun</strong> siswa harus <strong>optimal</strong>"</td>
+          <td>Variasikan diksi untuk menghindari kebosanan</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Kata yang tidak sesuai konteks</td>
+          <td>"Ia <strong>meninggal</strong> karena kecelakaan" (untuk hewan)</td>
+          <td>"Ia <strong>mati</strong> karena kecelakaan" (untuk hewan)</td>
+          <td>"Meninggal" hanya untuk manusia</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Kata yang bermakna ganda (ambigu)</td>
+          <td>"Ia <strong>mengajar</strong> adik" (siapa yang mengajar?)</td>
+          <td>"Ia <strong>mengajari</strong> adik" (jelas: ia yang mengajar)</td>
+          <td>Gunakan bentuk yang tidak ambigu</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Kata yang terlalu umum</td>
+          <td>"<strong>Barang</strong> itu rusak"</td>
+          <td>"<strong>Laptop</strong> itu rusak" atau "<strong>Proyektor</strong> itu rusak"</td>
+          <td>Gunakan kata yang spesifik dalam tulisan ilmiah</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Kata yang tidak baku</td>
+          <td>"<strong>Analisa</strong>", "<strong>resiko</strong>", "<strong>aktifitas</strong>"</td>
+          <td>"<strong>Analisis</strong>", "<strong>risiko</strong>", "<strong>aktivitas</strong>"</td>
+          <td>Konsultasikan dengan KBBI untuk memastikan kebakuan</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Kata yang konotasi negatif</td>
+          <td>"<strong>Propaganda</strong> pemerintah"</td>
+          <td>"<strong>Sosialisasi</strong> pemerintah"</td>
+          <td>"Propaganda" berkonotasi negatif/manipulatif</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box">
+    <h4>ℹ️ Kata-Kata yang Sering Salah Digunakan</h4>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Kata Salah</th>
+            <th>Kata Benar</th>
+            <th>Makna Sebenarnya</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Analisa</td><td><strong>Analisis</strong></td><td>Pemeriksaan sistematis</td></tr>
+          <tr><td>Resiko</td><td><strong>Risiko</strong></td><td>Kemungkinan buruk</td></tr>
+          <tr><td>Aktifitas</td><td><strong>Aktivitas</strong></td><td>Kegiatan</td></tr>
+          <tr><td>Ijin</td><td><strong>Izin</strong></td><td>Permission</td></tr>
+          <tr><td>Jaman</td><td><strong>Zaman</strong></td><td>Period</td></tr>
+          <tr><td>Nasehat</td><td><strong>Nasihat</strong></td><td>Advice</td></tr>
+          <tr><td>Praktek</td><td><strong>Praktik</strong></td><td>Practice</td></tr>
+          <tr><td>Apotik</td><td><strong>Apotek</strong></td><td>Pharmacy</td></tr>
+          <tr><td>Obyek</td><td><strong>Objek</strong></td><td>Object</td></tr>
+          <tr><td>Seksama</td><td><strong>Saksama</strong></td><td>Carefully</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tips-box">
+    <h4>💡 Tips Mengembangkan Diksi yang Kaya</h4>
+    <ul>
+      <li><strong>Baca secara luas:</strong> Baca buku, jurnal, artikel, dan karya sastra untuk memperkaya kosakata</li>
+      <li><strong>Catat kata baru:</strong> Buat jurnal kosakata pribadi dan tambahkan 5-10 kata baru setiap hari</li>
+      <li><strong>Gunakan tesaurus:</strong> Saat menulis, cari sinonim untuk menghindari pengulangan</li>
+      <li><strong>Latihan parafrase:</strong> Coba tulis ulang kalimat dengan kata-kata berbeda</li>
+      <li><strong>Diskusi dengan teman:</strong> Bertukar pikiran tentang pilihan kata yang tepat</li>
+      <li><strong>Baca kamus secara rutin:</strong> Luangkan 10 menit sehari untuk membaca entri KBBI</li>
+      <li><strong>Perhatikan penggunaan kata di media:</strong> Amati bagaimana penulis profesional memilih kata</li>
+      <li><strong>Revisi tulisan:</strong> Selalu baca ulang dan pertimbangkan alternatif kata yang lebih tepat</li>
+    </ul>
+  </div>
+
+  <h2 id="kesimpulan">Kesimpulan</h2>
+  <p>
+    Pertemuan keenam ini telah membekali kita dengan pemahaman mendalam tentang <strong>diksi</strong> (seni memilih kata), <strong>definisi</strong> (alat memperjelas makna), dan <strong>kamus</strong> (rujukan utama). Kita telah belajar bahwa:
+  </p>
+  <ul>
+    <li>Diksi yang baik harus memenuhi dua syarat: <strong>ketepatan</strong> (makna sesuai) dan <strong>kesesuaian</strong> (konteks sesuai)</li>
+    <li>Kata dapat diklasifikasikan berdasarkan makna (denotatif/konotatif), cakupan (umum/khusus), dan sifat (abstrak/konkret)</li>
+    <li>Definisi memiliki berbagai jenis: formal, deskriptif, operasional, sinonim, contoh, dan negatif</li>
+    <li>Kamus adalah sahabat utama penulis — KBBI, tesaurus, dan kamus istilah harus menjadi rujukan rutin</li>
+    <li>Kesalahan diksi dapat mengubah makna, menimbulkan ambiguitas, dan menurunkan kredibilitas tulisan</li>
+  </ul>
+  <p>
+    Sebagai mahasiswa UIN Sjech M. Djamil Djambek Bukittinggi, kita diamanahi untuk menjadi <strong>teladan</strong> dalam pemilihan kata yang tepat. Setiap kata yang kita tulis akan dipertanggungjawabkan — baik secara akademik maupun spiritual. Ingatlah Q.S. Al-Ahzab ayat 70-71: <em>"...ucapkanlah perkataan yang benar (qawlan sadida)..."</em> — inilah amanah kita sebagai penulis akademik muslim.
+  </p>
+  <p>
+    Sampai jumpa pada <strong>Pertemuan 7: Kalimat Efektif dalam Komunikasi Akademik</strong>, di mana kita akan mendalami seni menyusun kalimat yang efektif, logis, dan sesuai kaidah bahasa Indonesia.
+  </p>
+
+  <div class="references">
+    <h3>📚 Daftar Pustaka Pertemuan 6</h3>
+    <h4>Buku</h4>
+    <ol>
+      <li>Chaer, A. (2003). <em>Analisis Semantik</em>. Jakarta: Rineka Cipta.</li>
+      <li>Ermanto & Emidar. (2009). <em>Bahasa Indonesia Pengembang Kepribadian di Perguruan Tinggi</em>. Padang: UNP Press.</li>
+      <li>Keraf, G. (1990). <em>Diksi dan Gaya Bahasa</em>. Jakarta: Gramedia.</li>
+      <li>Kusumaningsih, D. (2013). <em>Terampil Berbahasa Indonesia</em>. Yogyakarta: Andi Offset.</li>
+      <li>Lyons, J. (1977). <em>Semantics</em>. Cambridge: Cambridge University Press.</li>
+      <li>Moeliono, A. M. (2001). <em>Bentuk dan Pilihan Kata</em>. Jakarta: Depdiknas.</li>
+      <li>Mufid. (2013). <em>Pedoman Kata Baku dan Tidak Baku</em>. Jakarta: Buku Pintar.</li>
+      <li>Muslich, M. (2012). <em>Bahasa Indonesia pada Era Globalisasi</em>. Jakarta: Bumi Aksara.</li>
+      <li>Pamungkas, S. (2012). <em>Bahasa Indonesia dalam Berbagai Perspektif</em>. Yogyakarta: Andi Offset.</li>
+      <li>Sugono, D. (2009). <em>1001 Kesalahan Berbahasa</em>. Jakarta: Akademi Pressindo.</li>
+      <li>Widjono. (2005). <em>Bahasa Indonesia Pengembangan Kepribadian di Perguruan Tinggi</em>. Jakarta: Gramedia.</li>
+    </ol>
+    <h4>Kamus dan Rujukan</h4>
+    <ol>
+      <li>Badan Pengembangan dan Pembinaan Bahasa. (2022). <em>Kamus Besar Bahasa Indonesia</em> (Edisi V). Jakarta: Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi.</li>
+      <li>Badan Pengembangan dan Pembinaan Bahasa. (2008). <em>Tesaurus Bahasa Indonesia</em>. Jakarta: Pusat Bahasa.</li>
+    </ol>
+    <h4>Sumber Al-Qur'an</h4>
+    <ol>
+      <li>Al-Qur'anul Karim — Q.S. Al-Ahzab [33]: 70-71</li>
+    </ol>
+  </div>
+
+</main>
+
+<!-- FOOTER NAV -->
+<div class="footer-nav">
+  <a href="5.html">← Pertemuan 5: Penulisan Kata & Tanda Baca</a>
+  <a href="#top">↑ Ke Atas</a>
+  <a href="7.html">Pertemuan 7: Kalimat Efektif →</a>
+</div>
+
+<!-- =========================================================
+     UJI FORMATIF
+     ========================================================= -->
+<section class="quiz-section" id="quiz">
+  <div class="quiz-head">
+    <div class="icon">📋</div>
+    <h2>Uji Formatif 6: Diksi, Definisi, dan Pemanfaatan Kamus</h2>
+    <div class="meta">
+      <span>📝 Bagian A: Pilihan Ganda (10 soal, skor 5/soal)</span>
+      <span>✍️ Bagian B: Essay (5 soal, skor 10/soal)</span>
+      <span>📚 Total Skor: 100</span>
+    </div>
+    <div class="warning">⚠️ Mohon lengkapi semua data dan jawaban terlebih dahulu!</div>
+  </div>
+
+  <!-- DATA MAHASISWA -->
+  <div class="quiz-block">
+    <h3>📋 Data Mahasiswa</h3>
+    <div class="form-grid">
+      <div class="form-field">
+        <label>Nama Lengkap *</label>
+        <input type="text" id="nama" placeholder="Masukkan nama lengkap" required>
+      </div>
+      <div class="form-field">
+        <label>NIM *</label>
+        <input type="text" id="nim" placeholder="Masukkan NIM" required>
+      </div>
+      <div class="form-field">
+        <label>📅 Tanggal Ujian</label>
+        <input type="date" id="tanggal">
+      </div>
+      <div class="form-field">
+        <label>Fakultas</label>
+        <input type="text" id="fakultas" value="Tarbiyah dan Ilmu Keguruan">
+      </div>
+      <div class="form-field">
+        <label>Jurusan / Prodi</label>
+        <input type="text" id="prodi" value="S1 Pendidikan Matematika">
+      </div>
+      <div class="form-field">
+        <label>Konsentrasi</label>
+        <input type="text" id="konsentrasi" placeholder="Misal: Matematika Murni">
+      </div>
+      <div class="form-field">
+        <label>Semester</label>
+        <select id="semester">
+          <option value="">Pilih Semester</option>
+          <option>Semester 1</option><option>Semester 2</option>
+          <option>Semester 3</option><option>Semester 4</option>
+          <option>Semester 5</option><option>Semester 6</option>
+          <option>Semester 7</option><option>Semester 8</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Kelas</label>
+        <input type="text" id="kelas" placeholder="Misal: PMTK-2A">
+      </div>
+    </div>
+  </div>
+
+  <!-- BAGIAN A: PILIHAN GANDA -->
+  <div class="quiz-block">
+    <h3>📋 Bagian A – Pilihan Ganda</h3>
+    <p class="desc">⚠️ Mohon lengkapi semua 10 soal pilihan ganda terlebih dahulu!</p>
+
+    <div class="question" data-correct="b">
+      <span class="q-num">Soal 1</span>
+      <div class="q-text">Diksi yang baik harus memenuhi dua syarat utama, yaitu...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q1" id="q1a" value="a"><label for="q1a">a. Panjang dan pendek</label></div>
+        <div class="option"><input type="radio" name="q1" id="q1b" value="b"><label for="q1b">b. Ketepatan dan kesesuaian</label></div>
+        <div class="option"><input type="radio" name="q1" id="q1c" value="c"><label for="q1c">c. Baku dan tidak baku</label></div>
+        <div class="option"><input type="radio" name="q1" id="q1d" value="d"><label for="q1d">d. Lisan dan tulisan</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="c">
+      <span class="q-num">Soal 2</span>
+      <div class="q-text">Kata "wafat", "berpulang", dan "meninggal" merupakan contoh diksi...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q2" id="q2a" value="a"><label for="q2a">a. Denotatif</label></div>
+        <div class="option"><input type="radio" name="q2" id="q2b" value="b"><label for="q2b">b. Umum</label></div>
+        <div class="option"><input type="radio" name="q2" id="q2c" value="c"><label for="q2c">c. Konotatif (halus)</label></div>
+        <div class="option"><input type="radio" name="q2" id="q2d" value="d"><label for="q2d">d. Abstrak</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="a">
+      <span class="q-num">Soal 3</span>
+      <div class="q-text">Ayat Al-Qur'an yang menekankan pentingnya mengucapkan perkataan yang benar (qawlan sadida) adalah...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q3" id="q3a" value="a"><label for="q3a">a. Q.S. Al-Ahzab: 70-71</label></div>
+        <div class="option"><input type="radio" name="q3" id="q3b" value="b"><label for="q3b">b. Q.S. Al-'Alaq: 1-5</label></div>
+        <div class="option"><input type="radio" name="q3" id="q3c" value="c"><label for="q3c">c. Q.S. Ar-Rum: 22</label></div>
+        <div class="option"><input type="radio" name="q3" id="q3d" value="d"><label for="q3d">d. Q.S. Al-Hujurat: 13</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="d">
+      <span class="q-num">Soal 4</span>
+      <div class="q-text">Definisi yang menjelaskan cara mengukur suatu konsep disebut...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q4" id="q4a" value="a"><label for="q4a">a. Definisi formal</label></div>
+        <div class="option"><input type="radio" name="q4" id="q4b" value="b"><label for="q4b">b. Definisi deskriptif</label></div>
+        <div class="option"><input type="radio" name="q4" id="q4c" value="c"><label for="q4c">c. Definisi sinonim</label></div>
+        <div class="option"><input type="radio" name="q4" id="q4d" value="d"><label for="q4d">d. Definisi operasional</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="b">
+      <span class="q-num">Soal 5</span>
+      <div class="q-text">Kamus yang memuat sinonim dan antonim disebut...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q5" id="q5a" value="a"><label for="q5a">a. Kamus umum</label></div>
+        <div class="option"><input type="radio" name="q5" id="q5b" value="b"><label for="q5b">b. Tesaurus</label></div>
+        <div class="option"><input type="radio" name="q5" id="q5c" value="c"><label for="q5c">c. Kamus etimologi</label></div>
+        <div class="option"><input type="radio" name="q5" id="q5d" value="d"><label for="q5d">d. Kamus dwibahasa</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="c">
+      <span class="q-num">Soal 6</span>
+      <div class="q-text">Penulisan kata yang <strong>benar</strong> sesuai KBBI adalah...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q6" id="q6a" value="a"><label for="q6a">a. Analisa, resiko, aktifitas</label></div>
+        <div class="option"><input type="radio" name="q6" id="q6b" value="b"><label for="q6b">b. Analisis, resiko, aktivitas</label></div>
+        <div class="option"><input type="radio" name="q6" id="q6c" value="c"><label for="q6c">c. Analisis, risiko, aktivitas</label></div>
+        <div class="option"><input type="radio" name="q6" id="q6d" value="d"><label for="q6d">d. Analisa, risiko, aktifitas</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="a">
+      <span class="q-num">Soal 7</span>
+      <div class="q-text">Teori yang membedakan makna referensial dan makna relasional dikemukakan oleh...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q7" id="q7a" value="a"><label for="q7a">a. Lyons</label></div>
+        <div class="option"><input type="radio" name="q7" id="q7b" value="b"><label for="q7b">b. Keraf</label></div>
+        <div class="option"><input type="radio" name="q7" id="q7c" value="c"><label for="q7c">c. Chaer</label></div>
+        <div class="option"><input type="radio" name="q7" id="q7d" value="d"><label for="q7d">d. Moeliono</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="d">
+      <span class="q-num">Soal 8</span>
+      <div class="q-text">Kata "hipotenusa", "integral", dan "derivatif" termasuk dalam jenis diksi...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q8" id="q8a" value="a"><label for="q8a">a. Umum</label></div>
+        <div class="option"><input type="radio" name="q8" id="q8b" value="b"><label for="q8b">b. Konotatif</label></div>
+        <div class="option"><input type="radio" name="q8" id="q8c" value="c"><label for="q8c">c. Sastra</label></div>
+        <div class="option"><input type="radio" name="q8" id="q8d" value="d"><label for="q8d">d. Khusus/istilah teknis</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="b">
+      <span class="q-num">Soal 9</span>
+      <div class="q-text">Kesalahan diksi yang terjadi ketika satu kata memiliki banyak makna disebut...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q9" id="q9a" value="a"><label for="q9a">a. Ambiguitas struktural</label></div>
+        <div class="option"><input type="radio" name="q9" id="q9b" value="b"><label for="q9b">b. Polisemi</label></div>
+        <div class="option"><input type="radio" name="q9" id="q9c" value="c"><label for="q9c">c. Homonim</label></div>
+        <div class="option"><input type="radio" name="q9" id="q9d" value="d"><label for="q9d">d. Sinonim</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="c">
+      <span class="q-num">Soal 10</span>
+      <div class="q-text">Untuk menghindari pengulangan kata yang monoton, penulis dapat memanfaatkan...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q10" id="q10a" value="a"><label for="q10a">a. Kamus etimologi</label></div>
+        <div class="option"><input type="radio" name="q10" id="q10b" value="b"><label for="q10b">b. Kamus dwibahasa</label></div>
+        <div class="option"><input type="radio" name="q10" id="q10c" value="c"><label for="q10c">c. Tesaurus</label></div>
+        <div class="option"><input type="radio" name="q10" id="q10d" value="d"><label for="q10d">d. Kamus istilah</label></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BAGIAN B: ESSAY -->
+  <div class="quiz-block">
+    <h3>✍️ Bagian B – Essay</h3>
+    <p class="desc">⚠️ Mohon isi semua 5 soal essay dengan jawaban yang komprehensif!</p>
+
+    <div class="question">
+      <span class="q-num">Essay 1</span>
+      <div class="q-text">Jelaskan perbedaan antara makna denotatif dan konotatif! Berikan masing-masing 5 contoh kata yang memiliki makna denotatif dan konotatif, serta jelaskan konteks penggunaan yang tepat untuk masing-masing!</div>
+      <textarea class="essay-area" data-essay="1" placeholder="Tuliskan jawaban Anda di sini (minimal 200 kata)..."></textarea>
+    </div>
+
+    <div class="question">
+      <span class="q-num">Essay 2</span>
+      <div class="q-text">Uraikan jenis-jenis definisi (formal, deskriptif, operasional, sinonim, contoh, negatif)! Berikan masing-masing 2 contoh yang relevan dengan bidang pendidikan matematika!</div>
+      <textarea class="essay-area" data-essay="2" placeholder="Tuliskan jawaban Anda di sini (minimal 200 kata)..."></textarea>
+    </div>
+
+    <div class="question">
+      <span class="q-num">Essay 3</span>
+      <div class="q-text">Jelaskan hubungan antara diksi, definisi, dan kamus! Berikan contoh konkret bagaimana ketiga konsep ini saling terkait dalam proses penulisan artikel ilmiah!</div>
+      <textarea class="essay-area" data-essay="3" placeholder="Tuliskan jawaban Anda di sini (minimal 200 kata)..."></textarea>
+    </div>
+
+    <div class="question">
+      <span class="q-num">Essay 4</span>
+      <div class="q-text">Bagaimana relevansi Q.S. Al-Ahzab ayat 70-71 (perintah qawlan sadida) dengan penguasaan diksi dalam komunikasi akademik? Jelaskan tafsir ayat tersebut dan kaitkan dengan sikap yang harus ditunjukkan oleh mahasiswa PTI dalam memilih kata!</div>
+      <textarea class="essay-area" data-essay="4" placeholder="Tuliskan jawaban Anda di sini (minimal 200 kata)..."></textarea>
+    </div>
+
+    <div class="question">
+      <span class="q-num">Essay 5</span>
+      <div class="q-text">Analisis paragraf berikut yang mengandung 8 kesalahan diksi! Tuliskan versi yang benar dan jelaskan setiap perbaikan yang Anda lakukan! "Penelitian ini memakai metode kualitatif. Hasilnya bilang bahwa metode X bisa naikin prestasi siswa. Anda harus coba metode ini. Barang-barang yang diperlukan antara lain buku, alat tulis, dan laptop. Analisa data dilakukan dengan cara deskriptif. Resiko kesalahan sangat kecil. Aktifitas ini sangat berguna buat mahasiswa."</div>
+      <textarea class="essay-area" data-essay="5" placeholder="Tuliskan jawaban Anda di sini (minimal 200 kata)..."></textarea>
+    </div>
+  </div>
+
+  <!-- ACTION BUTTONS -->
+  <div class="action-row">
+    <button class="btn-action primary" onclick="submitQuiz()">✉️ KIRIM JAWABAN & LIHAT HASIL</button>
+    <button class="btn-action" onclick="downloadPDF()">📥 UNDUH PDF LENGKAP</button>
+    <button class="btn-action" onclick="downloadScore()">📊 UNDUH SKOR SAJA</button>
+    <button class="btn-action" onclick="emailDosen()">✉️ KIRIM EMAIL DOSEN</button>
+    <button class="btn-action" onclick="resetQuiz()">🔄 MULAI ULANG</button>
+  </div>
+
+  <!-- RESULT PANEL -->
+  <div class="result-panel" id="resultPanel">
+    <h3>📊 Hasil Uji Formatif</h3>
+    <div class="score-grid">
+      <div class="score-item">
+        <div class="label">Bagian A (PG)</div>
+        <div class="value" id="scorePG">0/50</div>
+      </div>
+      <div class="score-item">
+        <div class="label">Bagian B (Essay)</div>
+        <div class="value" id="scoreEssay">0/50</div>
+      </div>
+      <div class="score-item">
+        <div class="label">Total Skor</div>
+        <div class="value" id="scoreTotal">0/100</div>
+      </div>
+    </div>
+    <div class="total-score" id="totalScore">0</div>
+    <div style="color:var(--muted); font-size:.9rem;">dari 100</div>
+    <div class="grade-badge" id="gradeBadge">-</div>
+    <p style="margin-top:20px; color:var(--muted); font-size:.88rem;" id="resultMessage"></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand-foot">Bahasa Indonesia untuk Perguruan Tinggi Islam</div>
+  <p>Pertemuan 6 · Diksi, Definisi, dan Pemanfaatan Kamus</p>
+  <p style="margin-top:8px;">© 2026 <em>Diyan Permata Yanda, M.Pd.</em> · UIN Sjech M. Djamil Djambek Bukittinggi</p>
+</footer>
+
+<!-- SCROLL TOP BUTTON -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // Scroll Top Button & Progress Bar
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('scrollTop');
+    const progressBar = document.getElementById('progressBar');
+    const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    progressBar.style.transform = `scaleX(${scrollPercent})`;
+    if (window.scrollY > 400) btn.classList.add('show');
+    else btn.classList.remove('show');
+  });
+
+  // Option selection highlight
+  document.querySelectorAll('.option input').forEach(input => {
+    input.addEventListener('change', function(){
+      const question = this.closest('.question');
+      question.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      this.closest('.option').classList.add('selected');
+    });
+  });
+
+  // Submit Quiz
+  function submitQuiz(){
+    const nama = document.getElementById('nama').value.trim();
+    const nim = document.getElementById('nim').value.trim();
+    if (!nama || !nim){
+      alert('⚠️ Mohon lengkapi Nama dan NIM terlebih dahulu!');
+      return;
+    }
+
+    let pgAnswered = 0;
+    for (let i = 1; i <= 10; i++){
+      if (document.querySelector(`input[name="q${i}"]:checked`)) pgAnswered++;
+    }
+    if (pgAnswered < 10){
+      alert(`⚠️ Mohon lengkapi semua soal pilihan ganda! (${pgAnswered}/10 sudah dijawab)`);
+      return;
+    }
+
+    let essayAnswered = 0;
+    document.querySelectorAll('.essay-area').forEach(t => {
+      if (t.value.trim().length > 10) essayAnswered++;
+    });
+    if (essayAnswered < 5){
+      alert(`⚠️ Mohon lengkapi semua soal essay! (${essayAnswered}/5 sudah dijawab)`);
+      return;
+    }
+
+    let pgScore = 0;
+    document.querySelectorAll('.question[data-correct]').forEach(q => {
+      const correct = q.dataset.correct;
+      const selected = q.querySelector('input[type="radio"]:checked');
+      q.classList.remove('correct','wrong');
+      q.querySelectorAll('.option').forEach(o => o.classList.remove('correct-answer','wrong-answer'));
+
+      const correctInput = q.querySelector(`input[value="${correct}"]`);
+      if (correctInput) correctInput.closest('.option').classList.add('correct-answer');
+
+      if (selected){
+        if (selected.value === correct){
+          pgScore += 5;
+          q.classList.add('correct');
+        } else {
+          q.classList.add('wrong');
+          selected.closest('.option').classList.add('wrong-answer');
+        }
+      }
+    });
+
+    let essayScore = 0;
+    document.querySelectorAll('.essay-area').forEach(t => {
+      const len = t.value.trim().length;
+      let s = 0;
+      if (len >= 400) s = 10;
+      else if (len >= 300) s = 9;
+      else if (len >= 200) s = 8;
+      else if (len >= 150) s = 7;
+      else if (len >= 100) s = 6;
+      else if (len >= 50) s = 4;
+      else if (len > 10) s = 2;
+      essayScore += s;
+    });
+
+    const total = pgScore + essayScore;
+
+    document.getElementById('scorePG').textContent = `${pgScore}/50`;
+    document.getElementById('scoreEssay').textContent = `${essayScore}/50`;
+    document.getElementById('scoreTotal').textContent = `${total}/100`;
+    document.getElementById('totalScore').textContent = total;
+
+    let grade = '', msg = '';
+    if (total >= 85){ grade = 'A (Sangat Baik)'; msg = '🌟 Luar biasa! Penguasaan diksi Anda sangat mumpuni.'; }
+    else if (total >= 80){ grade = 'A- (Sangat Baik)'; msg = '✨ Sangat bagus! Anda hampir sempurna dalam memahami diksi.'; }
+    else if (total >= 75){ grade = 'B+ (Baik Sekali)'; msg = '👏 Bagus sekali! Terus asah kemampuan memilih kata Anda.'; }
+    else if (total >= 70){ grade = 'B (Baik)'; msg = '✨ Bagus! Pemahaman Anda sudah baik, tingkatkan pada bagian essay.'; }
+    else if (total >= 65){ grade = 'B- (Baik)'; msg = '💪 Baik. Pelajari kembali klasifikasi diksi dan jenis definisi.'; }
+    else if (total >= 60){ grade = 'C+ (Cukup Baik)'; msg = '📖 Cukup baik. Baca ulang materi dan perbanyak latihan.'; }
+    else if (total >= 55){ grade = 'C (Cukup)'; msg = '📚 Perlu belajar lebih giat. Diskusikan dengan teman atau dosen.'; }
+    else if (total >= 40){ grade = 'D (Kurang)'; msg = '⚠️ Mohon mengulang materi dan berkonsultasi dengan dosen.'; }
+    else { grade = 'E (Sangat Kurang)'; msg = '❗ Sangat perlu bimbingan intensif. Segera temui dosen pengampu.'; }
+
+    document.getElementById('gradeBadge').textContent = grade;
+    document.getElementById('resultMessage').textContent = msg;
+    document.getElementById('resultPanel').classList.add('show');
+    document.getElementById('resultPanel').scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  // Download PDF
+  function downloadPDF(){
+    const nama = document.getElementById('nama').value || 'Mahasiswa';
+    const nim = document.getElementById('nim').value || 'NIM';
+
+    const content = `
+UJI FORMATIF - PERTEMUAN 6
+Bahasa Indonesia untuk Perguruan Tinggi Islam
+============================================
+
+DATA MAHASISWA
+Nama         : ${document.getElementById('nama').value}
+NIM          : ${document.getElementById('nim').value}
+Fakultas     : ${document.getElementById('fakultas').value}
+Prodi        : ${document.getElementById('prodi').value}
+Konsentrasi  : ${document.getElementById('konsentrasi').value}
+Semester     : ${document.getElementById('semester').value}
+Kelas        : ${document.getElementById('kelas').value}
+Tanggal      : ${document.getElementById('tanggal').value}
+
+============================================
+JAWABAN PILIHAN GANDA (Skor: ${document.getElementById('scorePG').textContent})
+============================================
+${Array.from({length:10}, (_,i) => {
+  const sel = document.querySelector(`input[name="q${i+1}"]:checked`);
+  const q = document.querySelectorAll('.question[data-correct]')[i];
+  const correct = q ? q.dataset.correct : '-';
+  const status = sel ? (sel.value === correct ? '✓ BENAR' : '✗ SALAH') : '(belum dijawab)';
+  return `Soal ${i+1}: ${sel ? sel.value.toUpperCase() : '-'} ${status} (Kunci: ${correct.toUpperCase()})`;
+}).join('\n')}
+
+============================================
+JAWABAN ESSAY (Skor: ${document.getElementById('scoreEssay').textContent})
+============================================
+${Array.from(document.querySelectorAll('.essay-area')).map((t,i) => 
+  `\nEssay ${i+1}:\n${t.value || '(belum dijawab)'}\n`
+).join('\n----------------------------------------\n')}
+
+============================================
+HASIL PENILAIAN
+============================================
+Bagian A (PG)    : ${document.getElementById('scorePG').textContent}
+Bagian B (Essay) : ${document.getElementById('scoreEssay').textContent}
+Total            : ${document.getElementById('totalScore').textContent}/100
+Grade            : ${document.getElementById('gradeBadge').textContent}
+Pesan            : ${document.getElementById('resultMessage').textContent}
+
+============================================
+Dosen Pengampu: Diyan Permata Yanda, M.Pd.
+UIN Sjech M. Djamil Djambek Bukittinggi
+Email: diyanpermatayanda@uinbukittinggi.ac.id
+`;
+
+    const blob = new Blob([content], {type:'text/plain;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `UjiFormatif6_${nim}_${nama.replace(/\s+/g,'_')}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // Download Score Only
+  function downloadScore(){
+    const nama = document.getElementById('nama').value || 'Mahasiswa';
+    const nim = document.getElementById('nim').value || 'NIM';
+    const content = `
+HASIL UJI FORMATIF - PERTEMUAN 6
+Bahasa Indonesia untuk Perguruan Tinggi Islam
+============================================
+Nama         : ${nama}
+NIM          : ${nim}
+Fakultas     : ${document.getElementById('fakultas').value}
+Prodi        : ${document.getElementById('prodi').value}
+Kelas        : ${document.getElementById('kelas').value}
+Tanggal      : ${document.getElementById('tanggal').value}
+--------------------------------------------
+Bagian A (PG)    : ${document.getElementById('scorePG').textContent}
+Bagian B (Essay) : ${document.getElementById('scoreEssay').textContent}
+TOTAL            : ${document.getElementById('totalScore').textContent}/100
+GRADE            : ${document.getElementById('gradeBadge').textContent}
+--------------------------------------------
+Dosen: Diyan Permata Yanda, M.Pd.
+UIN Sjech M. Djamil Djambek Bukittinggi
+`;
+    const blob = new Blob([content], {type:'text/plain;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Skor_UjiFormatif6_${nim}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // Email Dosen
+  function emailDosen(){
+    const nama = document.getElementById('nama').value || 'Mahasiswa';
+    const nim = document.getElementById('nim').value || 'NIM';
+    const subject = encodeURIComponent(`Hasil Uji Formatif 6 - ${nama} (${nim})`);
+    const body = encodeURIComponent(
+`Yth. Ibu Diyan Permata Yanda, M.Pd.
+
+Assalamu'alaikum Warahmatullahi Wabarakatuh.
+
+Saya yang bertanda tangan di bawah ini:
+Nama     : ${nama}
+NIM      : ${nim}
+Fakultas : ${document.getElementById('fakultas').value}
+Prodi    : ${document.getElementById('prodi').value}
+Kelas    : ${document.getElementById('kelas').value}
+
+Ingin menyampaikan hasil Uji Formatif Pertemuan 6 (Diksi, Definisi, dan Kamus):
+- Bagian A (PG)    : ${document.getElementById('scorePG').textContent}
+- Bagian B (Essay) : ${document.getElementById('scoreEssay').textContent}
+- Total            : ${document.getElementById('totalScore').textContent}/100
+- Grade            : ${document.getElementById('gradeBadge').textContent}
+
+Mohon masukan dan bimbingan Ibu untuk perbaikan ke depannya.
+
+Wassalamu'alaikum Warahmatullahi Wabarakatuh.
+Hormat saya,
+${nama}`
+    );
+    window.location.href = `mailto:diyanpermatayanda@uinbukittinggi.ac.id?subject=${subject}&body=${body}`;
+  }
+
+  // Reset Quiz
+  function resetQuiz(){
+    if (!confirm('⚠️ Yakin ingin mengulang uji formatif? Semua jawaban akan dihapus.')) return;
+    document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+    document.querySelectorAll('.essay-area').forEach(t => t.value = '');
+    document.querySelectorAll('.question').forEach(q => q.classList.remove('correct','wrong'));
+    document.querySelectorAll('.option').forEach(o => o.classList.remove('selected','correct-answer','wrong-answer'));
+    document.getElementById('resultPanel').classList.remove('show');
+    window.scrollTo({top: document.getElementById('quiz').offsetTop - 80, behavior:'smooth'});
+  }
+</script>
+
+</body>
+</html>

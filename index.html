@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bahasa Indonesia untuk Perguruan Tinggi Islam — Diyan Permata Yanda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* =========================================================
+     RESET & ROOT VARIABLES
+     ========================================================= */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --gold-1:#f5d98a;
+    --gold-2:#d4af37;
+    --gold-3:#b8860b;
+    --gold-4:#8b6914;
+    --ink-1:#0a0e1a;
+    --ink-2:#111626;
+    --ink-3:#1a1f35;
+    --cream:#f8f4ec;
+    --ivory:#fdfaf3;
+    --muted:#9aa0b4;
+    --line:rgba(212,175,55,.25);
+    --shadow-gold: 0 20px 60px -20px rgba(212,175,55,.35);
+    --shadow-deep: 0 30px 80px -30px rgba(0,0,0,.6);
+  }
+  html,body{ background:var(--ink-1); color:var(--cream); font-family:'Inter',sans-serif; line-height:1.6; overflow-x:hidden; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+
+  /* =========================================================
+     AMBIENT BACKGROUND
+     ========================================================= */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      radial-gradient(1000px 600px at 10% -10%, rgba(212,175,55,.12), transparent 60%),
+      radial-gradient(800px 500px at 110% 10%, rgba(212,175,55,.08), transparent 60%),
+      radial-gradient(700px 500px at 50% 120%, rgba(90,60,10,.15), transparent 60%);
+    z-index:-1;
+    pointer-events:none;
+  }
+
+  /* =========================================================
+     NAVBAR
+     ========================================================= */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(14px);
+    background:rgba(10,14,26,.75);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1280px; margin:0 auto;
+    padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:'Playfair Display', serif;
+    font-weight:700; font-size:1.1rem; letter-spacing:.5px;
+  }
+  .brand-mark{
+    width:36px; height:36px; border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    display:grid; place-items:center;
+    color:var(--ink-1); font-weight:900; font-family:'Playfair Display';
+    box-shadow: 0 0 20px rgba(212,175,55,.4);
+  }
+  .nav-links{ display:flex; gap:28px; font-size:.9rem; color:var(--muted); }
+  .nav-links a{ transition:color .3s; }
+  .nav-links a:hover{ color:var(--gold-2); }
+  @media (max-width:720px){ .nav-links{ display:none; } }
+
+  /* =========================================================
+     HERO SECTION
+     ========================================================= */
+  .hero{
+    max-width:1280px; margin:0 auto;
+    padding:80px 32px 60px;
+    display:grid; grid-template-columns: 1.05fr 1fr;
+    gap:60px; align-items:center;
+    position:relative;
+  }
+  @media (max-width:960px){ .hero{ grid-template-columns:1fr; padding:50px 24px; gap:40px; } }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:.78rem; letter-spacing:3px; text-transform:uppercase;
+    color:var(--gold-2); font-weight:500;
+    padding:8px 18px; border:1px solid var(--line); border-radius:999px;
+    background:rgba(212,175,55,.05);
+  }
+  .eyebrow::before{
+    content:""; width:6px; height:6px; border-radius:50%;
+    background:var(--gold-2); box-shadow:0 0 10px var(--gold-2);
+  }
+  h1.title{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:clamp(2.2rem, 5vw, 3.8rem);
+    line-height:1.08;
+    margin:22px 0 18px;
+    letter-spacing:-.5px;
+  }
+  h1.title .accent{
+    background:linear-gradient(135deg,var(--gold-1) 0%,var(--gold-2) 50%,var(--gold-3) 100%);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+    font-style:italic;
+  }
+  .subtitle{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.25rem; color:var(--muted);
+    font-style:italic; margin-bottom:28px;
+    border-left:2px solid var(--gold-2);
+    padding-left:18px;
+  }
+  .author-line{
+    display:flex; align-items:center; gap:14px;
+    margin-bottom:32px;
+  }
+  .author-avatar{
+    width:56px; height:56px; border-radius:50%;
+    border:2px solid var(--gold-2);
+    padding:2px; background:var(--ink-2);
+    overflow:hidden;
+  }
+  .author-avatar img{ width:100%; height:100%; object-fit:cover; border-radius:50%; }
+  .author-info .name{
+    font-family:'Playfair Display', serif;
+    font-weight:600; font-size:1.05rem; color:var(--cream);
+  }
+  .author-info .role{ font-size:.82rem; color:var(--muted); }
+
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:10px; }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 26px; border-radius:999px;
+    font-size:.9rem; font-weight:500; letter-spacing:.5px;
+    transition:all .35s ease; cursor:pointer;
+    border:1px solid transparent;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1); font-weight:600;
+    box-shadow: var(--shadow-gold);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow: 0 25px 70px -20px rgba(212,175,55,.55); }
+  .btn-ghost{
+    border:1px solid var(--line); color:var(--cream);
+    background:rgba(255,255,255,.02);
+  }
+  .btn-ghost:hover{ border-color:var(--gold-2); color:var(--gold-1); }
+
+  /* =========================================================
+     3D BOOK COVER
+     ========================================================= */
+  .cover-stage{
+    position:relative; perspective:1800px;
+    display:grid; place-items:center;
+    min-height:520px;
+  }
+  .cover-glow{
+    position:absolute; inset:10%;
+    background:radial-gradient(circle, rgba(212,175,55,.25), transparent 70%);
+    filter:blur(40px); z-index:0;
+  }
+  .book{
+    position:relative; z-index:2;
+    width:340px; height:480px;
+    transform-style:preserve-3d;
+    transform: rotateY(-22deg) rotateX(4deg);
+    transition: transform .8s cubic-bezier(.2,.8,.2,1);
+    animation: floaty 6s ease-in-out infinite;
+  }
+  .book:hover{ transform: rotateY(-8deg) rotateX(2deg) translateY(-8px); }
+  @keyframes floaty{
+    0%,100%{ transform: rotateY(-22deg) rotateX(4deg) translateY(0); }
+    50%{ transform: rotateY(-22deg) rotateX(4deg) translateY(-14px); }
+  }
+  .book-cover{
+    position:absolute; inset:0;
+    border-radius:4px 10px 10px 4px;
+    overflow:hidden;
+    box-shadow: var(--shadow-deep),
+                inset 4px 0 10px rgba(0,0,0,.4),
+                inset -1px 0 2px rgba(255,255,255,.08);
+    background:linear-gradient(135deg,#1a1f35,#0a0e1a);
+  }
+  .book-cover img{
+    width:100%; height:100%; object-fit:cover;
+  }
+  .book::before{
+    content:""; position:absolute; left:-6px; top:4px; bottom:4px; width:14px;
+    background:linear-gradient(90deg, rgba(0,0,0,.6), rgba(0,0,0,.1));
+    transform: rotateY(90deg);
+    transform-origin: right center;
+    border-radius:4px 0 0 4px;
+  }
+  .book::after{
+    content:""; position:absolute; right:-3px; top:6px; bottom:6px; width:6px;
+    background:repeating-linear-gradient(180deg, #f8f4ec 0 1px, #d8d2c2 1px 2px);
+    transform: rotateY(90deg);
+    transform-origin: left center;
+    border-radius:0 2px 2px 0;
+  }
+
+  /* =========================================================
+     SECTION HEADER
+     ========================================================= */
+  section{ padding:90px 32px; position:relative; }
+  .container{ max-width:1280px; margin:0 auto; }
+  .sec-head{ text-align:center; margin-bottom:60px; }
+  .sec-label{
+    font-size:.75rem; letter-spacing:4px; text-transform:uppercase;
+    color:var(--gold-2); font-weight:500;
+  }
+  .sec-title{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight:700; margin:12px 0 14px;
+  }
+  .sec-title em{
+    font-style:italic;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .sec-desc{ color:var(--muted); max-width:640px; margin:0 auto; }
+  .divider{
+    width:80px; height:1px; margin:20px auto 0;
+    background:linear-gradient(90deg,transparent,var(--gold-2),transparent);
+  }
+
+  /* =========================================================
+     ABOUT SECTION
+     ========================================================= */
+  .about{
+    background:linear-gradient(180deg, transparent, rgba(212,175,55,.03), transparent);
+  }
+  .about-grid{
+    display:grid; grid-template-columns: repeat(3,1fr); gap:24px;
+  }
+  @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; } }
+  .stat{
+    padding:32px 28px;
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+    backdrop-filter: blur(8px);
+    transition:all .4s;
+  }
+  .stat:hover{ transform:translateY(-6px); border-color:var(--gold-2); box-shadow:var(--shadow-gold); }
+  .stat-num{
+    font-family:'Playfair Display', serif;
+    font-size:2.4rem; font-weight:700;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .stat-label{ color:var(--muted); font-size:.85rem; letter-spacing:1px; text-transform:uppercase; margin-top:6px; }
+
+  /* =========================================================
+     PERTEMUAN GRID
+     ========================================================= */
+  .pertemuan-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap:22px;
+  }
+  .card{
+    position:relative;
+    padding:28px 26px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(180deg, rgba(26,31,53,.6), rgba(17,22,38,.4));
+    backdrop-filter: blur(10px);
+    overflow:hidden;
+    transition:all .45s cubic-bezier(.2,.8,.2,1);
+    display:flex; flex-direction:column;
+    min-height:210px;
+  }
+  .card::before{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(135deg, rgba(212,175,55,.08), transparent 60%);
+    opacity:0; transition:opacity .4s;
+  }
+  .card:hover{
+    transform:translateY(-8px);
+    border-color:var(--gold-2);
+    box-shadow: var(--shadow-gold);
+  }
+  .card:hover::before{ opacity:1; }
+  .card:hover .card-arrow{ transform:translate(4px,-4px); color:var(--gold-1); }
+
+  .card-num{
+    font-family:'Playfair Display', serif;
+    font-size:.8rem; letter-spacing:3px;
+    color:var(--gold-2); font-weight:600;
+    margin-bottom:14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .card-num::after{
+    content:""; flex:1; height:1px;
+    background:linear-gradient(90deg, var(--gold-2), transparent);
+  }
+  .card-title{
+    font-family:'Playfair Display', serif;
+    font-size:1.2rem; font-weight:600;
+    line-height:1.35; margin-bottom:14px;
+    color:var(--cream);
+  }
+  .card-desc{
+    font-size:.88rem; color:var(--muted);
+    flex:1; margin-bottom:18px;
+  }
+  .card-link{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:.82rem; font-weight:500;
+    color:var(--gold-2); letter-spacing:.5px;
+    transition:color .3s;
+  }
+  .card-arrow{ transition:transform .35s; }
+
+  .card.exam{
+    background:linear-gradient(135deg, rgba(212,175,55,.12), rgba(139,105,20,.06));
+    border-color:var(--gold-2);
+  }
+  .card.exam .badge{
+    display:inline-block; padding:4px 12px; border-radius:999px;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1); font-size:.7rem; font-weight:700;
+    letter-spacing:2px; text-transform:uppercase;
+    margin-bottom:14px; width:fit-content;
+  }
+
+  /* =========================================================
+     AUTHOR SECTION
+     ========================================================= */
+  .author-section{
+    background:linear-gradient(180deg, transparent, rgba(212,175,55,.04), transparent);
+  }
+  .author-card{
+    display:grid; grid-template-columns: 320px 1fr;
+    gap:50px; align-items:center;
+    padding:50px;
+    border:1px solid var(--line);
+    border-radius:24px;
+    background:linear-gradient(135deg, rgba(26,31,53,.7), rgba(17,22,38,.5));
+    backdrop-filter: blur(12px);
+    position:relative; overflow:hidden;
+  }
+  .author-card::before{
+    content:""; position:absolute; top:-50%; right:-20%;
+    width:400px; height:400px; border-radius:50%;
+    background:radial-gradient(circle, rgba(212,175,55,.12), transparent 70%);
+  }
+  @media (max-width:860px){
+    .author-card{ grid-template-columns:1fr; padding:32px; text-align:center; }
+    .author-photo-wrap{ margin:0 auto; }
+  }
+  .author-photo-wrap{
+    position:relative; z-index:2;
+    width:280px; height:340px; margin:0 auto;
+  }
+  .author-photo-wrap::before{
+    content:""; position:absolute; inset:-10px;
+    border:1px solid var(--gold-2);
+    border-radius:20px;
+    transform:rotate(-4deg);
+    opacity:.5;
+  }
+  .author-photo{
+    width:100%; height:100%;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow: var(--shadow-deep);
+    position:relative;
+    background:linear-gradient(135deg,#1a1f35,#0a0e1a);
+  }
+  .author-photo img{ width:100%; height:100%; object-fit:cover; }
+  .author-name{
+    font-family:'Playfair Display', serif;
+    font-size:2rem; font-weight:700;
+    margin-bottom:8px;
+  }
+  .author-name em{
+    font-style:italic;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .author-position{
+    color:var(--gold-2); font-size:.85rem;
+    letter-spacing:2px; text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .author-bio{ color:var(--muted); margin-bottom:24px; font-size:.95rem; }
+  .contact-list{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .contact-list li{
+    display:flex; align-items:center; gap:12px;
+    font-size:.9rem; color:var(--cream);
+  }
+  .contact-list .icon{
+    width:36px; height:36px; border-radius:50%;
+    background:rgba(212,175,55,.1);
+    border:1px solid var(--line);
+    display:grid; place-items:center;
+    color:var(--gold-2); font-size:.85rem;
+  }
+
+  /* =========================================================
+     FOOTER
+     ========================================================= */
+  footer{
+    border-top:1px solid var(--line);
+    padding:40px 32px;
+    text-align:center;
+    color:var(--muted);
+    font-size:.85rem;
+  }
+  footer .brand-foot{
+    font-family:'Playfair Display', serif;
+    color:var(--cream); font-size:1.1rem; margin-bottom:8px;
+  }
+  footer em{ color:var(--gold-2); font-style:italic; }
+
+  /* =========================================================
+     ANIMATIONS
+     ========================================================= */
+  .reveal{ opacity:0; transform:translateY(30px); transition:all .8s cubic-bezier(.2,.8,.2,1); }
+  .reveal.visible{ opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- =========================================================
+     NAVBAR
+     ========================================================= -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-mark">B</div>
+      <span>Bahasa Indonesia — PTI</span>
+    </div>
+    <div class="nav-links">
+      <a href="#tentang">Tentang Buku</a>
+      <a href="#pertemuan">Pertemuan</a>
+      <a href="#penulis">Penulis</a>
+    </div>
+  </div>
+</nav>
+
+<!-- =========================================================
+     HERO SECTION
+     ========================================================= -->
+<header class="hero">
+  <div class="hero-text reveal">
+    <span class="eyebrow">Buku Ajar Akademik · 2026</span>
+    <h1 class="title">
+      Bahasa Indonesia<br/>
+      untuk <span class="accent">Perguruan Tinggi Islam</span>
+    </h1>
+    <p class="subtitle">
+      "Menyatukan kaidah kebahasaan, integritas akademik, dan nilai-nilai keislaman dalam komunikasi ilmiah yang santun dan bermartabat."
+    </p>
+    <div class="author-line">
+      <div class="author-avatar">
+        <!-- ============================================
+             GANTI PHOTO PENULIS DI SINI
+             File: photo-penulis.jpg
+             ============================================ -->
+        <img src="photo-penulis.jpg" alt="Diyan Permata Yanda" onerror="this.style.display='none'">
+      </div>
+      <div class="author-info">
+        <div class="name">Diyan Permata Yanda, M.Pd.</div>
+        <div class="role">UIN Sjech M. Djamil Djambek Bukittinggi</div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <a href="#pertemuan" class="btn btn-primary">Jelajahi 16 Pertemuan →</a>
+      <a href="#penulis" class="btn btn-ghost">Tentang Penulis</a>
+    </div>
+  </div>
+
+  <div class="cover-stage reveal">
+    <div class="cover-glow"></div>
+    <div class="book">
+      <div class="book-cover">
+        <!-- ============================================
+             GANTI COVER BUKU DI SINI
+             File: cover-buku.png
+             ============================================ -->
+        <img src="cover-buku.png" alt="Cover Buku Bahasa Indonesia untuk Perguruan Tinggi Islam" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;display:grid;place-items:center;padding:30px;text-align:center;background:linear-gradient(135deg,#1a1f35,#0a0e1a);color:#d4af37;font-family:Playfair Display,serif;&quot;><div><div style=&quot;font-size:.7rem;letter-spacing:4px;margin-bottom:20px;opacity:.7;&quot;>BUKU AJAR</div><div style=&quot;font-size:1.4rem;font-weight:700;line-height:1.2;margin-bottom:20px;&quot;>Bahasa Indonesia<br/><em style=&quot;font-style:italic;color:#f5d98a;&quot;>untuk Perguruan<br/>Tinggi Islam</em></div><div style=&quot;width:40px;height:1px;background:#d4af37;margin:20px auto;&quot;></div><div style=&quot;font-size:.75rem;letter-spacing:2px;opacity:.8;&quot;>DIYAN PERMATA YANDA</div></div></div>'">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- =========================================================
+     ABOUT SECTION
+     ========================================================= -->
+<section id="tentang" class="about">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-label">Tentang Buku</div>
+      <h2 class="sec-title">Kompilasi <em>16 Pertemuan</em> Terstruktur</h2>
+      <p class="sec-desc">Buku ajar ini dirancang khusus bagi mahasiswa Perguruan Tinggi Islam untuk menguasai Bahasa Indonesia akademik — mulai dari sejarah, ejaan, diksi, hingga penulisan artikel ilmiah dan presentasi profesional.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="about-grid">
+      <div class="stat reveal">
+        <div class="stat-num">16</div>
+        <div class="stat-label">Pertemuan Lengkap</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num">2 SKS</div>
+        <div class="stat-label">Tatap Muka</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Nilai Keislaman</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     PERTEMUAN SECTION
+     ========================================================= -->
+<section id="pertemuan">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-label">Silabus Pembelajaran</div>
+      <h2 class="sec-title">Rangkaian <em>16 Pertemuan</em></h2>
+      <p class="sec-desc">Setiap pertemuan dirancang dengan pendekatan <em>Problem-Based Learning</em> dan <em>Project-Based Learning</em>, dipadukan dengan nilai-nilai keislaman melalui integrasi ayat-ayat Al-Qur'an.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="pertemuan-grid">
+
+      <!-- PERTEMUAN 1 -->
+      <a href="1.html" target="_blank" class="card reveal">
+        <div class="card-num">Pertemuan 01</div>
+        <h3 class="card-title">Kontrak Perkuliahan & Peta Jalan Bahasa Indonesia</h3>
+        <p class="card-desc">Pengantar mata kuliah, ruang lingkup materi, komposisi penilaian, dan eksplorasi referensi relevan sepanjang semester.</p>
+        <span class="card-link">Buka Materi <span class="card-arrow">→</span></span>
+      </a>
+
+      <!-- PERTEMUAN 2 -->
+      <a href="2.html" target="_blank" class="card reveal">
+        <div class="card-num">Pertemuan 02</div>
+        <h3 class="card-title">Sejarah Pertumbuhan Bahasa Indonesia</h3>
+        <p class="card-desc">Perjalanan Bahasa Melayu hingga pengikraran Sumpah Pemuda, kedudukan, fungsi, dan keberterimaan sebagai bahasa persatuan.</p>
+        <span class="card-link">Buka Materi <span class="card-arrow">→</span></span>
+      </a>
+
+      <!-- PERTEMUAN 3 -->
+      <a href="3.html" target="_blank" class="card reveal">
+        <div class="card-num">Pertemuan 03</div>
+        <h3 class="card-title">Ragam Bahasa Indonesia dalam Konteks Komunikasi</h3>
+        <p class="card-desc">Analisis ragam baku, sosial, fungsional, serta pemilihan ragam berdasarkan media, waktu, dan pesan komunikasi.</p>
+        <span class="card-link">Buka Materi <span class="card-arrow">→</span></span>
+      </a>
+
+      <!-- PERTEMUAN 4 -->
+      <a href="4.html" target="_blank" class="card reveal">
+        <div class="card-num">Pertemuan 04</div>
+        <h3 class="card-title">Ejaan Bahasa Indonesia — Bagian I</h3>
+        <p class="card-desc">Sejarah ejaan bahasa Indonesia, prinsip dasar penulisan huruf, dan kaidah penulisan kata yang baku.</p>
+        <span class="card-link">Buka Materi <span class="card-arrow">→</span></span>
+      </a>
+
+      <!-- PERTEMUAN 5 -->
+      <a href="5.html" target="_blank" class="card reveal">
+        <div class="card-num">Pertemuan 05</div>
+        <h3 class="card-title">Ejaan Bahasa Indonesia — Bagian II</h3>
+        <p class="card-desc">Penggunaan tanda baca yang tepat, analisis kesalahan ejaan dalam teks akademik, dan penerapan kaidah ejaan secara konsisten.</p>
+        <span class="card-link">Buka Materi <span class="card-arrow">→</span></span>
+      </a>
+
+      <!-- PERTEMUAN 6 -->
+      <a href="6.html" target="_blank" class="card reveal">
+        <div class="card-num">Pertemuan 06</div>
+        <h3 class="card-title">Diksi, Definisi, dan Pemanfaatan Kamus</h3>
+        <p class="card-desc">Ketepatan dan kesesuaian diksi, klasifikasi kosakata, serta pemanfaatan kamus untuk penulisan akademik yang presisi.</p>
+        <span class="card-link">Buka Materi <span class="card-arrow">→</span></span>
+      </a>
+
+      <!-- PERTEMUAN 7 -->
+      <a href="7.html" target="_blank" class="card reveal">
+        <div class="card-num">Pertemuan 07</div>
+        <h3 class="card-title">Kalimat Efektif dalam Komunikasi Akademik</h3>
+        <p class="card-desc">Unsur, ciri-ciri, dan faktor penyebab ketidakefektifan kalimat. Latihan menyusun dan merevisi kalimat sesuai kaidah bahasa.</p>
+        <span class="card-link">Buka Materi <span class="card-arrow">→</span></span>
+      </a>
+
+      <!-- PERTEMUAN 8 - UTS -->
+      <a href="8.html" target="_blank" class="card exam reveal">
+        <span class="badge">Ujian Tengah Semester</span>
+        <div class="card-num">Pertemuan 08</div>
+        <h3 class="card-title">Ujian Tengah Semester (UTS)</h3>
+        <p class="card-desc">Evaluasi komprehensif materi pertemuan 1–7: sejarah bahasa, ragam bahasa, ejaan, diksi, dan kalimat efektif.</p>
+        <span class="card-link">Lihat Detail <span class="card-arrow">→</span></span>
+      </a>
+
+      <!-- PERTEMUAN 9 -->
+      <a href="9.html" target="_blank" class="card reveal">
+        <div class="card-num">Pertemuan 09</div>
+        <h3 class="card-title">Paragraf: Struktur dan Pola Pengembangan</h3>
+        <p class="card-desc">Pengertian, jenis, persyaratan paragraf, serta pola pengembangan paragraf untuk karya ilmiah yang koheren.</p>
+        <span class="card-link">Buka Materi <span class="card-arrow">→</span></span>
+      </a>
+
+      <!-- PERTEMUAN 10 -->
+      <a href="10.html" target="_blank" class="card reveal">
+        <div class="card-num">Pertemuan 10</div>
+        <h3 class="card-title">Menulis Esai Akademik yang Orisinal</h3>
+        <p class="card-desc">Konsep, ciri-ciri, jenis esai, serta teknik menyusun kerangka dan menulis esai dengan menjaga orisinalitas karya.</p>
+        <span class="card-link">Buka Materi <span class="card-arrow">→</span></span>
+      </a>
+
+      <!-- PERTEMUAN 11 -->
+      <a href="11.html" target="_blank" class="card reveal">
+        <div class="card-num">Pertemuan 11</div>
+        <h3 class="card-title">Konsep dan Ciri Karangan Ilmiah</h3>
+        <p class="card-desc">Konsep, wujud, struktur, dan ciri-ciri karangan ilmiah. Analisis perbedaan esai dan karangan ilmiah.</p>
+        <span class="card-link">Buka Materi <span class="card-arrow">→</span></span>
+      </a>
+
+      <!-- PERTEMUAN 12 -->
+      <a href="12.html" target="_blank" class="card reveal">
+        <div class="card-num">Pertemuan 12</div>
+        <h3 class="card-title">Manajemen Referensi dengan Mendeley</h3>
+        <p class="card-desc">Etika sitasi, bahaya plagiarisme, serta penguasaan aplikasi Mendeley untuk sitasi dan daftar pustaka otomatis.</p>
+        <span class="card-link">Buka Materi <span class="card-arrow">→</span></span>
+      </a>
+
+      <!-- PERTEMUAN 13 -->
+      <a href="13.html" target="_blank" class="card reveal">
+        <div class="card-num">Pertemuan 13</div>
+        <h3 class="card-title">Menyusun Artikel Ilmiah yang Berkualitas</h3>
+        <p class="card-desc">Hakikat, ciri-ciri, jenis, dan struktur artikel ilmiah. Penerapan etika akademik dan kaidah bahasa dalam penulisan artikel.</p>
+        <span class="card-link">Buka Materi <span class="card-arrow">→</span></span>
+      </a>
+
+      <!-- PERTEMUAN 14 -->
+      <a href="14.html" target="_blank" class="card reveal">
+        <div class="card-num">Pertemuan 14</div>
+        <h3 class="card-title">Presentasi Ilmiah yang Percaya Diri</h3>
+        <p class="card-desc">Persiapan presentasi ilmiah, teknik komunikasi lisan, serta etika menanggapi pertanyaan dan kritik dari audiens.</p>
+        <span class="card-link">Buka Materi <span class="card-arrow">→</span></span>
+      </a>
+
+      <!-- PERTEMUAN 15 -->
+      <a href="15.html" target="_blank" class="card reveal">
+        <div class="card-num">Pertemuan 15</div>
+        <h3 class="card-title">Surat Lamaran Kerja & Simulasi Wawancara</h3>
+        <p class="card-desc">Format resmi surat lamaran kerja, penggunaan bahasa formal, serta praktik simulasi wawancara kerja yang efektif.</p>
+        <span class="card-link">Buka Materi <span class="card-arrow">→</span></span>
+      </a>
+
+      <!-- PERTEMUAN 16 - UAS -->
+      <a href="16.html" target="_blank" class="card exam reveal">
+        <span class="badge">Ujian Akhir Semester</span>
+        <div class="card-num">Pertemuan 16</div>
+        <h3 class="card-title">Ujian Akhir Semester (UAS)</h3>
+        <p class="card-desc">Evaluasi akhir komprehensif seluruh materi semester, termasuk proyek artikel ilmiah dan presentasi.</p>
+        <span class="card-link">Lihat Detail <span class="card-arrow">→</span></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     AUTHOR SECTION
+     ========================================================= -->
+<section id="penulis" class="author-section">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-label">Tentang Penulis</div>
+      <h2 class="sec-title">Diyan Permata Yanda, <em>M.Pd.</em></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="author-card reveal">
+      <div class="author-photo-wrap">
+        <div class="author-photo">
+          <!-- ============================================
+               GANTI PHOTO PENULIS DI SINI
+               File: photo-penulis.jpg
+               ============================================ -->
+          <img src="photo-penulis.jpg" alt="Diyan Permata Yanda" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;display:grid;place-items:center;background:linear-gradient(135deg,#1a1f35,#0a0e1a);color:#d4af37;font-family:Playfair Display,serif;font-size:4rem;font-weight:700;&quot;>DY</div>'">
+        </div>
+      </div>
+      <div class="author-content">
+        <h3 class="author-name">Diyan Permata Yanda, <em>M.Pd.</em></h3>
+        <div class="author-position">Dosen · Universitas Islam Negeri Sjech M. Djamil Djambek Bukittinggi</div>
+        <p class="author-bio">
+          Penulis merupakan dosen aktif di Program Studi Pendidikan Matematika, Fakultas Tarbiyah dan Ilmu Keguruan, UIN Sjech M. Djamil Djambek Bukittinggi. Fokus kajian meliputi kebahasaan, public speaking, serta pengembangan modul pembelajaran berbasis <em>Problem-Based Learning</em>. Buku ini merupakan hasil integrasi pengalaman mengajar dan riset dalam bidang komunikasi akademik di lingkungan Perguruan Tinggi Islam.
+        </p>
+        <ul class="contact-list">
+          <li>
+            <span class="icon">✉</span>
+            <span>diyanpermatayanda@uinbukittinggi.ac.id</span>
+          </li>
+          <li>
+            <span class="icon">🏛</span>
+            <span>UIN Sjech M. Djamil Djambek Bukittinggi</span>
+          </li>
+          <li>
+            <span class="icon">📚</span>
+            <span>Fakultas Tarbiyah dan Ilmu Keguruan — Prodi Pendidikan Matematika</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer>
+  <div class="brand-foot">Bahasa Indonesia untuk Perguruan Tinggi Islam</div>
+  <p>© 2026 Diyan Permata Yanda · <em>UIN Sjech M. Djamil Djambek Bukittinggi</em></p>
+</footer>
+
+<!-- =========================================================
+     SCROLL REVEAL SCRIPT
+     ========================================================= -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

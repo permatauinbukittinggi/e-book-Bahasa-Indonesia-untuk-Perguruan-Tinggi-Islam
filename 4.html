@@ -1,0 +1,2104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pertemuan 4 — Ejaan Bahasa Indonesia Bagian I: Sejarah & Penulisan Huruf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --gold-1:#f5d98a;
+    --gold-2:#d4af37;
+    --gold-3:#b8860b;
+    --gold-4:#8b6914;
+    --ink-1:#0a0e1a;
+    --ink-2:#111626;
+    --ink-3:#1a1f35;
+    --cream:#f8f4ec;
+    --ivory:#fdfaf3;
+    --muted:#9aa0b4;
+    --line:rgba(212,175,55,.25);
+    --shadow-gold: 0 20px 60px -20px rgba(212,175,55,.35);
+    --shadow-deep: 0 30px 80px -30px rgba(0,0,0,.6);
+    --success:#4ade80;
+    --error:#f87171;
+    --info:#60a5fa;
+  }
+  html,body{ background:var(--ink-1); color:var(--cream); font-family:'Inter',sans-serif; line-height:1.7; scroll-behavior:smooth; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      radial-gradient(1000px 600px at 10% -10%, rgba(212,175,55,.10), transparent 60%),
+      radial-gradient(800px 500px at 110% 10%, rgba(212,175,55,.06), transparent 60%),
+      radial-gradient(700px 500px at 50% 120%, rgba(90,60,10,.12), transparent 60%);
+    z-index:-1;
+    pointer-events:none;
+  }
+
+  /* NAVBAR */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(14px);
+    background:rgba(10,14,26,.85);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1200px; margin:0 auto;
+    padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:16px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:'Playfair Display', serif;
+    font-weight:700; font-size:1.05rem;
+  }
+  .brand-mark{
+    width:36px; height:36px; border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    display:grid; place-items:center;
+    color:var(--ink-1); font-weight:900; font-family:'Playfair Display';
+    box-shadow: 0 0 20px rgba(212,175,55,.4);
+  }
+  .nav-links{ display:flex; gap:24px; font-size:.88rem; color:var(--muted); flex-wrap:wrap; }
+  .nav-links a{ transition:color .3s; }
+  .nav-links a:hover{ color:var(--gold-2); }
+
+  /* HERO */
+  .hero{
+    max-width:1200px; margin:0 auto;
+    padding:80px 32px 50px;
+    text-align:center;
+    position:relative;
+  }
+  .chapter-tag{
+    display:inline-block;
+    font-size:.75rem; letter-spacing:4px; text-transform:uppercase;
+    color:var(--gold-2); font-weight:600;
+    padding:8px 20px; border:1px solid var(--line); border-radius:999px;
+    background:rgba(212,175,55,.05);
+    margin-bottom:24px;
+  }
+  h1.chapter-title{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:clamp(2rem, 4.5vw, 3.4rem);
+    line-height:1.15;
+    margin-bottom:18px;
+    letter-spacing:-.5px;
+  }
+  h1.chapter-title .accent{
+    background:linear-gradient(135deg,var(--gold-1) 0%,var(--gold-2) 50%,var(--gold-3) 100%);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+    font-style:italic;
+  }
+  .chapter-subtitle{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.2rem; color:var(--muted);
+    font-style:italic; max-width:780px; margin:0 auto 36px;
+  }
+  .hero-actions{
+    display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:13px 24px; border-radius:999px;
+    font-size:.88rem; font-weight:500; letter-spacing:.5px;
+    transition:all .35s ease; cursor:pointer;
+    border:1px solid transparent;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1); font-weight:600;
+    box-shadow: var(--shadow-gold);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow: 0 25px 70px -20px rgba(212,175,55,.55); }
+  .btn-ghost{
+    border:1px solid var(--line); color:var(--cream);
+    background:rgba(255,255,255,.02);
+  }
+  .btn-ghost:hover{ border-color:var(--gold-2); color:var(--gold-1); }
+
+  /* TABLE OF CONTENTS */
+  .toc{
+    max-width:900px; margin:0 auto 40px;
+    padding:28px 32px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(26,31,53,.6), rgba(17,22,38,.4));
+    backdrop-filter: blur(10px);
+  }
+  .toc h3{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.2rem;
+    margin-bottom:16px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .toc ol{
+    list-style:none; counter-reset:toc;
+    display:grid; grid-template-columns: 1fr 1fr;
+    gap:8px 24px;
+  }
+  @media (max-width:640px){ .toc ol{ grid-template-columns:1fr; } }
+  .toc li{
+    counter-increment:toc;
+    padding:8px 0 8px 36px;
+    position:relative;
+    color:var(--cream);
+    font-size:.9rem;
+    border-bottom:1px dashed rgba(212,175,55,.1);
+  }
+  .toc li::before{
+    content:counter(toc, decimal-leading-zero);
+    position:absolute; left:0; top:8px;
+    color:var(--gold-2); font-weight:600;
+    font-family:'Playfair Display', serif;
+  }
+  .toc a{ transition:color .3s; }
+  .toc a:hover{ color:var(--gold-1); }
+
+  /* CONTENT */
+  .content{ max-width:900px; margin:0 auto; padding:40px 32px; }
+  .content h2{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(1.6rem, 3vw, 2.2rem);
+    font-weight:700;
+    margin:50px 0 20px;
+    color:var(--cream);
+    position:relative;
+    padding-left:24px;
+  }
+  .content h2::before{
+    content:""; position:absolute; left:0; top:10px; bottom:10px; width:4px;
+    background:linear-gradient(180deg,var(--gold-1),var(--gold-3));
+    border-radius:2px;
+  }
+  .content h3{
+    font-family:'Playfair Display', serif;
+    font-size:1.35rem; font-weight:600;
+    color:var(--gold-1);
+    margin:32px 0 14px;
+  }
+  .content h4{
+    font-family:'Playfair Display', serif;
+    font-size:1.1rem; font-weight:600;
+    color:var(--gold-2);
+    margin:22px 0 10px;
+  }
+  .content p{
+    color:var(--cream); margin-bottom:16px;
+    text-align:justify;
+  }
+  .content p.lead{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.2rem; font-style:italic;
+    color:var(--muted);
+    border-left:2px solid var(--gold-2);
+    padding:12px 20px;
+    margin:24px 0;
+    background:rgba(212,175,55,.03);
+    border-radius:0 8px 8px 0;
+  }
+  .content ul, .content ol{
+    margin:14px 0 20px 24px;
+    color:var(--cream);
+  }
+  .content li{ margin-bottom:8px; }
+  .content strong{ color:var(--gold-1); font-weight:600; }
+
+  /* QURAN BOX */
+  .quran-box{
+    margin:36px 0;
+    padding:32px;
+    border:2px solid var(--gold-2);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(212,175,55,.10), rgba(139,105,20,.04));
+    position:relative;
+    text-align:center;
+  }
+  .quran-box::before{
+    content:"﷽"; position:absolute; top:-20px; left:50%;
+    transform:translateX(-50%);
+    background:var(--ink-1); padding:0 14px;
+    font-size:1.5rem; color:var(--gold-2);
+    font-family:'Amiri', serif;
+  }
+  .quran-box .arabic{
+    font-size:1.8rem; line-height:2.2;
+    color:var(--gold-1);
+    font-family:'Amiri', 'Traditional Arabic', serif;
+    direction:rtl;
+    margin-bottom:16px;
+    margin-top:10px;
+  }
+  .quran-box .translation{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.1rem; font-style:italic;
+    color:var(--cream);
+    margin-bottom:12px;
+    padding:0 20px;
+  }
+  .quran-box .reference{
+    font-size:.85rem;
+    color:var(--gold-2);
+    letter-spacing:1px;
+    font-weight:500;
+  }
+  .quran-box .tafsir{
+    margin-top:18px; padding-top:18px;
+    border-top:1px dashed var(--line);
+    font-size:.9rem;
+    color:var(--muted);
+    text-align:left;
+    font-style:normal;
+  }
+
+  /* VIDEO BOX */
+  .video-box{
+    margin:36px 0;
+    padding:32px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(26,31,53,.7), rgba(17,22,38,.5));
+    backdrop-filter: blur(10px);
+    text-align:center;
+  }
+  .video-box .icon{
+    width:70px; height:70px; border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    display:grid; place-items:center;
+    color:var(--ink-1); font-size:1.8rem; font-weight:900;
+    margin:0 auto 16px;
+    box-shadow: var(--shadow-gold);
+  }
+  .video-box h4{
+    font-family:'Playfair Display', serif;
+    font-size:1.2rem; color:var(--cream); margin-bottom:8px;
+  }
+  .video-box p{ color:var(--muted); font-size:.9rem; }
+
+  /* CONCEPT KEY */
+  .concept-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--gold-2);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(212,175,55,.08), rgba(139,105,20,.03));
+    position:relative;
+  }
+  .concept-box::before{
+    content:"🔑"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .concept-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+  .concept-box ul{ list-style:none; margin:0; padding:0; }
+  .concept-box li{
+    padding:10px 0 10px 28px;
+    border-bottom:1px dashed var(--line);
+    position:relative;
+    color:var(--cream);
+  }
+  .concept-box li:last-child{ border-bottom:none; }
+  .concept-box li::before{
+    content:"◆"; position:absolute; left:0; top:12px;
+    color:var(--gold-2); font-size:.7rem;
+  }
+  .concept-box li strong{ color:var(--gold-1); }
+
+  /* CASE STUDY */
+  .case-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(180deg, rgba(26,31,53,.6), rgba(17,22,38,.4));
+    position:relative;
+  }
+  .case-box::before{
+    content:"📖"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .case-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+  .case-box .insight{
+    margin-top:16px; padding:14px 18px;
+    background:rgba(212,175,55,.06);
+    border-left:3px solid var(--gold-2);
+    border-radius:0 8px 8px 0;
+    font-style:italic;
+    color:var(--cream);
+  }
+  .case-box .insight strong{ color:var(--gold-1); font-style:normal; }
+
+  /* REFLECTION */
+  .reflection-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(212,175,55,.04), transparent);
+    position:relative;
+  }
+  .reflection-box::before{
+    content:"💭"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .reflection-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+
+  /* TIPS */
+  .tips-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(74,222,128,.06), rgba(74,222,128,.02));
+    border-left:3px solid var(--success);
+    position:relative;
+  }
+  .tips-box::before{
+    content:"💡"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .tips-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+
+  /* WARNING */
+  .warning-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(248,113,113,.06), rgba(248,113,113,.02));
+    border-left:3px solid var(--error);
+    position:relative;
+  }
+  .warning-box::before{
+    content:"⚠️"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .warning-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+
+  /* INFO BOX */
+  .info-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(96,165,250,.06), rgba(96,165,250,.02));
+    border-left:3px solid var(--info);
+    position:relative;
+  }
+  .info-box::before{
+    content:"ℹ️"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .info-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+
+  /* TABLE */
+  .table-wrap{
+    margin:24px 0;
+    overflow-x:auto;
+    border:1px solid var(--line);
+    border-radius:12px;
+  }
+  table{
+    width:100%; border-collapse:collapse;
+    background:rgba(26,31,53,.5);
+  }
+  thead{
+    background:linear-gradient(135deg, rgba(212,175,55,.15), rgba(139,105,20,.08));
+  }
+  th{
+    padding:14px 18px;
+    text-align:left;
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    color:var(--gold-1);
+    font-size:.95rem;
+    border-bottom:1px solid var(--line);
+  }
+  td{
+    padding:12px 18px;
+    color:var(--cream);
+    font-size:.9rem;
+    border-bottom:1px solid rgba(212,175,55,.1);
+  }
+  tr:last-child td{ border-bottom:none; }
+  tr:hover{ background:rgba(212,175,55,.03); }
+
+  /* EXAMPLE BOX */
+  .example-box{
+    margin:24px 0;
+    padding:22px 26px;
+    border-left:4px solid var(--gold-2);
+    background:rgba(212,175,55,.04);
+    border-radius:0 12px 12px 0;
+  }
+  .example-box .label{
+    display:inline-block;
+    font-size:.75rem; letter-spacing:2px;
+    color:var(--gold-2); font-weight:600;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .example-box p{ margin-bottom:10px; font-size:.92rem; }
+  .example-box p:last-child{ margin-bottom:0; }
+  .example-box .correct{
+    color:var(--success);
+    font-weight:500;
+  }
+  .example-box .wrong{
+    color:var(--error);
+    text-decoration:line-through;
+    font-weight:500;
+  }
+
+  /* THEORY BOX */
+  .theory-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(26,31,53,.7), rgba(17,22,38,.5));
+    position:relative;
+  }
+  .theory-box::before{
+    content:"📚"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .theory-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.2rem;
+    margin-bottom:6px;
+  }
+  .theory-box .author{
+    font-size:.85rem; color:var(--gold-2);
+    font-style:italic;
+    margin-bottom:14px;
+  }
+  .theory-box p{ font-size:.92rem; }
+
+  /* TIMELINE */
+  .timeline{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(180deg, rgba(26,31,53,.6), rgba(17,22,38,.4));
+    position:relative;
+  }
+  .timeline::before{
+    content:"⏳"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .timeline h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.2rem;
+    margin-bottom:20px;
+  }
+  .timeline-item{
+    position:relative;
+    padding:16px 0 16px 40px;
+    border-left:2px solid var(--gold-2);
+    margin-left:12px;
+  }
+  .timeline-item::before{
+    content:""; position:absolute; left:-8px; top:22px;
+    width:14px; height:14px; border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    box-shadow: 0 0 10px rgba(212,175,55,.5);
+  }
+  .timeline-item .year{
+    font-family:'Playfair Display', serif;
+    font-size:1.1rem; font-weight:700;
+    color:var(--gold-1);
+    margin-bottom:6px;
+  }
+  .timeline-item .event{
+    font-size:.92rem;
+    color:var(--cream);
+    line-height:1.6;
+  }
+  .timeline-item .desc{
+    font-size:.85rem;
+    color:var(--muted);
+    margin-top:6px;
+    font-style:italic;
+  }
+
+  /* REFERENCES */
+  .references{
+    margin:40px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:rgba(26,31,53,.4);
+  }
+  .references h3{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.3rem;
+    margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .references h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-2); font-size:1rem;
+    margin:18px 0 10px;
+    padding-bottom:6px;
+    border-bottom:1px dashed var(--line);
+  }
+  .references ol{
+    margin:0; padding-left:24px;
+    color:var(--muted); font-size:.88rem;
+  }
+  .references li{ margin-bottom:10px; }
+
+  /* FOOTER NAV */
+  .footer-nav{
+    max-width:900px; margin:40px auto;
+    padding:30px 32px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:16px;
+  }
+  .footer-nav a{
+    display:inline-flex; align-items:center; gap:8px;
+    color:var(--gold-2); font-weight:500;
+    transition:color .3s;
+  }
+  .footer-nav a:hover{ color:var(--gold-1); }
+
+  /* =========================================================
+     UJI FORMATIF
+     ========================================================= */
+  .quiz-section{
+    max-width:1000px; margin:60px auto;
+    padding:50px 32px;
+    background:linear-gradient(135deg, rgba(26,31,53,.7), rgba(17,22,38,.5));
+    border:1px solid var(--line);
+    border-radius:24px;
+    backdrop-filter: blur(12px);
+    position:relative;
+    overflow:hidden;
+  }
+  .quiz-section::before{
+    content:""; position:absolute; top:-50%; right:-20%;
+    width:400px; height:400px; border-radius:50%;
+    background:radial-gradient(circle, rgba(212,175,55,.10), transparent 70%);
+  }
+  .quiz-head{
+    text-align:center; margin-bottom:36px;
+    position:relative; z-index:2;
+  }
+  .quiz-head .icon{
+    width:64px; height:64px; border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    display:grid; place-items:center;
+    color:var(--ink-1); font-size:1.6rem; font-weight:900;
+    margin:0 auto 16px;
+    box-shadow: var(--shadow-gold);
+  }
+  .quiz-head h2{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(1.5rem, 3vw, 2rem);
+    color:var(--cream); margin-bottom:10px;
+    padding:0;
+  }
+  .quiz-head h2::before{ display:none; }
+  .quiz-head .meta{
+    display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+    color:var(--muted); font-size:.85rem; margin-bottom:14px;
+  }
+  .quiz-head .meta span{
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .quiz-head .warning{
+    display:inline-block;
+    padding:10px 20px;
+    background:rgba(248,113,113,.1);
+    border:1px solid rgba(248,113,113,.3);
+    border-radius:999px;
+    color:#fca5a5;
+    font-size:.85rem;
+    font-weight:500;
+  }
+
+  .quiz-block{
+    margin-bottom:36px;
+    position:relative; z-index:2;
+  }
+  .quiz-block h3{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.25rem;
+    margin-bottom:6px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .quiz-block .desc{
+    color:var(--muted); font-size:.88rem;
+    margin-bottom:20px;
+    padding-left:30px;
+  }
+
+  /* FORM */
+  .form-grid{
+    display:grid; grid-template-columns: 1fr 1fr;
+    gap:16px;
+    margin-bottom:24px;
+  }
+  @media (max-width:640px){ .form-grid{ grid-template-columns:1fr; } }
+  .form-field{ display:flex; flex-direction:column; gap:6px; }
+  .form-field label{
+    font-size:.82rem; color:var(--gold-1);
+    font-weight:500; letter-spacing:.5px;
+  }
+  .form-field input, .form-field select, .form-field textarea{
+    padding:12px 14px;
+    background:rgba(10,14,26,.6);
+    border:1px solid var(--line);
+    border-radius:10px;
+    color:var(--cream);
+    font-family:'Inter', sans-serif;
+    font-size:.9rem;
+    transition:all .3s;
+  }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus{
+    outline:none;
+    border-color:var(--gold-2);
+    box-shadow:0 0 0 3px rgba(212,175,55,.15);
+  }
+  .form-field textarea{ min-height:100px; resize:vertical; }
+  .form-field select{ cursor:pointer; }
+  .form-field select option{ background:var(--ink-2); color:var(--cream); }
+
+  /* QUESTION */
+  .question{
+    margin-bottom:24px;
+    padding:22px;
+    background:rgba(10,14,26,.5);
+    border:1px solid var(--line);
+    border-radius:14px;
+    transition:all .3s;
+  }
+  .question:hover{ border-color:rgba(212,175,55,.4); }
+  .question.correct{
+    border-color:var(--success);
+    background:rgba(74,222,128,.06);
+  }
+  .question.wrong{
+    border-color:var(--error);
+    background:rgba(248,113,113,.06);
+  }
+  .question .q-num{
+    display:inline-block;
+    padding:4px 12px;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1);
+    font-weight:700; font-size:.78rem;
+    border-radius:999px;
+    margin-bottom:12px;
+    letter-spacing:1px;
+  }
+  .question .q-text{
+    color:var(--cream); font-size:.95rem;
+    margin-bottom:14px; line-height:1.6;
+  }
+  .options{ display:flex; flex-direction:column; gap:8px; }
+  .option{
+    display:flex; align-items:flex-start; gap:10px;
+    padding:10px 14px;
+    background:rgba(26,31,53,.5);
+    border:1px solid transparent;
+    border-radius:10px;
+    cursor:pointer;
+    transition:all .3s;
+  }
+  .option:hover{
+    background:rgba(212,175,55,.06);
+    border-color:var(--line);
+  }
+  .option input{ margin-top:3px; accent-color:var(--gold-2); cursor:pointer; }
+  .option label{ cursor:pointer; color:var(--cream); font-size:.9rem; flex:1; }
+  .option.selected{
+    background:rgba(212,175,55,.1);
+    border-color:var(--gold-2);
+  }
+  .option.correct-answer{
+    background:rgba(74,222,128,.12);
+    border-color:var(--success);
+  }
+  .option.wrong-answer{
+    background:rgba(248,113,113,.12);
+    border-color:var(--error);
+  }
+
+  .essay-area{
+    width:100%;
+    min-height:120px;
+    padding:14px;
+    background:rgba(10,14,26,.6);
+    border:1px solid var(--line);
+    border-radius:10px;
+    color:var(--cream);
+    font-family:'Inter', sans-serif;
+    font-size:.9rem;
+    resize:vertical;
+    transition:all .3s;
+  }
+  .essay-area:focus{
+    outline:none;
+    border-color:var(--gold-2);
+    box-shadow:0 0 0 3px rgba(212,175,55,.15);
+  }
+
+  /* RESULT */
+  .result-panel{
+    margin-top:30px;
+    padding:30px;
+    background:linear-gradient(135deg, rgba(212,175,55,.08), rgba(139,105,20,.03));
+    border:1px solid var(--gold-2);
+    border-radius:18px;
+    text-align:center;
+    display:none;
+  }
+  .result-panel.show{ display:block; animation:fadeIn .6s ease; }
+  @keyframes fadeIn{
+    from{ opacity:0; transform:translateY(20px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .result-panel h3{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.4rem;
+    margin-bottom:20px;
+  }
+  .score-grid{
+    display:grid; grid-template-columns: repeat(3,1fr);
+    gap:16px; margin-bottom:24px;
+  }
+  @media (max-width:640px){ .score-grid{ grid-template-columns:1fr; } }
+  .score-item{
+    padding:20px;
+    background:rgba(10,14,26,.5);
+    border:1px solid var(--line);
+    border-radius:14px;
+  }
+  .score-item .label{
+    font-size:.75rem; letter-spacing:2px; text-transform:uppercase;
+    color:var(--muted); margin-bottom:8px;
+  }
+  .score-item .value{
+    font-family:'Playfair Display', serif;
+    font-size:2rem; font-weight:700;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .total-score{
+    font-family:'Playfair Display', serif;
+    font-size:3rem; font-weight:900;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin:10px 0;
+  }
+  .grade-badge{
+    display:inline-block;
+    padding:8px 24px;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1);
+    font-weight:700;
+    border-radius:999px;
+    font-size:1rem;
+    letter-spacing:2px;
+    margin-top:10px;
+  }
+
+  /* ACTION BUTTONS */
+  .action-row{
+    display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+    margin-top:24px;
+  }
+  .btn-action{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px;
+    border-radius:999px;
+    font-size:.85rem; font-weight:500;
+    cursor:pointer;
+    border:1px solid var(--line);
+    background:rgba(26,31,53,.5);
+    color:var(--cream);
+    transition:all .3s;
+  }
+  .btn-action:hover{
+    border-color:var(--gold-2);
+    color:var(--gold-1);
+    transform:translateY(-2px);
+  }
+  .btn-action.primary{
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1);
+    font-weight:600;
+    border:none;
+    box-shadow: var(--shadow-gold);
+  }
+  .btn-action.primary:hover{ box-shadow: 0 20px 50px -15px rgba(212,175,55,.5); }
+
+  /* FOOTER */
+  footer{
+    border-top:1px solid var(--line);
+    padding:40px 32px;
+    text-align:center;
+    color:var(--muted);
+    font-size:.85rem;
+  }
+  footer .brand-foot{
+    font-family:'Playfair Display', serif;
+    color:var(--cream); font-size:1.1rem; margin-bottom:8px;
+  }
+  footer em{ color:var(--gold-2); font-style:italic; }
+
+  /* SCROLL TOP */
+  .scroll-top{
+    position:fixed; bottom:30px; right:30px;
+    width:48px; height:48px; border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1);
+    display:grid; place-items:center;
+    cursor:pointer;
+    box-shadow: var(--shadow-gold);
+    opacity:0; pointer-events:none;
+    transition:all .3s;
+    z-index:100;
+    border:none;
+    font-size:1.2rem;
+    font-weight:900;
+  }
+  .scroll-top.show{ opacity:1; pointer-events:auto; }
+  .scroll-top:hover{ transform:translateY(-4px); }
+
+  /* PROGRESS BAR */
+  .progress-bar{
+    position:fixed; top:0; left:0; right:0;
+    height:3px;
+    background:linear-gradient(90deg,var(--gold-1),var(--gold-3));
+    z-index:100;
+    transform-origin:left;
+    transform:scaleX(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAVBAR -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-mark">B</div>
+      <span>Bahasa Indonesia — PTI</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Beranda</a>
+      <a href="index.html#tentang">Tentang</a>
+      <a href="index.html#pertemuan">Daftar Pertemuan</a>
+      <a href="index.html#penulis">Penulis</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <span class="chapter-tag">Pertemuan 04 · Ejaan Bagian I</span>
+  <h1 class="chapter-title">
+    Ejaan Bahasa Indonesia<br/>
+    <span class="accent">Sejarah & Penulisan Huruf</span>
+  </h1>
+  <p class="chapter-subtitle">
+    Menelusuri perjalanan ejaan Bahasa Indonesia dari masa kolonial hingga era digital, serta menguasai kaidah penulisan huruf kapital, huruf miring, dan huruf tebal sesuai kaidah EYD Edisi V.
+  </p>
+  <div class="hero-actions">
+    <a href="3.html" class="btn btn-ghost">← Pertemuan Sebelumnya</a>
+    <a href="#mulai" class="btn btn-primary">Mulai Membaca</a>
+    <a href="5.html" class="btn btn-ghost">Pertemuan Selanjutnya →</a>
+  </div>
+</header>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h3>📑 Daftar Isi Pertemuan 4</h3>
+  <ol>
+    <li><a href="#pendahuluan">Pendahuluan</a></li>
+    <li><a href="#landasan-spiritual">Landasan Spiritual</a></li>
+    <li><a href="#hakikat">4.1 Hakikat Ejaan Bahasa Indonesia</a></li>
+    <li><a href="#landasan-teoretis">4.2 Landasan Teoretis</a></li>
+    <li><a href="#sejarah">4.3 Sejarah Ejaan Bahasa Indonesia</a></li>
+    <li><a href="#huruf-kapital">4.4 Kaidah Penulisan Huruf Kapital</a></li>
+    <li><a href="#huruf-miring">4.5 Kaidah Penulisan Huruf Miring</a></li>
+    <li><a href="#huruf-tebal">4.6 Kaidah Penulisan Huruf Tebal</a></li>
+    <li><a href="#analisis-kesalahan">4.7 Analisis Kesalahan Umum</a></li>
+    <li><a href="#kesimpulan">Kesimpulan</a></li>
+  </ol>
+</div>
+
+<!-- CONTENT -->
+<main class="content" id="mulai">
+
+  <h2 id="pendahuluan">Pendahuluan</h2>
+  <p class="lead">
+    Ejaan adalah aturan tata tulis yang menjadi fondasi setiap komunikasi tertulis. Tanpa ejaan yang baku, sebuah tulisan akademik akan kehilangan kredibilitasnya, bahkan makna yang ingin disampaikan dapat berubah atau menjadi ambigu.
+  </p>
+  <p>
+    Pertemuan keempat ini merupakan awal dari dua pertemuan yang didedikasikan untuk <strong>Ejaan Bahasa Indonesia</strong>. Pada pertemuan ini, kita akan menelusuri <strong>sejarah ejaan</strong> — dari masa kolonial Belanda hingga era digital — serta mendalami kaidah <strong>penulisan huruf</strong> (huruf kapital, huruf miring, dan huruf tebal) sesuai dengan <strong>EYD Edisi V (2022)</strong> yang berlaku saat ini.
+  </p>
+  <p>
+    Penguasaan ejaan bukan sekadar urusan teknis, melainkan <strong>manifestasi integritas akademik</strong>. Seorang mahasiswa yang menguasai ejaan menunjukkan bahwa ia menghargai pembaca, menghormati ilmu, dan menjaga martabat profesinya. Di era digital yang penuh dengan tulisan informal, kemampuan menulis dengan ejaan yang benar menjadi <strong>nilai tambah kompetitif</strong> yang membedakan seorang profesional.
+  </p>
+
+  <div class="info-box">
+    <h4>🎯 Tujuan Pembelajaran Pertemuan 4</h4>
+    <p>Setelah mengikuti pertemuan ini, mahasiswa diharapkan mampu:</p>
+    <ol>
+      <li>Menjelaskan sejarah ejaan bahasa Indonesia dari periode Van Ophuijsen hingga EYD Edisi V</li>
+      <li>Menerapkan kaidah penulisan huruf kapital sesuai EYD Edisi V dalam berbagai konteks</li>
+      <li>Menerapkan kaidah penulisan huruf miring untuk judul buku, istilah asing, dan bahasa daerah</li>
+      <li>Menerapkan kaidah penulisan huruf tebal untuk menegaskan bagian tulisan</li>
+      <li>Mengidentifikasi dan menganalisis kesalahan penulisan huruf dalam teks akademik</li>
+      <li>Menunjukkan sikap keteladanan dan disiplin dalam menggunakan ejaan yang benar</li>
+    </ol>
+  </div>
+
+  <h2 id="landasan-spiritual">Landasan Spiritual: Perintah Membaca dan Menulis</h2>
+  <p>
+    Ejaan adalah instrumen utama dalam aktivitas <strong>membaca dan menulis</strong> — dua aktivitas yang mendapat perhatian istimewa dalam Al-Qur'an. Perintah pertama yang diturunkan Allah SWT kepada Nabi Muhammad SAW adalah "Iqra'" (bacalah), yang mengisyaratkan pentingnya kemampuan literasi, termasuk kemampuan membaca tulisan yang dieja dengan benar.
+  </p>
+
+  <div class="quran-box">
+    <div class="arabic">ٱقْرَأْ بِٱسْمِ رَبِّكَ ٱلَّذِى خَلَقَ ۝ خَلَقَ ٱلْإِنسَـٰنَ مِنْ عَلَقٍ ۝ ٱقْرَأْ وَرَبُّكَ ٱلْأَكْرَمُ ۝ ٱلَّذِى عَلَّمَ بِٱلْقَلَمِ ۝ عَلَّمَ ٱلْإِنسَـٰنَ مَا لَمْ يَعْلَمْ</div>
+    <div class="translation">"Bacalah dengan (menyebut) nama Tuhanmu yang menciptakan. Dia telah menciptakan manusia dari segumpal darah. Bacalah, dan Tuhanmulah Yang Mahamulia. Yang mengajar (manusia) dengan pena. Dia mengajarkan manusia apa yang tidak diketahuinya."</div>
+    <div class="reference">— Q.S. Al-'Alaq [96]: 1-5</div>
+    <div class="tafsir">
+      <strong>Tafsir Ringkas:</strong> Ayat ini secara eksplisit menyebutkan <em>al-qalam</em> (pena) sebagai alat tulis — simbol dari aktivitas menulis yang memerlukan ejaan yang benar. Allah SWT mengajarkan manusia melalui perantara pena, yang berarti kemampuan menulis dengan ejaan yang tepat adalah anugerah ilahi. Sebagai mahasiswa PTI, menguasai ejaan Bahasa Indonesia adalah wujud syukur atas anugerah <em>al-qalam</em> dan implementasi nyata dari perintah <em>iqra'</em>.
+    </div>
+  </div>
+
+  <div class="video-box">
+    <div class="icon">▶</div>
+    <h4>Video: Sejarah Ejaan Bahasa Indonesia</h4>
+    <p>Simak dokumenter singkat ini untuk memahami perjalanan ejaan Bahasa Indonesia dari masa kolonial hingga era modern.</p>
+    <p style="margin-top:10px; font-size:.8rem; color:var(--gold-2);">Sumber: Kanal Badan Bahasa Kemendikbudristek · Durasi: 14 menit</p>
+  </div>
+
+  <div class="concept-box">
+    <h4>Konsep Kunci Pertemuan 4</h4>
+    <ul>
+      <li><strong>Ejaan:</strong> Kaidah tata tulis yang mengatur penggambaran bunyi bahasa dalam bentuk huruf, kata, dan tanda baca.</li>
+      <li><strong>EYD (Ejaan yang Disempurnakan):</strong> Ejaan resmi Bahasa Indonesia yang berlaku sejak 1972, disempurnakan beberapa kali, terakhir pada Edisi V (2022).</li>
+      <li><strong>Huruf Kapital:</strong> Huruf besar yang digunakan pada posisi tertentu sesuai kaidah, seperti awal kalimat, nama diri, dan nama geografi.</li>
+      <li><strong>Huruf Miring:</strong> Huruf yang dimiringkan untuk menandakan judul buku, istilah asing, atau bahasa daerah.</li>
+      <li><strong>Huruf Tebal:</strong> Huruf yang ditebalkan untuk menegaskan bagian tulisan, seperti judul bab atau istilah yang sedang didefinisikan.</li>
+      <li><strong>Integritas Ejaan:</strong> Komitmen untuk menulis sesuai kaidah sebagai bentuk tanggung jawab akademik dan profesional.</li>
+    </ul>
+  </div>
+
+  <h2 id="hakikat">4.1 Hakikat Ejaan Bahasa Indonesia</h2>
+  <p>
+    <strong>Ejaan</strong> adalah seperangkat aturan yang mengatur penggambaran bunyi bahasa dalam bentuk tulisan. Ejaan mencakup penggunaan <strong>huruf</strong> (grafem), <strong>tanda baca</strong>, dan <strong>penulisan kata</strong>. Ejaan yang baku berfungsi sebagai standar yang menjamin <strong>konsistensi</strong> dan <strong>keberterimaan</strong> tulisan dalam suatu komunitas berbahasa.
+  </p>
+  <p>
+    Menurut <strong>Alwi dkk. (2000)</strong>, ejaan yang baik memiliki tiga fungsi utama:
+  </p>
+  <ul>
+    <li><strong>Fungsi Landas Tiru:</strong> Memberikan pola yang dapat ditiru oleh penulis dalam menggambarkan bunyi bahasa.</li>
+    <li><strong>Fungsi Perwajahan:</strong> Memberikan struktur visual yang memudahkan pembaca memahami isi tulisan.</li>
+    <li><strong>Fungsi Identitas:</strong> Menjadi ciri khas tulisan yang mencerminkan kualitas dan kredibilitas penulisnya.</li>
+  </ul>
+
+  <div class="case-box">
+    <h4>📖 Studi Kasus 1: Kesalahan Ejaan yang Mengubah Makna</h4>
+    <p>
+      Seorang mahasiswa menulis dalam esainya: <em>"Bapak pergi ke <strong>pasar</strong>."</em> Namun, ia menuliskan "Pasar" dengan huruf kapital, seolah-olah merujuk pada nama diri. Dalam konteks lain, kesalahan penulisan "di" (kata depan) menjadi "di-" (awalan) atau sebaliknya dapat mengubah makna secara drastis. Contoh: <em>"di makan"</em> (salah) seharusnya <em>"dimakan"</em> (benar) karena "di-" di sini adalah awalan pasif, bukan kata depan yang menunjukkan tempat.
+    </p>
+    <div class="insight">
+      <strong>Pembelajaran:</strong> Kesalahan ejaan yang tampaknya kecil dapat mengubah makna, mengurangi kredibilitas, dan bahkan menimbulkan kesalahpahaman serius. Dalam karya ilmiah, kesalahan ejaan dapat menurunkan nilai evaluasi reviewer dan bahkan menyebabkan penolakan publikasi.
+    </div>
+  </div>
+
+  <h2 id="landasan-teoretis">4.2 Landasan Teoretis</h2>
+  <p>
+    Kajian ejaan didukung oleh beberapa teori linguistik yang menjelaskan mengapa standardisasi ejaan penting dan bagaimana ejaan berkembang.
+  </p>
+
+  <div class="theory-box">
+    <h4>Teori Standardisasi Bahasa (Einar Haugen)</h4>
+    <div class="author">Haugen, E. (1966). <em>Language Planning and Linguistic Change</em></div>
+    <p>
+      <strong>Konsep Utama:</strong> Standardisasi bahasa meliputi empat proses: <em>selection</em> (pemilihan), <em>codification</em> (kodifikasi), <em>elaboration</em> (elaborasi), dan <em>acceptance</em> (penerimaan). Ejaan merupakan bentuk <strong>codification</strong> — yaitu pembukuan kaidah bahasa dalam bentuk kamus, tata bahasa, dan pedoman ejaan.
+    </p>
+    <p>
+      <strong>Relevansi:</strong> EYD adalah hasil kodifikasi Bahasa Indonesia yang diterima secara luas oleh masyarakat. Menguasai EYD berarti berpartisipasi dalam komunitas berbahasa yang terstandar.
+    </p>
+  </div>
+
+  <div class="theory-box">
+    <h4>Teori Ortografi (Venezky)</h4>
+    <div class="author">Venezky, R. L. (1970). <em>Discovering the Symbol System of Reading</em></div>
+    <p>
+      <strong>Konsep Utama:</strong> Ortografi (ejaan) bukan sekadar representasi bunyi, melainkan <em>symbol system</em> yang memiliki logika internal. Ortografi yang baik menyeimbangkan antara <strong>prinsip fonemis</strong> (satu huruf = satu bunyi) dan <strong>prinsip morfemis</strong> (mempertahankan bentuk morfem).
+    </p>
+    <p>
+      <strong>Relevansi:</strong> Ejaan Bahasa Indonesia cenderung fonemis, tetapi juga mempertahankan prinsip morfemis pada kasus tertentu (misal: meN- + pukul = memukul, bukan *mempukul).
+    </p>
+  </div>
+
+  <div class="theory-box">
+    <h4>Teori Perencanaan Bahasa (Kaplan & Baldauf)</h4>
+    <div class="author">Kaplan, R. B., & Baldauf, R. B. (1997). <em>Language Planning: From Practice to Theory</em></div>
+    <p>
+      <strong>Konsep Utama:</strong> Perencanaan bahasa mencakup <em>corpus planning</em> (perencanaan isi bahasa, termasuk ejaan) dan <em>status planning</em> (perencanaan kedudukan bahasa). Ejaan adalah bagian dari corpus planning yang sangat strategis.
+    </p>
+    <p>
+      <strong>Relevansi:</strong> Perubahan ejaan dari Van Ophuijsen ke EYD Edisi V mencerminkan proses perencanaan bahasa yang berkelanjutan untuk menyesuaikan dengan perkembangan zaman.
+    </p>
+  </div>
+
+  <h2 id="sejarah">4.3 Sejarah Ejaan Bahasa Indonesia</h2>
+  <p>
+    Ejaan Bahasa Indonesia telah mengalami beberapa kali perubahan sejak masa kolonial. Setiap perubahan mencerminkan dinamika politik, sosial, dan budaya pada masanya.
+  </p>
+
+  <div class="timeline">
+    <h4>📅 Timeline Sejarah Ejaan Bahasa Indonesia</h4>
+    
+    <div class="timeline-item">
+      <div class="year">1901 — Ejaan Van Ophuijsen</div>
+      <div class="event">Disusun oleh Ch. A. van Ophuijsen, dibantu oleh Nawawi Soetan Makmoer dan Moehammad Taib Soetan Ibrahim. Ejaan ini resmi ditetapkan oleh Pemerintah Hindia Belanda.</div>
+      <div class="desc">Ciri khas: huruf "j" untuk bunyi "y" (saja → sajah), "oe" untuk bunyi "u" (ibu → iboe), tanda diakritik seperti "ä" (saä), "ë" (deëngan), dan "'" (ma'moer).</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="year">1947 — Ejaan Soewandi (Ejaan Republik)</div>
+      <div class="event">Ditetapkan oleh Menteri Pengajaran, Pendidikan, dan Kebudayaan Mr. Soewandi pada 19 Maret 1947, menggantikan Ejaan Van Ophuijsen.</div>
+      <div class="desc">Perubahan utama: "oe" diganti menjadi "u" (ibu), huruf vokal rangkap dihilangkan, dan tanda petik diganti dengan "k" pada akhir kata (hajj → hak).</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="year">1957 — Ejaan Pembaharuan (Tidak Jadi Diresmikan)</div>
+      <div class="event">Usulan ejaan baru oleh Panitia Pembakuan Ejaan Bahasa Indonesia yang dipimpin oleh Sutan Takdir Alisyahbana.</div>
+      <div class="desc">Beberapa usulan kontroversial seperti penulisan "ap" untuk "apa" dan "istria" untuk "istri". Tidak jadi diresmikan karena mendapat banyak kritik.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="year">1972 — Ejaan yang Disempurnakan (EYD)</div>
+      <div class="event">Diresmikan pada 16 Agustus 1972 melalui SK Presiden No. 57 Tahun 1972. Merupakan hasil kerjasama Indonesia-Malaysia untuk menyatukan ejaan kedua negara serumpun.</div>
+      <div class="desc">Perubahan utama: "tj" menjadi "c" (tjinta → cinta), "dj" menjadi "j" (djalan → jalan), "sj" menjadi "sy" (sjukur → syukur), "ch" menjadi "kh" (chusus → khusus), "nj" menjadi "ny" (njata → nyata).</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="year">2015 — Ejaan Bahasa Indonesia (EBI)</div>
+      <div class="event">Diterbitkan oleh Badan Pengembangan dan Pembinaan Bahasa sebagai penyempurnaan EYD.</div>
+      <div class="desc">Penambahan kaidah baru: huruf "diftong" ai, au, oi; penulisan kata depan "di" dan kata ganti "-ku", "-mu", "-nya"; penggunaan tanda pisah em dash (—).</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="year">2022 — EYD Edisi V</div>
+      <div class="event">Kembali menggunakan nama "EYD" dengan edisi kelima yang lebih komprehensif, berlaku sejak 16 Agustus 2022.</div>
+      <div class="desc">Memuat kaidah ejaan terkini, termasuk penggunaan bahasa di media digital, penyesuaian dengan perkembangan teknologi, dan penyempurnaan beberapa kaidah lama.</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Ejaan</th>
+          <th>Tahun</th>
+          <th>Contoh Perubahan</th>
+          <th>Ciri Khas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Van Ophuijsen</strong></td>
+          <td>1901</td>
+          <td>saja → sajah, ibu → iboe</td>
+          <td>Pengaruh ejaan Belanda, banyak tanda diakritik</td>
+        </tr>
+        <tr>
+          <td><strong>Soewandi</strong></td>
+          <td>1947</td>
+          <td>iboe → ibu, sajah → saja</td>
+          <td>Penyederhanaan dari Van Ophuijsen</td>
+        </tr>
+        <tr>
+          <td><strong>EYD</strong></td>
+          <td>1972</td>
+          <td>tjinta → cinta, djalan → jalan</td>
+          <td>Kerjasama Indonesia-Malaysia</td>
+        </tr>
+        <tr>
+          <td><strong>EBI</strong></td>
+          <td>2015</td>
+          <td>Penambahan diftong, tanda pisah</td>
+          <td>Penyesuaian dengan era digital</td>
+        </tr>
+        <tr>
+          <td><strong>EYD Edisi V</strong></td>
+          <td>2022</td>
+          <td>Kembali ke nama EYD, penyempurnaan</td>
+          <td>Ejaan terkini yang berlaku saat ini</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="reflection-box">
+    <h4>💭 Refleksi untuk Mahasiswa PTI</h4>
+    <p>
+      Sejarah ejaan mengajarkan kita bahwa bahasa bersifat <strong>dinamis</strong> — ia terus berkembang mengikuti zaman. Namun, di balik dinamika tersebut, ada <strong>prinsip konsistensi</strong> yang harus dipegang teguh. Sebagai mahasiswa, kita harus menjadi garda terdepan dalam menggunakan ejaan yang baku, khususnya dalam konteks akademik. Ini adalah wujud <strong>keteladanan</strong> dan <strong>tanggung jawab</strong> kita sebagai calon pendidik.
+    </p>
+  </div>
+
+  <h2 id="huruf-kapital">4.4 Kaidah Penulisan Huruf Kapital</h2>
+  <p>
+    Huruf kapital (huruf besar) digunakan pada posisi-posisi tertentu sesuai kaidah EYD Edisi V. Penggunaan huruf kapital yang tidak sesuai kaidah merupakan kesalahan yang sangat umum terjadi, bahkan di kalangan akademisi sekalipun.
+  </p>
+
+  <h3>4.4.1 Huruf Kapital di Awal Kalimat</h3>
+  <p>
+    Huruf pertama pada awal kalimat <strong>selalu</strong> ditulis dengan huruf kapital.
+  </p>
+
+  <div class="example-box">
+    <div class="label">Contoh Penulisan Huruf Kapital di Awal Kalimat</div>
+    <p><span class="correct">✓ Benar:</span> Dia sedang membaca buku di perpustakaan.</p>
+    <p><span class="wrong">✗ Salah:</span> dia sedang membaca buku di perpustakaan.</p>
+    <p><span class="correct">✓ Benar:</span> "Mari kita jaga kebersihan lingkungan," kata Pak RT.</p>
+    <p><span class="wrong">✗ Salah:</span> "mari kita jaga kebersihan lingkungan," kata Pak RT.</p>
+  </div>
+
+  <h3>4.4.2 Huruf Kapital untuk Nama Orang</h3>
+  <p>
+    Huruf kapital digunakan untuk menulis nama orang, termasuk nama panggilan yang disertai kata sapaan.
+  </p>
+
+  <div class="example-box">
+    <div class="label">Contoh Penulisan Huruf Kapital untuk Nama Orang</div>
+    <p><span class="correct">✓ Benar:</span> Diyan Permata Yanda, Amir Hamzah, Dewi Sartika</p>
+    <p><span class="wrong">✗ Salah:</span> diyan permata yanda, amir hamzah, dewi sartika</p>
+    <p><span class="correct">✓ Benar:</span> "Selamat pagi, Bu," sapa Andi.</p>
+    <p><span class="correct">✓ Benar:</span> Surat itu telah dibaca oleh Pak Direktur.</p>
+  </div>
+
+  <div class="warning-box">
+    <h4>⚠️ Pengecualian Penting</h4>
+    <p>
+      Huruf kapital <strong>TIDAK</strong> digunakan untuk nama orang yang dijadikan nama jenis atau satuan ukuran:
+    </p>
+    <ul>
+      <li><span class="correct">✓ Benar:</span> 10 <strong>ampere</strong> (bukan 10 Ampere) — dari nama A.M. Ampere</li>
+      <li><span class="correct">✓ Benar:</span> mesin <strong>diesel</strong> (bukan mesin Diesel) — dari nama R. Diesel</li>
+      <li><span class="correct">✓ Benar:</span> <strong>vitamin C</strong> (huruf C tetap kapital karena bukan nama orang)</li>
+    </ul>
+  </div>
+
+  <h3>4.4.3 Huruf Kapital untuk Nama Tuhan dan Kitab Suci</h3>
+  <p>
+    Huruf kapital digunakan untuk nama Tuhan, termasuk kata ganti Tuhan, serta nama kitab suci.
+  </p>
+
+  <div class="example-box">
+    <div class="label">Contoh Penulisan Huruf Kapital untuk Nama Tuhan</div>
+    <p><span class="correct">✓ Benar:</span> Allah, Tuhan, Yang Mahakuasa, Allah SWT</p>
+    <p><span class="correct">✓ Benar:</span> "Ya <strong>Tuhan</strong>, ampunilah dosa kami."</p>
+    <p><span class="correct">✓ Benar:</span> Al-Qur'an, Alkitab, Weda, Tripitaka</p>
+    <p><span class="wrong">✗ Salah:</span> allah, tuhan, al-qur'an</p>
+  </div>
+
+  <h3>4.4.4 Huruf Kapital untuk Nama Geografi</h3>
+  <p>
+    Huruf kapital digunakan untuk nama geografi (nama tempat, nama diri geografi). Namun, ada beberapa pengecualian penting yang sering diabaikan.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Kasus</th>
+          <th>Contoh Benar</th>
+          <th>Penjelasan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nama diri geografi</td>
+          <td><strong>J</strong>awa, <strong>S</strong>umatera, <strong>S</strong>ungai Musi</td>
+          <td>Huruf kapital di setiap awal kata</td>
+        </tr>
+        <tr>
+          <td>Nama geografi yang menjadi nama jenis</td>
+          <td>garam <strong>i</strong>nggris, gula <strong>j</strong>awa, jeruk <strong>b</strong>alik</td>
+          <td>Huruf kecil karena sudah menjadi nama jenis</td>
+        </tr>
+        <tr>
+          <td>Kata geografi yang tidak diikuti nama diri</td>
+          <td>mandi di <strong>s</strong>ungai, menyeberangi <strong>s</strong>elat</td>
+          <td>Huruf kecil karena bukan nama diri</td>
+        </tr>
+        <tr>
+          <td>Nama diri geografi + kata geografi</td>
+          <td><strong>S</strong>ungai <strong>M</strong>usi, <strong>D</strong>anau <strong>T</strong>oba</td>
+          <td>Huruf kapital di setiap awal kata</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>4.4.5 Huruf Kapital untuk Judul</h3>
+  <p>
+    Huruf kapital digunakan pada judul buku, artikel, makalah, dan surat, <strong>kecuali</strong> untuk kata tugas (di, ke, dari, pada, dalam, untuk, yang, dll.) yang tidak terletak di awal.
+  </p>
+
+  <div class="example-box">
+    <div class="label">Contoh Penulisan Huruf Kapital pada Judul</div>
+    <p><span class="correct">✓ Benar:</span> <em>Bahasa Indonesia untuk Perguruan Tinggi Islam</em></p>
+    <p><span class="correct">✓ Benar:</span> <em>Sejarah Pertumbuhan Bahasa Indonesia di Era Modern</em></p>
+    <p><span class="correct">✓ Benar:</span> <em>Kajian tentang Kalimat Efektif dalam Komunikasi Akademik</em></p>
+    <p><span class="wrong">✗ Salah:</span> <em>Bahasa indonesia Untuk Perguruan tinggi Islam</em></p>
+  </div>
+
+  <h3>4.4.6 Huruf Kapital untuk Singkatan dan Akronim</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Jenis</th>
+          <th>Contoh</th>
+          <th>Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nama orang</td>
+          <td>A.H. Nasution, S. Takdir Alisyahbana</td>
+          <td>Setiap unsur nama disingkat dengan tanda titik</td>
+        </tr>
+        <tr>
+          <td>Nama lembaga</td>
+          <td>UIN, FTIK, MPR, DPR, UNESCO</td>
+          <td>Semua huruf kapital, tanpa tanda titik</td>
+        </tr>
+        <tr>
+          <td>Akronim nama diri</td>
+          <td>Bulog, Bappenas, IAIN</td>
+          <td>Huruf kapital di awal (jika dapat dilafalkan)</td>
+        </tr>
+        <tr>
+          <td>Akronim bukan nama diri</td>
+          <td>iptek, pemilu, rudal</td>
+          <td>Huruf kecil semua</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="huruf-miring">4.5 Kaidah Penulisan Huruf Miring</h2>
+  <p>
+    Huruf miring (<em>italic</em>) digunakan dalam tiga konteks utama sesuai EYD Edisi V:
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Konteks Penggunaan</th>
+          <th>Contoh Benar</th>
+          <th>Contoh Salah</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Menuliskan nama buku, judul majalah, atau nama surat kabar yang dikutip dalam tulisan</td>
+          <td>Majalah <em>Bahasa Indonesia</em>, buku <em>Tata Bahasa Baku</em></td>
+          <td>Majalah "Bahasa Indonesia"</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Menegaskan atau mengkhususkan huruf, bagian kata, kata, atau kelompok kata</td>
+          <td>Huruf pertama kata <em>agama</em> ialah <em>a</em>.</td>
+          <td>Huruf pertama kata "agama" ialah "a".</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Menuliskan kata atau ungkapan dalam bahasa daerah atau bahasa asing</td>
+          <td>Ia menggunakan bahasa <em>Minangkabau</em>; <em>modus operandi</em></td>
+          <td>Ia menggunakan bahasa Minangkabau; modus operandi</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="example-box">
+    <div class="label">Contoh Lengkap Penulisan Huruf Miring</div>
+    <p><span class="correct">✓ Benar:</span> Saya telah membaca buku <em>Laskar Pelangi</em> karya Andrea Hirata.</p>
+    <p><span class="correct">✓ Benar:</span> Istilah <em>hipotenusa</em> dalam matematika merujuk pada sisi terpanjang segitiga siku-siku.</p>
+    <p><span class="correct">✓ Benar:</span> Ungkapan <em>tut wuri handayani</em> berasal dari bahasa Jawa.</p>
+    <p><span class="correct">✓ Benar:</span> Kata <em>di</em> pada kalimat "di rumah" ditulis terpisah karena merupakan kata depan.</p>
+    <p><span class="wrong">✗ Salah:</span> Saya telah membaca buku "Laskar Pelangi" karya Andrea Hirata.</p>
+  </div>
+
+  <div class="warning-box">
+    <h4>⚠️ Kesalahan Umum Penulisan Huruf Miring</h4>
+    <ul>
+      <li>Menggunakan huruf miring untuk judul artikel ilmiah (seharusnya diapit tanda petik)</li>
+      <li>Menggunakan huruf miring untuk istilah yang sudah diserap ke dalam Bahasa Indonesia (misal: <em>download</em> seharusnya <em>unduh</em>, bukan dimiringkan)</li>
+      <li>Tidak menggunakan huruf miring untuk istilah asing yang belum diserap</li>
+    </ul>
+  </div>
+
+  <h2 id="huruf-tebal">4.6 Kaidah Penulisan Huruf Tebal</h2>
+  <p>
+    Huruf tebal digunakan untuk <strong>menegaskan</strong> bagian tulisan yang perlu mendapat perhatian khusus. Dalam EYD Edisi V, penggunaan huruf tebal lebih terbatas dibandingkan huruf miring.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Konteks</th>
+          <th>Contoh</th>
+          <th>Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Menegaskan bagian tulisan (judul bab, subbab)</td>
+          <td><strong>BAB I</strong><br/><strong>PENDAHULUAN</strong></td>
+          <td>Biasanya digunakan untuk judul bab dan subbab</td>
+        </tr>
+        <tr>
+          <td>Mengoreksi kesalahan ejaan</td>
+          <td>Kata <em>antraksi</em> seharusnya ditulis <strong>antraksi</strong>.</td>
+          <td>Menunjukkan bentuk yang benar</td>
+        </tr>
+        <tr>
+          <td>Menonjolkan istilah yang sedang didefinisikan</td>
+          <td><strong>Ejaan</strong> adalah kaidah tata tulis...</td>
+          <td>Umum dalam buku pelajaran dan kamus</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box">
+    <h4>ℹ️ Catatan Penting</h4>
+    <p>
+      Dalam tulisan akademik modern, penggunaan huruf tebal untuk <strong>menekankan kata dalam kalimat</strong> (seperti di media sosial) <strong>TIDAK</strong> dianjurkan. Gunakan struktur kalimat yang kuat sebagai sarana penekanan, bukan huruf tebal.
+    </p>
+  </div>
+
+  <h2 id="analisis-kesalahan">4.7 Analisis Kesalahan Umum dalam Penulisan Huruf</h2>
+  <p>
+    Berdasarkan penelitian <strong>Kadariyah (2015)</strong> dan <strong>Wahyono (2016)</strong>, kesalahan penulisan huruf merupakan jenis kesalahan ejaan yang paling sering dilakukan oleh mahasiswa dan bahkan guru. Berikut adalah analisis beberapa kesalahan umum:
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Kesalahan</th>
+          <th>Contoh Salah</th>
+          <th>Contoh Benar</th>
+          <th>Penjelasan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Huruf kapital pada nama jenis</td>
+          <td>garam <strong>I</strong>nggris, jeruk <strong>B</strong>alik</td>
+          <td>garam <strong>i</strong>nggris, jeruk <strong>b</strong>alik</td>
+          <td>Sudah menjadi nama jenis, bukan nama diri geografi</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Huruf kapital pada kata sapaan umum</td>
+          <td>Silakan duduk, <strong>P</strong>ak.</td>
+          <td>Silakan duduk, <strong>P</strong>ak.</td>
+          <td>Benar jika sebagai sapaan langsung</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Huruf kapital pada nama geografi tanpa nama diri</td>
+          <td>mandi di <strong>S</strong>ungai</td>
+          <td>mandi di <strong>s</strong>ungai</td>
+          <td>Tidak diikuti nama diri, jadi huruf kecil</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Huruf miring untuk istilah yang sudah diserap</td>
+          <td><em>riset</em>, <em>analisa</em></td>
+          <td>riset, analisis</td>
+          <td>Sudah menjadi kata Indonesia, tidak perlu miring</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Tidak menggunakan huruf miring untuk bahasa asing</td>
+          <td>problem solving, online</td>
+          <td><em>problem solving</em>, <em>online</em></td>
+          <td>Belum diserap, harus dimiringkan</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Huruf kapital pada judul yang salah</td>
+          <td>Bahasa Indonesia <strong>U</strong>ntuk <strong>P</strong>erguruan <strong>T</strong>inggi <strong>I</strong>slam</td>
+          <td>Bahasa Indonesia <strong>u</strong>ntuk Perguruan Tinggi Islam</td>
+          <td>"untuk" adalah kata tugas, tidak kapital</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="case-box">
+    <h4>📖 Studi Kasus 2: Analisis Kesalahan dalam Artikel Ilmiah</h4>
+    <p>
+      Berikut adalah paragraf dari sebuah artikel ilmiah yang mengandung beberapa kesalahan penulisan huruf:
+    </p>
+    <p style="background:rgba(248,113,113,.08); padding:14px; border-radius:8px; margin:10px 0;">
+      "penelitian ini dilakukan di sungai musi, Sumatera selatan. penulis menggunakan metode riset kualitatif dengan pendekatan problem solving. buku yang menjadi rujukan utama adalah Bahasa indonesia Untuk perguruan tinggi oleh ermanto."
+    </p>
+    <p>
+      <strong>Tugas:</strong> Identifikasi minimal 6 kesalahan penulisan huruf dan perbaiki!
+    </p>
+    <div class="insight">
+      <strong>Jawaban:</strong>
+      <ol style="margin-top:10px;">
+        <li>"penelitian" → <strong>P</strong>enelitian (awal kalimat)</li>
+        <li>"sungai musi" → <strong>S</strong>ungai <strong>M</strong>usi (nama diri geografi)</li>
+        <li>"Sumatera selatan" → Sumatera <strong>S</strong>elatan (nama provinsi)</li>
+        <li>"problem solving" → <em>problem solving</em> (bahasa asing, dimiringkan)</li>
+        <li>"buku" → <strong>B</strong>uku (awal kalimat baru setelah titik)</li>
+        <li>"Bahasa indonesia Untuk perguruan tinggi" → <em>Bahasa Indonesia untuk Perguruan Tinggi</em> (judul buku dimiringkan, "untuk" huruf kecil)</li>
+        <li>"ermanto" → <strong>E</strong>rmanto (nama orang)</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="tips-box">
+    <h4>💡 Tips Menghindari Kesalahan Penulisan Huruf</h4>
+    <ul>
+      <li><strong>Baca EYD Edisi V secara berkala:</strong> Unduh versi digital dari situs Badan Bahasa (badanbahasa.kemdikbud.go.id)</li>
+      <li><strong>Gunakan KBBI Daring:</strong> Untuk memastikan apakah suatu kata sudah diserap atau masih asing</li>
+      <li><strong>Proofreading berlapis:</strong> Baca ulang tulisan Anda minimal 2 kali khusus untuk mengecek ejaan</li>
+      <li><strong>Manfaatkan fitur Grammar Checker:</strong> Seperti Grammarly, LanguageTool, atau ejaan.id</li>
+      <li><strong>Buat checklist ejaan pribadi:</strong> Catat kesalahan yang sering Anda lakukan dan hindari mengulanginya</li>
+      <li><strong>Bergabung dengan komunitas editor:</strong> Diskusi dengan teman sejawat untuk saling mengoreksi</li>
+    </ul>
+  </div>
+
+  <h2 id="kesimpulan">Kesimpulan</h2>
+  <p>
+    Pertemuan keempat ini telah membekali kita dengan pemahaman mendalam tentang <strong>sejarah ejaan Bahasa Indonesia</strong> dan <strong>kaidah penulisan huruf</strong>. Kita telah menelusuri perjalanan ejaan dari Van Ophuijsen (1901) hingga EYD Edisi V (2022), serta menguasai kaidah penulisan huruf kapital, huruf miring, dan huruf tebal sesuai kaidah terkini.
+  </p>
+  <p>
+    Beberapa poin penting yang perlu kita hayati:
+  </p>
+  <ul>
+    <li>Ejaan adalah <strong>landas tiru</strong> yang menjamin konsistensi dan keberterimaan tulisan</li>
+    <li>Penguasaan ejaan adalah <strong>manifestasi integritas akademik</strong> dan tanggung jawab profesional</li>
+    <li>Sejarah ejaan mencerminkan dinamika sosial-politik bangsa Indonesia</li>
+    <li>Kaidah penulisan huruf (kapital, miring, tebal) memiliki aturan spesifik yang harus dipatuhi</li>
+    <li>Kesalahan ejaan yang tampaknya kecil dapat mengubah makna dan mengurangi kredibilitas</li>
+  </ul>
+  <p>
+    Sebagai mahasiswa UIN Sjech M. Djamil Djambek Bukittinggi, kita diamanahi untuk menjadi <strong>teladan</strong> dalam penggunaan ejaan yang benar. Setiap tulisan yang kita hasilkan — baik tugas kuliah, skripsi, maupun artikel ilmiah — harus mencerminkan penguasaan ejaan yang mumpuni. Ini adalah wujud <strong>syukur</strong> kita atas anugerah <em>al-qalam</em> (pena) yang disebut dalam Q.S. Al-'Alaq ayat 4.
+  </p>
+  <p>
+    Sampai jumpa pada <strong>Pertemuan 5: Ejaan Bahasa Indonesia Bagian II — Penulisan Kata dan Tanda Baca</strong>, di mana kita akan mendalami kaidah penulisan kata (kata depan, imbuhan, kata ulang) dan penggunaan tanda baca (titik, koma, tanda tanya, tanda seru, dll.).
+  </p>
+
+  <div class="references">
+    <h3>📚 Daftar Pustaka Pertemuan 4</h3>
+    <h4>Buku</h4>
+    <ol>
+      <li>Alwi, H., Dardjowidjojo, S., Lapoliwa, H., & Moeliono, A. M. (2000). <em>Tata Bahasa Baku Bahasa Indonesia</em> (Edisi Ketiga). Jakarta: Balai Pustaka.</li>
+      <li>Ermanto & Emidar. (2009). <em>Bahasa Indonesia Pengembang Kepribadian di Perguruan Tinggi</em>. Padang: UNP Press.</li>
+      <li>Farika. (2006). <em>Cara Asyik Belajar Ejaan</em>. Bandung: Nuansa Citra Grafika.</li>
+      <li>Haugen, E. (1966). <em>Language Planning and Linguistic Change</em>. In W. Bright (Ed.), <em>Sociolinguistics</em>. The Hague: Mouton.</li>
+      <li>Kaplan, R. B., & Baldauf, R. B. (1997). <em>Language Planning: From Practice to Theory</em>. Clevedon: Multilingual Matters.</li>
+      <li>Kusumaningsih, D. (2013). <em>Terampil Berbahasa Indonesia</em>. Yogyakarta: Andi Offset.</li>
+      <li>Muslich, M. (2012). <em>Bahasa Indonesia pada Era Globalisasi</em>. Jakarta: Bumi Aksara.</li>
+      <li>Sriyanto. (2014). <em>Seri Penyuluhan Bahasa Indonesia: Ejaan</em>. Jakarta: Badan Pengembangan dan Pembinaan Bahasa.</li>
+      <li>Sugiyono. (2016). <em>Pedoman Umum Ejaan Bahasa Indonesia</em>. Jakarta: Tim Pengembang Pedoman Bahasa Indonesia.</li>
+      <li>Sugono, D. (2009). <em>1001 Kesalahan Berbahasa</em>. Jakarta: Akademi Pressindo.</li>
+      <li>Venezky, R. L. (1970). <em>Discovering the Symbol System of Reading</em>. Harvard Educational Review, 40(4).</li>
+      <li>Widjono. (2005). <em>Bahasa Indonesia Pengembangan Kepribadian di Perguruan Tinggi</em>. Jakarta: Gramedia.</li>
+    </ol>
+    <h4>Dokumen Resmi</h4>
+    <ol>
+      <li>Badan Pengembangan dan Pembinaan Bahasa. (2022). <em>Ejaan Bahasa Indonesia yang Disempurnakan</em> (Edisi V). Jakarta: Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi.</li>
+      <li>Keputusan Presiden Nomor 57 Tahun 1972 tentang Peresmian Ejaan Bahasa Indonesia yang Disempurnakan.</li>
+    </ol>
+    <h4>Jurnal Ilmiah</h4>
+    <ol>
+      <li>Kadariyah, N. L. (2015). Kesalahan Bahasa Indonesia dan Penggunaan Ejaan Yang Disempurnakan Guru Kelas MIN di Banjarmasin. <em>Jurnal Tashwir</em>, 3(7).</li>
+      <li>Wahyono, A. J. (2016). Analisis Kalimat Efektif dan Ejaan yang Disempurnakan dalam Surat Bisnis. <em>Jurnal Ilmiah Ilmu Administrasi dan Sekretari</em>.</li>
+    </ol>
+    <h4>Sumber Al-Qur'an</h4>
+    <ol>
+      <li>Al-Qur'anul Karim — Q.S. Al-'Alaq [96]: 1-5</li>
+    </ol>
+  </div>
+
+</main>
+
+<!-- FOOTER NAV -->
+<div class="footer-nav">
+  <a href="3.html">← Pertemuan 3: Ragam Bahasa Indonesia</a>
+  <a href="#top">↑ Ke Atas</a>
+  <a href="5.html">Pertemuan 5: Penulisan Kata & Tanda Baca →</a>
+</div>
+
+<!-- =========================================================
+     UJI FORMATIF
+     ========================================================= -->
+<section class="quiz-section" id="quiz">
+  <div class="quiz-head">
+    <div class="icon">📋</div>
+    <h2>Uji Formatif 4: Sejarah Ejaan & Penulisan Huruf</h2>
+    <div class="meta">
+      <span>📝 Bagian A: Pilihan Ganda (10 soal, skor 5/soal)</span>
+      <span>✍️ Bagian B: Essay (5 soal, skor 10/soal)</span>
+      <span>📚 Total Skor: 100</span>
+    </div>
+    <div class="warning">⚠️ Mohon lengkapi semua data dan jawaban terlebih dahulu!</div>
+  </div>
+
+  <!-- DATA MAHASISWA -->
+  <div class="quiz-block">
+    <h3>📋 Data Mahasiswa</h3>
+    <div class="form-grid">
+      <div class="form-field">
+        <label>Nama Lengkap *</label>
+        <input type="text" id="nama" placeholder="Masukkan nama lengkap" required>
+      </div>
+      <div class="form-field">
+        <label>NIM *</label>
+        <input type="text" id="nim" placeholder="Masukkan NIM" required>
+      </div>
+      <div class="form-field">
+        <label>📅 Tanggal Ujian</label>
+        <input type="date" id="tanggal">
+      </div>
+      <div class="form-field">
+        <label>Fakultas</label>
+        <input type="text" id="fakultas" value="Tarbiyah dan Ilmu Keguruan">
+      </div>
+      <div class="form-field">
+        <label>Jurusan / Prodi</label>
+        <input type="text" id="prodi" value="S1 Pendidikan Matematika">
+      </div>
+      <div class="form-field">
+        <label>Konsentrasi</label>
+        <input type="text" id="konsentrasi" placeholder="Misal: Matematika Murni">
+      </div>
+      <div class="form-field">
+        <label>Semester</label>
+        <select id="semester">
+          <option value="">Pilih Semester</option>
+          <option>Semester 1</option><option>Semester 2</option>
+          <option>Semester 3</option><option>Semester 4</option>
+          <option>Semester 5</option><option>Semester 6</option>
+          <option>Semester 7</option><option>Semester 8</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Kelas</label>
+        <input type="text" id="kelas" placeholder="Misal: PMTK-2A">
+      </div>
+    </div>
+  </div>
+
+  <!-- BAGIAN A: PILIHAN GANDA -->
+  <div class="quiz-block">
+    <h3>📋 Bagian A – Pilihan Ganda</h3>
+    <p class="desc">⚠️ Mohon lengkapi semua 10 soal pilihan ganda terlebih dahulu!</p>
+
+    <div class="question" data-correct="b">
+      <span class="q-num">Soal 1</span>
+      <div class="q-text">Ejaan resmi pertama Bahasa Indonesia yang ditetapkan pada masa kolonial Belanda adalah...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q1" id="q1a" value="a"><label for="q1a">a. Ejaan Soewandi</label></div>
+        <div class="option"><input type="radio" name="q1" id="q1b" value="b"><label for="q1b">b. Ejaan Van Ophuijsen</label></div>
+        <div class="option"><input type="radio" name="q1" id="q1c" value="c"><label for="q1c">c. Ejaan Yang Disempurnakan</label></div>
+        <div class="option"><input type="radio" name="q1" id="q1d" value="d"><label for="q1d">d. Ejaan Bahasa Indonesia</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="c">
+      <span class="q-num">Soal 2</span>
+      <div class="q-text">Ejaan yang Disempurnakan (EYD) diresmikan pada tahun...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q2" id="q2a" value="a"><label for="q2a">a. 1947</label></div>
+        <div class="option"><input type="radio" name="q2" id="q2b" value="b"><label for="q2b">b. 1957</label></div>
+        <div class="option"><input type="radio" name="q2" id="q2c" value="c"><label for="q2c">c. 1972</label></div>
+        <div class="option"><input type="radio" name="q2" id="q2d" value="d"><label for="q2d">d. 2015</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="a">
+      <span class="q-num">Soal 3</span>
+      <div class="q-text">Penulisan huruf kapital yang <strong>benar</strong> sesuai EYD Edisi V adalah...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q3" id="q3a" value="a"><label for="q3a">a. Kami berlibur ke Danau Toba.</label></div>
+        <div class="option"><input type="radio" name="q3" id="q3b" value="b"><label for="q3b">b. Kami berlibur ke danau Toba.</label></div>
+        <div class="option"><input type="radio" name="q3" id="q3c" value="c"><label for="q3c">c. Kami berlibur ke Danau toba.</label></div>
+        <div class="option"><input type="radio" name="q3" id="q3d" value="d"><label for="q3d">d. Kami berlibur ke danau toba.</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="d">
+      <span class="q-num">Soal 4</span>
+      <div class="q-text">Huruf miring digunakan untuk...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q4" id="q4a" value="a"><label for="q4a">a. Menegaskan kata dalam kalimat biasa</label></div>
+        <div class="option"><input type="radio" name="q4" id="q4b" value="b"><label for="q4b">b. Menulis judul artikel ilmiah</label></div>
+        <div class="option"><input type="radio" name="q4" id="q4c" value="c"><label for="q4c">c. Menulis istilah yang sudah diserap ke Bahasa Indonesia</label></div>
+        <div class="option"><input type="radio" name="q4" id="q4d" value="d"><label for="q4d">d. Menulis istilah asing yang belum diserap</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="b">
+      <span class="q-num">Soal 5</span>
+      <div class="q-text">Penulisan yang <strong>benar</strong> untuk nama jenis adalah...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q5" id="q5a" value="a"><label for="q5a">a. garam Inggris, jeruk Bali</label></div>
+        <div class="option"><input type="radio" name="q5" id="q5b" value="b"><label for="q5b">b. garam inggris, jeruk bali</label></div>
+        <div class="option"><input type="radio" name="q5" id="q5c" value="c"><label for="q5c">c. Garam Inggris, Jeruk Bali</label></div>
+        <div class="option"><input type="radio" name="q5" id="q5d" value="d"><label for="q5d">d. Garam inggris, jeruk bali</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="c">
+      <span class="q-num">Soal 6</span>
+      <div class="q-text">Ayat Al-Qur'an yang menjadi landasan spiritual pentingnya ejaan (keterkaitan dengan pena/alat tulis) adalah...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q6" id="q6a" value="a"><label for="q6a">a. Q.S. Ar-Rum: 22</label></div>
+        <div class="option"><input type="radio" name="q6" id="q6b" value="b"><label for="q6b">b. Q.S. Al-Hujurat: 13</label></div>
+        <div class="option"><input type="radio" name="q6" id="q6c" value="c"><label for="q6c">c. Q.S. Al-'Alaq: 1-5</label></div>
+        <div class="option"><input type="radio" name="q6" id="q6d" value="d"><label for="q6d">d. Q.S. Al-Baqarah: 269</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="a">
+      <span class="q-num">Soal 7</span>
+      <div class="q-text">Perubahan ejaan dari "tjinta" menjadi "cinta" terjadi pada ejaan...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q7" id="q7a" value="a"><label for="q7a">a. EYD (1972)</label></div>
+        <div class="option"><input type="radio" name="q7" id="q7b" value="b"><label for="q7b">b. Van Ophuijsen (1901)</label></div>
+        <div class="option"><input type="radio" name="q7" id="q7c" value="c"><label for="q7c">c. Soewandi (1947)</label></div>
+        <div class="option"><input type="radio" name="q7" id="q7d" value="d"><label for="q7d">d. EBI (2015)</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="d">
+      <span class="q-num">Soal 8</span>
+      <div class="q-text">Penulisan judul buku yang <strong>benar</strong> dalam kutipan tulisan adalah...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q8" id="q8a" value="a"><label for="q8a">a. "Bahasa Indonesia untuk Perguruan Tinggi"</label></div>
+        <div class="option"><input type="radio" name="q8" id="q8b" value="b"><label for="q8b">b. Bahasa Indonesia untuk Perguruan Tinggi</label></div>
+        <div class="option"><input type="radio" name="q8" id="q8c" value="c"><label for="q8c">c. [Bahasa Indonesia untuk Perguruan Tinggi]</label></div>
+        <div class="option"><input type="radio" name="q8" id="q8d" value="d"><label for="q8d">d. <em>Bahasa Indonesia untuk Perguruan Tinggi</em></label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="b">
+      <span class="q-num">Soal 9</span>
+      <div class="q-text">Penulisan singkatan nama orang yang <strong>benar</strong> adalah...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q9" id="q9a" value="a"><label for="q9a">a. AH Nasution</label></div>
+        <div class="option"><input type="radio" name="q9" id="q9b" value="b"><label for="q9b">b. A.H. Nasution</label></div>
+        <div class="option"><input type="radio" name="q9" id="q9c" value="c"><label for="q9c">c. A. H Nasution</label></div>
+        <div class="option"><input type="radio" name="q9" id="q9d" value="d"><label for="q9d">d. A,H, Nasution</label></div>
+      </div>
+    </div>
+
+    <div class="question" data-correct="c">
+      <span class="q-num">Soal 10</span>
+      <div class="q-text">Ejaan yang berlaku saat ini (2026) adalah...</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q10" id="q10a" value="a"><label for="q10a">a. Ejaan Bahasa Indonesia (EBI)</label></div>
+        <div class="option"><input type="radio" name="q10" id="q10b" value="b"><label for="q10b">b. EYD Edisi IV</label></div>
+        <div class="option"><input type="radio" name="q10" id="q10c" value="c"><label for="q10c">c. EYD Edisi V (2022)</label></div>
+        <div class="option"><input type="radio" name="q10" id="q10d" value="d"><label for="q10d">d. Ejaan Soewandi</label></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BAGIAN B: ESSAY -->
+  <div class="quiz-block">
+    <h3>✍️ Bagian B – Essay</h3>
+    <p class="desc">⚠️ Mohon isi semua 5 soal essay dengan jawaban yang komprehensif!</p>
+
+    <div class="question">
+      <span class="q-num">Essay 1</span>
+      <div class="q-text">Uraikan secara komprehensif sejarah ejaan Bahasa Indonesia dari periode Van Ophuijsen (1901) hingga EYD Edisi V (2022)! Jelaskan perubahan utama pada setiap periode dan faktor yang melatarbelakanginya!</div>
+      <textarea class="essay-area" data-essay="1" placeholder="Tuliskan jawaban Anda di sini (minimal 200 kata)..."></textarea>
+    </div>
+
+    <div class="question">
+      <span class="q-num">Essay 2</span>
+      <div class="q-text">Analisislah 5 kesalahan penulisan huruf kapital yang sering dilakukan mahasiswa dalam karya ilmiah! Berikan contoh kesalahan dan perbaikannya, serta jelaskan kaidah EYD yang relevan!</div>
+      <textarea class="essay-area" data-essay="2" placeholder="Tuliskan jawaban Anda di sini (minimal 200 kata)..."></textarea>
+    </div>
+
+    <div class="question">
+      <span class="q-num">Essay 3</span>
+      <div class="q-text">Jelaskan perbedaan antara penggunaan huruf miring dan huruf tebal dalam EYD Edisi V! Berikan masing-masing 3 contoh penggunaan yang benar dan 3 contoh penggunaan yang salah!</div>
+      <textarea class="essay-area" data-essay="3" placeholder="Tuliskan jawaban Anda di sini (minimal 200 kata)..."></textarea>
+    </div>
+
+    <div class="question">
+      <span class="q-num">Essay 4</span>
+      <div class="q-text">Bagaimana relevansi Q.S. Al-'Alaq ayat 1-5 dengan penguasaan ejaan Bahasa Indonesia? Jelaskan tafsir ayat tersebut dan kaitkan dengan sikap yang harus ditunjukkan oleh mahasiswa PTI dalam menulis karya ilmiah!</div>
+      <textarea class="essay-area" data-essay="4" placeholder="Tuliskan jawaban Anda di sini (minimal 200 kata)..."></textarea>
+    </div>
+
+    <div class="question">
+      <span class="q-num">Essay 5</span>
+      <div class="q-text">Perbaiki paragraf berikut yang mengandung 8 kesalahan penulisan huruf! Tuliskan versi yang benar dan jelaskan setiap perbaikan yang Anda lakukan! "penelitian ini dilakukan di pesisir sungai kapuas, kalimantan barat. penulis menggunakan metode Riset kualitatif dengan pendekatan Problem Solving. buku yang menjadi rujukan utama adalah tata bahasa baku bahasa indonesia oleh Alwi, dkk."</div>
+      <textarea class="essay-area" data-essay="5" placeholder="Tuliskan jawaban Anda di sini (minimal 200 kata)..."></textarea>
+    </div>
+  </div>
+
+  <!-- ACTION BUTTONS -->
+  <div class="action-row">
+    <button class="btn-action primary" onclick="submitQuiz()">✉️ KIRIM JAWABAN & LIHAT HASIL</button>
+    <button class="btn-action" onclick="downloadPDF()">📥 UNDUH PDF LENGKAP</button>
+    <button class="btn-action" onclick="downloadScore()">📊 UNDUH SKOR SAJA</button>
+    <button class="btn-action" onclick="emailDosen()">✉️ KIRIM EMAIL DOSEN</button>
+    <button class="btn-action" onclick="resetQuiz()">🔄 MULAI ULANG</button>
+  </div>
+
+  <!-- RESULT PANEL -->
+  <div class="result-panel" id="resultPanel">
+    <h3>📊 Hasil Uji Formatif</h3>
+    <div class="score-grid">
+      <div class="score-item">
+        <div class="label">Bagian A (PG)</div>
+        <div class="value" id="scorePG">0/50</div>
+      </div>
+      <div class="score-item">
+        <div class="label">Bagian B (Essay)</div>
+        <div class="value" id="scoreEssay">0/50</div>
+      </div>
+      <div class="score-item">
+        <div class="label">Total Skor</div>
+        <div class="value" id="scoreTotal">0/100</div>
+      </div>
+    </div>
+    <div class="total-score" id="totalScore">0</div>
+    <div style="color:var(--muted); font-size:.9rem;">dari 100</div>
+    <div class="grade-badge" id="gradeBadge">-</div>
+    <p style="margin-top:20px; color:var(--muted); font-size:.88rem;" id="resultMessage"></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand-foot">Bahasa Indonesia untuk Perguruan Tinggi Islam</div>
+  <p>Pertemuan 4 · Ejaan Bahasa Indonesia Bagian I: Sejarah & Penulisan Huruf</p>
+  <p style="margin-top:8px;">© 2026 <em>Diyan Permata Yanda, M.Pd.</em> · UIN Sjech M. Djamil Djambek Bukittinggi</p>
+</footer>
+
+<!-- SCROLL TOP BUTTON -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // Scroll Top Button & Progress Bar
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('scrollTop');
+    const progressBar = document.getElementById('progressBar');
+    const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    progressBar.style.transform = `scaleX(${scrollPercent})`;
+    if (window.scrollY > 400) btn.classList.add('show');
+    else btn.classList.remove('show');
+  });
+
+  // Option selection highlight
+  document.querySelectorAll('.option input').forEach(input => {
+    input.addEventListener('change', function(){
+      const question = this.closest('.question');
+      question.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      this.closest('.option').classList.add('selected');
+    });
+  });
+
+  // Submit Quiz
+  function submitQuiz(){
+    const nama = document.getElementById('nama').value.trim();
+    const nim = document.getElementById('nim').value.trim();
+    if (!nama || !nim){
+      alert('⚠️ Mohon lengkapi Nama dan NIM terlebih dahulu!');
+      return;
+    }
+
+    let pgAnswered = 0;
+    for (let i = 1; i <= 10; i++){
+      if (document.querySelector(`input[name="q${i}"]:checked`)) pgAnswered++;
+    }
+    if (pgAnswered < 10){
+      alert(`⚠️ Mohon lengkapi semua soal pilihan ganda! (${pgAnswered}/10 sudah dijawab)`);
+      return;
+    }
+
+    let essayAnswered = 0;
+    document.querySelectorAll('.essay-area').forEach(t => {
+      if (t.value.trim().length > 10) essayAnswered++;
+    });
+    if (essayAnswered < 5){
+      alert(`⚠️ Mohon lengkapi semua soal essay! (${essayAnswered}/5 sudah dijawab)`);
+      return;
+    }
+
+    let pgScore = 0;
+    document.querySelectorAll('.question[data-correct]').forEach(q => {
+      const correct = q.dataset.correct;
+      const selected = q.querySelector('input[type="radio"]:checked');
+      q.classList.remove('correct','wrong');
+      q.querySelectorAll('.option').forEach(o => o.classList.remove('correct-answer','wrong-answer'));
+
+      const correctInput = q.querySelector(`input[value="${correct}"]`);
+      if (correctInput) correctInput.closest('.option').classList.add('correct-answer');
+
+      if (selected){
+        if (selected.value === correct){
+          pgScore += 5;
+          q.classList.add('correct');
+        } else {
+          q.classList.add('wrong');
+          selected.closest('.option').classList.add('wrong-answer');
+        }
+      }
+    });
+
+    let essayScore = 0;
+    document.querySelectorAll('.essay-area').forEach(t => {
+      const len = t.value.trim().length;
+      let s = 0;
+      if (len >= 400) s = 10;
+      else if (len >= 300) s = 9;
+      else if (len >= 200) s = 8;
+      else if (len >= 150) s = 7;
+      else if (len >= 100) s = 6;
+      else if (len >= 50) s = 4;
+      else if (len > 10) s = 2;
+      essayScore += s;
+    });
+
+    const total = pgScore + essayScore;
+
+    document.getElementById('scorePG').textContent = `${pgScore}/50`;
+    document.getElementById('scoreEssay').textContent = `${essayScore}/50`;
+    document.getElementById('scoreTotal').textContent = `${total}/100`;
+    document.getElementById('totalScore').textContent = total;
+
+    let grade = '', msg = '';
+    if (total >= 85){ grade = 'A (Sangat Baik)'; msg = '🌟 Luar biasa! Penguasaan ejaan Anda sangat mumpuni.'; }
+    else if (total >= 80){ grade = 'A- (Sangat Baik)'; msg = '✨ Sangat bagus! Anda hampir sempurna dalam memahami kaidah ejaan.'; }
+    else if (total >= 75){ grade = 'B+ (Baik Sekali)'; msg = '👏 Bagus sekali! Terus asah ketelitian Anda dalam menulis.'; }
+    else if (total >= 70){ grade = 'B (Baik)'; msg = '✨ Bagus! Pemahaman Anda sudah baik, tingkatkan pada bagian essay.'; }
+    else if (total >= 65){ grade = 'B- (Baik)'; msg = '💪 Baik. Pelajari kembali kaidah huruf kapital dan huruf miring.'; }
+    else if (total >= 60){ grade = 'C+ (Cukup Baik)'; msg = '📖 Cukup baik. Baca ulang EYD Edisi V dengan lebih seksama.'; }
+    else if (total >= 55){ grade = 'C (Cukup)'; msg = '📚 Perlu belajar lebih giat. Diskusikan dengan teman atau dosen.'; }
+    else if (total >= 40){ grade = 'D (Kurang)'; msg = '⚠️ Mohon mengulang materi dan berkonsultasi dengan dosen.'; }
+    else { grade = 'E (Sangat Kurang)'; msg = '❗ Sangat perlu bimbingan intensif. Segera temui dosen pengampu.'; }
+
+    document.getElementById('gradeBadge').textContent = grade;
+    document.getElementById('resultMessage').textContent = msg;
+    document.getElementById('resultPanel').classList.add('show');
+    document.getElementById('resultPanel').scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  // Download PDF
+  function downloadPDF(){
+    const nama = document.getElementById('nama').value || 'Mahasiswa';
+    const nim = document.getElementById('nim').value || 'NIM';
+
+    const content = `
+UJI FORMATIF - PERTEMUAN 4
+Bahasa Indonesia untuk Perguruan Tinggi Islam
+============================================
+
+DATA MAHASISWA
+Nama         : ${document.getElementById('nama').value}
+NIM          : ${document.getElementById('nim').value}
+Fakultas     : ${document.getElementById('fakultas').value}
+Prodi        : ${document.getElementById('prodi').value}
+Konsentrasi  : ${document.getElementById('konsentrasi').value}
+Semester     : ${document.getElementById('semester').value}
+Kelas        : ${document.getElementById('kelas').value}
+Tanggal      : ${document.getElementById('tanggal').value}
+
+============================================
+JAWABAN PILIHAN GANDA (Skor: ${document.getElementById('scorePG').textContent})
+============================================
+${Array.from({length:10}, (_,i) => {
+  const sel = document.querySelector(`input[name="q${i+1}"]:checked`);
+  const q = document.querySelectorAll('.question[data-correct]')[i];
+  const correct = q ? q.dataset.correct : '-';
+  const status = sel ? (sel.value === correct ? '✓ BENAR' : '✗ SALAH') : '(belum dijawab)';
+  return `Soal ${i+1}: ${sel ? sel.value.toUpperCase() : '-'} ${status} (Kunci: ${correct.toUpperCase()})`;
+}).join('\n')}
+
+============================================
+JAWABAN ESSAY (Skor: ${document.getElementById('scoreEssay').textContent})
+============================================
+${Array.from(document.querySelectorAll('.essay-area')).map((t,i) => 
+  `\nEssay ${i+1}:\n${t.value || '(belum dijawab)'}\n`
+).join('\n----------------------------------------\n')}
+
+============================================
+HASIL PENILAIAN
+============================================
+Bagian A (PG)    : ${document.getElementById('scorePG').textContent}
+Bagian B (Essay) : ${document.getElementById('scoreEssay').textContent}
+Total            : ${document.getElementById('totalScore').textContent}/100
+Grade            : ${document.getElementById('gradeBadge').textContent}
+Pesan            : ${document.getElementById('resultMessage').textContent}
+
+============================================
+Dosen Pengampu: Diyan Permata Yanda, M.Pd.
+UIN Sjech M. Djamil Djambek Bukittinggi
+Email: diyanpermatayanda@uinbukittinggi.ac.id
+`;
+
+    const blob = new Blob([content], {type:'text/plain;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `UjiFormatif4_${nim}_${nama.replace(/\s+/g,'_')}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // Download Score Only
+  function downloadScore(){
+    const nama = document.getElementById('nama').value || 'Mahasiswa';
+    const nim = document.getElementById('nim').value || 'NIM';
+    const content = `
+HASIL UJI FORMATIF - PERTEMUAN 4
+Bahasa Indonesia untuk Perguruan Tinggi Islam
+============================================
+Nama         : ${nama}
+NIM          : ${nim}
+Fakultas     : ${document.getElementById('fakultas').value}
+Prodi        : ${document.getElementById('prodi').value}
+Kelas        : ${document.getElementById('kelas').value}
+Tanggal      : ${document.getElementById('tanggal').value}
+--------------------------------------------
+Bagian A (PG)    : ${document.getElementById('scorePG').textContent}
+Bagian B (Essay) : ${document.getElementById('scoreEssay').textContent}
+TOTAL            : ${document.getElementById('totalScore').textContent}/100
+GRADE            : ${document.getElementById('gradeBadge').textContent}
+--------------------------------------------
+Dosen: Diyan Permata Yanda, M.Pd.
+UIN Sjech M. Djamil Djambek Bukittinggi
+`;
+    const blob = new Blob([content], {type:'text/plain;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Skor_UjiFormatif4_${nim}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // Email Dosen
+  function emailDosen(){
+    const nama = document.getElementById('nama').value || 'Mahasiswa';
+    const nim = document.getElementById('nim').value || 'NIM';
+    const subject = encodeURIComponent(`Hasil Uji Formatif 4 - ${nama} (${nim})`);
+    const body = encodeURIComponent(
+`Yth. Ibu Diyan Permata Yanda, M.Pd.
+
+Assalamu'alaikum Warahmatullahi Wabarakatuh.
+
+Saya yang bertanda tangan di bawah ini:
+Nama     : ${nama}
+NIM      : ${nim}
+Fakultas : ${document.getElementById('fakultas').value}
+Prodi    : ${document.getElementById('prodi').value}
+Kelas    : ${document.getElementById('kelas').value}
+
+Ingin menyampaikan hasil Uji Formatif Pertemuan 4 (Ejaan Bahasa Indonesia Bagian I):
+- Bagian A (PG)    : ${document.getElementById('scorePG').textContent}
+- Bagian B (Essay) : ${document.getElementById('scoreEssay').textContent}
+- Total            : ${document.getElementById('totalScore').textContent}/100
+- Grade            : ${document.getElementById('gradeBadge').textContent}
+
+Mohon masukan dan bimbingan Ibu untuk perbaikan ke depannya.
+
+Wassalamu'alaikum Warahmatullahi Wabarakatuh.
+Hormat saya,
+${nama}`
+    );
+    window.location.href = `mailto:diyanpermatayanda@uinbukittinggi.ac.id?subject=${subject}&body=${body}`;
+  }
+
+  // Reset Quiz
+  function resetQuiz(){
+    if (!confirm('⚠️ Yakin ingin mengulang uji formatif? Semua jawaban akan dihapus.')) return;
+    document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+    document.querySelectorAll('.essay-area').forEach(t => t.value = '');
+    document.querySelectorAll('.question').forEach(q => q.classList.remove('correct','wrong'));
+    document.querySelectorAll('.option').forEach(o => o.classList.remove('selected','correct-answer','wrong-answer'));
+    document.getElementById('resultPanel').classList.remove('show');
+    window.scrollTo({top: document.getElementById('quiz').offsetTop - 80, behavior:'smooth'});
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pertemuan 5 — Ejaan Bahasa Indonesia Bagian II: Penulisan Kata & Tanda Baca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --gold-1:#f5d98a;
+    --gold-2:#d4af37;
+    --gold-3:#b8860b;
+    --gold-4:#8b6914;
+    --ink-1:#0a0e1a;
+    --ink-2:#111626;
+    --ink-3:#1a1f35;
+    --cream:#f8f4ec;
+    --ivory:#fdfaf3;
+    --muted:#9aa0b4;
+    --line:rgba(212,175,55,.25);
+    --shadow-gold: 0 20px 60px -20px rgba(212,175,55,.35);
+    --shadow-deep: 0 30px 80px -30px rgba(0,0,0,.6);
+    --success:#4ade80;
+    --error:#f87171;
+    --info:#60a5fa;
+  }
+  html,body{ background:var(--ink-1); color:var(--cream); font-family:'Inter',sans-serif; line-height:1.7; scroll-behavior:smooth; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      radial-gradient(1000px 600px at 10% -10%, rgba(212,175,55,.10), transparent 60%),
+      radial-gradient(800px 500px at 110% 10%, rgba(212,175,55,.06), transparent 60%),
+      radial-gradient(700px 500px at 50% 120%, rgba(90,60,10,.12), transparent 60%);
+    z-index:-1;
+    pointer-events:none;
+  }
+
+  /* NAVBAR */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(14px);
+    background:rgba(10,14,26,.85);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1200px; margin:0 auto;
+    padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:16px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:'Playfair Display', serif;
+    font-weight:700; font-size:1.05rem;
+  }
+  .brand-mark{
+    width:36px; height:36px; border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    display:grid; place-items:center;
+    color:var(--ink-1); font-weight:900; font-family:'Playfair Display';
+    box-shadow: 0 0 20px rgba(212,175,55,.4);
+  }
+  .nav-links{ display:flex; gap:24px; font-size:.88rem; color:var(--muted); flex-wrap:wrap; }
+  .nav-links a{ transition:color .3s; }
+  .nav-links a:hover{ color:var(--gold-2); }
+
+  /* HERO */
+  .hero{
+    max-width:1200px; margin:0 auto;
+    padding:80px 32px 50px;
+    text-align:center;
+    position:relative;
+  }
+  .chapter-tag{
+    display:inline-block;
+    font-size:.75rem; letter-spacing:4px; text-transform:uppercase;
+    color:var(--gold-2); font-weight:600;
+    padding:8px 20px; border:1px solid var(--line); border-radius:999px;
+    background:rgba(212,175,55,.05);
+    margin-bottom:24px;
+  }
+  h1.chapter-title{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:clamp(2rem, 4.5vw, 3.4rem);
+    line-height:1.15;
+    margin-bottom:18px;
+    letter-spacing:-.5px;
+  }
+  h1.chapter-title .accent{
+    background:linear-gradient(135deg,var(--gold-1) 0%,var(--gold-2) 50%,var(--gold-3) 100%);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+    font-style:italic;
+  }
+  .chapter-subtitle{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.2rem; color:var(--muted);
+    font-style:italic; max-width:780px; margin:0 auto 36px;
+  }
+  .hero-actions{
+    display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:13px 24px; border-radius:999px;
+    font-size:.88rem; font-weight:500; letter-spacing:.5px;
+    transition:all .35s ease; cursor:pointer;
+    border:1px solid transparent;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1); font-weight:600;
+    box-shadow: var(--shadow-gold);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow: 0 25px 70px -20px rgba(212,175,55,.55); }
+  .btn-ghost{
+    border:1px solid var(--line); color:var(--cream);
+    background:rgba(255,255,255,.02);
+  }
+  .btn-ghost:hover{ border-color:var(--gold-2); color:var(--gold-1); }
+
+  /* TABLE OF CONTENTS */
+  .toc{
+    max-width:900px; margin:0 auto 40px;
+    padding:28px 32px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(26,31,53,.6), rgba(17,22,38,.4));
+    backdrop-filter: blur(10px);
+  }
+  .toc h3{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.2rem;
+    margin-bottom:16px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .toc ol{
+    list-style:none; counter-reset:toc;
+    display:grid; grid-template-columns: 1fr 1fr;
+    gap:8px 24px;
+  }
+  @media (max-width:640px){ .toc ol{ grid-template-columns:1fr; } }
+  .toc li{
+    counter-increment:toc;
+    padding:8px 0 8px 36px;
+    position:relative;
+    color:var(--cream);
+    font-size:.9rem;
+    border-bottom:1px dashed rgba(212,175,55,.1);
+  }
+  .toc li::before{
+    content:counter(toc, decimal-leading-zero);
+    position:absolute; left:0; top:8px;
+    color:var(--gold-2); font-weight:600;
+    font-family:'Playfair Display', serif;
+  }
+  .toc a{ transition:color .3s; }
+  .toc a:hover{ color:var(--gold-1); }
+
+  /* CONTENT */
+  .content{ max-width:900px; margin:0 auto; padding:40px 32px; }
+  .content h2{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(1.6rem, 3vw, 2.2rem);
+    font-weight:700;
+    margin:50px 0 20px;
+    color:var(--cream);
+    position:relative;
+    padding-left:24px;
+  }
+  .content h2::before{
+    content:""; position:absolute; left:0; top:10px; bottom:10px; width:4px;
+    background:linear-gradient(180deg,var(--gold-1),var(--gold-3));
+    border-radius:2px;
+  }
+  .content h3{
+    font-family:'Playfair Display', serif;
+    font-size:1.35rem; font-weight:600;
+    color:var(--gold-1);
+    margin:32px 0 14px;
+  }
+  .content h4{
+    font-family:'Playfair Display', serif;
+    font-size:1.1rem; font-weight:600;
+    color:var(--gold-2);
+    margin:22px 0 10px;
+  }
+  .content p{
+    color:var(--cream); margin-bottom:16px;
+    text-align:justify;
+  }
+  .content p.lead{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.2rem; font-style:italic;
+    color:var(--muted);
+    border-left:2px solid var(--gold-2);
+    padding:12px 20px;
+    margin:24px 0;
+    background:rgba(212,175,55,.03);
+    border-radius:0 8px 8px 0;
+  }
+  .content ul, .content ol{
+    margin:14px 0 20px 24px;
+    color:var(--cream);
+  }
+  .content li{ margin-bottom:8px; }
+  .content strong{ color:var(--gold-1); font-weight:600; }
+
+  /* QURAN BOX */
+  .quran-box{
+    margin:36px 0;
+    padding:32px;
+    border:2px solid var(--gold-2);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(212,175,55,.10), rgba(139,105,20,.04));
+    position:relative;
+    text-align:center;
+  }
+  .quran-box::before{
+    content:"﷽"; position:absolute; top:-20px; left:50%;
+    transform:translateX(-50%);
+    background:var(--ink-1); padding:0 14px;
+    font-size:1.5rem; color:var(--gold-2);
+    font-family:'Amiri', serif;
+  }
+  .quran-box .arabic{
+    font-size:1.8rem; line-height:2.2;
+    color:var(--gold-1);
+    font-family:'Amiri', 'Traditional Arabic', serif;
+    direction:rtl;
+    margin-bottom:16px;
+    margin-top:10px;
+  }
+  .quran-box .translation{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.1rem; font-style:italic;
+    color:var(--cream);
+    margin-bottom:12px;
+    padding:0 20px;
+  }
+  .quran-box .reference{
+    font-size:.85rem;
+    color:var(--gold-2);
+    letter-spacing:1px;
+    font-weight:500;
+  }
+  .quran-box .tafsir{
+    margin-top:18px; padding-top:18px;
+    border-top:1px dashed var(--line);
+    font-size:.9rem;
+    color:var(--muted);
+    text-align:left;
+    font-style:normal;
+  }
+
+  /* VIDEO BOX */
+  .video-box{
+    margin:36px 0;
+    padding:32px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(26,31,53,.7), rgba(17,22,38,.5));
+    backdrop-filter: blur(10px);
+    text-align:center;
+  }
+  .video-box .icon{
+    width:70px; height:70px; border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    display:grid; place-items:center;
+    color:var(--ink-1); font-size:1.8rem; font-weight:900;
+    margin:0 auto 16px;
+    box-shadow: var(--shadow-gold);
+  }
+  .video-box h4{
+    font-family:'Playfair Display', serif;
+    font-size:1.2rem; color:var(--cream); margin-bottom:8px;
+  }
+  .video-box p{ color:var(--muted); font-size:.9rem; }
+
+  /* CONCEPT KEY */
+  .concept-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--gold-2);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(212,175,55,.08), rgba(139,105,20,.03));
+    position:relative;
+  }
+  .concept-box::before{
+    content:"🔑"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .concept-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+  .concept-box ul{ list-style:none; margin:0; padding:0; }
+  .concept-box li{
+    padding:10px 0 10px 28px;
+    border-bottom:1px dashed var(--line);
+    position:relative;
+    color:var(--cream);
+  }
+  .concept-box li:last-child{ border-bottom:none; }
+  .concept-box li::before{
+    content:"◆"; position:absolute; left:0; top:12px;
+    color:var(--gold-2); font-size:.7rem;
+  }
+  .concept-box li strong{ color:var(--gold-1); }
+
+  /* CASE STUDY */
+  .case-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(180deg, rgba(26,31,53,.6), rgba(17,22,38,.4));
+    position:relative;
+  }
+  .case-box::before{
+    content:"📖"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .case-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+  .case-box .insight{
+    margin-top:16px; padding:14px 18px;
+    background:rgba(212,175,55,.06);
+    border-left:3px solid var(--gold-2);
+    border-radius:0 8px 8px 0;
+    font-style:italic;
+    color:var(--cream);
+  }
+  .case-box .insight strong{ color:var(--gold-1); font-style:normal; }
+
+  /* REFLECTION */
+  .reflection-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(212,175,55,.04), transparent);
+    position:relative;
+  }
+  .reflection-box::before{
+    content:"💭"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .reflection-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+
+  /* TIPS */
+  .tips-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(74,222,128,.06), rgba(74,222,128,.02));
+    border-left:3px solid var(--success);
+    position:relative;
+  }
+  .tips-box::before{
+    content:"💡"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .tips-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+
+  /* WARNING */
+  .warning-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(248,113,113,.06), rgba(248,113,113,.02));
+    border-left:3px solid var(--error);
+    position:relative;
+  }
+  .warning-box::before{
+    content:"⚠️"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .warning-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+
+  /* INFO BOX */
+  .info-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(96,165,250,.06), rgba(96,165,250,.02));
+    border-left:3px solid var(--info);
+    position:relative;
+  }
+  .info-box::before{
+    content:"ℹ️"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .info-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.15rem;
+    margin-bottom:14px;
+  }
+
+  /* TABLE */
+  .table-wrap{
+    margin:24px 0;
+    overflow-x:auto;
+    border:1px solid var(--line);
+    border-radius:12px;
+  }
+  table{
+    width:100%; border-collapse:collapse;
+    background:rgba(26,31,53,.5);
+  }
+  thead{
+    background:linear-gradient(135deg, rgba(212,175,55,.15), rgba(139,105,20,.08));
+  }
+  th{
+    padding:14px 18px;
+    text-align:left;
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    color:var(--gold-1);
+    font-size:.95rem;
+    border-bottom:1px solid var(--line);
+  }
+  td{
+    padding:12px 18px;
+    color:var(--cream);
+    font-size:.9rem;
+    border-bottom:1px solid rgba(212,175,55,.1);
+  }
+  tr:last-child td{ border-bottom:none; }
+  tr:hover{ background:rgba(212,175,55,.03); }
+
+  /* EXAMPLE BOX */
+  .example-box{
+    margin:24px 0;
+    padding:22px 26px;
+    border-left:4px solid var(--gold-2);
+    background:rgba(212,175,55,.04);
+    border-radius:0 12px 12px 0;
+  }
+  .example-box .label{
+    display:inline-block;
+    font-size:.75rem; letter-spacing:2px;
+    color:var(--gold-2); font-weight:600;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .example-box p{ margin-bottom:10px; font-size:.92rem; }
+  .example-box p:last-child{ margin-bottom:0; }
+  .example-box .correct{
+    color:var(--success);
+    font-weight:500;
+  }
+  .example-box .wrong{
+    color:var(--error);
+    text-decoration:line-through;
+    font-weight:500;
+  }
+
+  /* THEORY BOX */
+  .theory-box{
+    margin:36px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(26,31,53,.7), rgba(17,22,38,.5));
+    position:relative;
+  }
+  .theory-box::before{
+    content:"📚"; position:absolute; top:-18px; left:24px;
+    background:var(--ink-1); padding:0 10px;
+    font-size:1.5rem;
+  }
+  .theory-box h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.2rem;
+    margin-bottom:6px;
+  }
+  .theory-box .author{
+    font-size:.85rem; color:var(--gold-2);
+    font-style:italic;
+    margin-bottom:14px;
+  }
+  .theory-box p{ font-size:.92rem; }
+
+  /* PUNCTUATION CARD */
+  .punct-card{
+    margin:24px 0;
+    padding:24px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:linear-gradient(180deg, rgba(26,31,53,.6), rgba(17,22,38,.4));
+    position:relative;
+  }
+  .punct-card::before{
+    content:""; position:absolute; top:0; left:0; width:4px; height:100%;
+    background:linear-gradient(180deg,var(--gold-1),var(--gold-3));
+    border-radius:4px 0 0 4px;
+  }
+  .punct-card .symbol{
+    display:inline-block;
+    font-family:'Playfair Display', serif;
+    font-size:2.2rem; font-weight:900;
+    color:var(--gold-1);
+    margin-bottom:10px;
+  }
+  .punct-card h5{
+    font-family:'Playfair Display', serif;
+    font-size:1.1rem; font-weight:600;
+    color:var(--cream);
+    margin-bottom:12px;
+  }
+  .punct-card ul{ margin:0 0 0 20px; }
+  .punct-card li{ margin-bottom:6px; font-size:.9rem; }
+
+  /* REFERENCES */
+  .references{
+    margin:40px 0;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:rgba(26,31,53,.4);
+  }
+  .references h3{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.3rem;
+    margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .references h4{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-2); font-size:1rem;
+    margin:18px 0 10px;
+    padding-bottom:6px;
+    border-bottom:1px dashed var(--line);
+  }
+  .references ol{
+    margin:0; padding-left:24px;
+    color:var(--muted); font-size:.88rem;
+  }
+  .references li{ margin-bottom:10px; }
+
+  /* FOOTER NAV */
+  .footer-nav{
+    max-width:900px; margin:40px auto;
+    padding:30px 32px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:16px;
+  }
+  .footer-nav a{
+    display:inline-flex; align-items:center; gap:8px;
+    color:var(--gold-2); font-weight:500;
+    transition:color .3s;
+  }
+  .footer-nav a:hover{ color:var(--gold-1); }
+
+  /* =========================================================
+     UJI FORMATIF
+     ========================================================= */
+  .quiz-section{
+    max-width:1000px; margin:60px auto;
+    padding:50px 32px;
+    background:linear-gradient(135deg, rgba(26,31,53,.7), rgba(17,22,38,.5));
+    border:1px solid var(--line);
+    border-radius:24px;
+    backdrop-filter: blur(12px);
+    position:relative;
+    overflow:hidden;
+  }
+  .quiz-section::before{
+    content:""; position:absolute; top:-50%; right:-20%;
+    width:400px; height:400px; border-radius:50%;
+    background:radial-gradient(circle, rgba(212,175,55,.10), transparent 70%);
+  }
+  .quiz-head{
+    text-align:center; margin-bottom:36px;
+    position:relative; z-index:2;
+  }
+  .quiz-head .icon{
+    width:64px; height:64px; border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    display:grid; place-items:center;
+    color:var(--ink-1); font-size:1.6rem; font-weight:900;
+    margin:0 auto 16px;
+    box-shadow: var(--shadow-gold);
+  }
+  .quiz-head h2{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(1.5rem, 3vw, 2rem);
+    color:var(--cream); margin-bottom:10px;
+    padding:0;
+  }
+  .quiz-head h2::before{ display:none; }
+  .quiz-head .meta{
+    display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+    color:var(--muted); font-size:.85rem; margin-bottom:14px;
+  }
+  .quiz-head .meta span{
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .quiz-head .warning{
+    display:inline-block;
+    padding:10px 20px;
+    background:rgba(248,113,113,.1);
+    border:1px solid rgba(248,113,113,.3);
+    border-radius:999px;
+    color:#fca5a5;
+    font-size:.85rem;
+    font-weight:500;
+  }
+
+  .quiz-block{
+    margin-bottom:36px;
+    position:relative; z-index:2;
+  }
+  .quiz-block h3{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.25rem;
+    margin-bottom:6px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .quiz-block .desc{
+    color:var(--muted); font-size:.88rem;
+    margin-bottom:20px;
+    padding-left:30px;
+  }
+
+  /* FORM */
+  .form-grid{
+    display:grid; grid-template-columns: 1fr 1fr;
+    gap:16px;
+    margin-bottom:24px;
+  }
+  @media (max-width:640px){ .form-grid{ grid-template-columns:1fr; } }
+  .form-field{ display:flex; flex-direction:column; gap:6px; }
+  .form-field label{
+    font-size:.82rem; color:var(--gold-1);
+    font-weight:500; letter-spacing:.5px;
+  }
+  .form-field input, .form-field select, .form-field textarea{
+    padding:12px 14px;
+    background:rgba(10,14,26,.6);
+    border:1px solid var(--line);
+    border-radius:10px;
+    color:var(--cream);
+    font-family:'Inter', sans-serif;
+    font-size:.9rem;
+    transition:all .3s;
+  }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus{
+    outline:none;
+    border-color:var(--gold-2);
+    box-shadow:0 0 0 3px rgba(212,175,55,.15);
+  }
+  .form-field textarea{ min-height:100px; resize:vertical; }
+  .form-field select{ cursor:pointer; }
+  .form-field select option{ background:var(--ink-2); color:var(--cream); }
+
+  /* QUESTION */
+  .question{
+    margin-bottom:24px;
+    padding:22px;
+    background:rgba(10,14,26,.5);
+    border:1px solid var(--line);
+    border-radius:14px;
+    transition:all .3s;
+  }
+  .question:hover{ border-color:rgba(212,175,55,.4); }
+  .question.correct{
+    border-color:var(--success);
+    background:rgba(74,222,128,.06);
+  }
+  .question.wrong{
+    border-color:var(--error);
+    background:rgba(248,113,113,.06);
+  }
+  .question .q-num{
+    display:inline-block;
+    padding:4px 12px;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1);
+    font-weight:700; font-size:.78rem;
+    border-radius:999px;
+    margin-bottom:12px;
+    letter-spacing:1px;
+  }
+  .question .q-text{
+    color:var(--cream); font-size:.95rem;
+    margin-bottom:14px; line-height:1.6;
+  }
+  .options{ display:flex; flex-direction:column; gap:8px; }
+  .option{
+    display:flex; align-items:flex-start; gap:10px;
+    padding:10px 14px;
+    background:rgba(26,31,53,.5);
+    border:1px solid transparent;
+    border-radius:10px;
+    cursor:pointer;
+    transition:all .3s;
+  }
+  .option:hover{
+    background:rgba(212,175,55,.06);
+    border-color:var(--line);
+  }
+  .option input{ margin-top:3px; accent-color:var(--gold-2); cursor:pointer; }
+  .option label{ cursor:pointer; color:var(--cream); font-size:.9rem; flex:1; }
+  .option.selected{
+    background:rgba(212,175,55,.1);
+    border-color:var(--gold-2);
+  }
+  .option.correct-answer{
+    background:rgba(74,222,128,.12);
+    border-color:var(--success);
+  }
+  .option.wrong-answer{
+    background:rgba(248,113,113,.12);
+    border-color:var(--error);
+  }
+
+  .essay-area{
+    width:100%;
+    min-height:120px;
+    padding:14px;
+    background:rgba(10,14,26,.6);
+    border:1px solid var(--line);
+    border-radius:10px;
+    color:var(--cream);
+    font-family:'Inter', sans-serif;
+    font-size:.9rem;
+    resize:vertical;
+    transition:all .3s;
+  }
+  .essay-area:focus{
+    outline:none;
+    border-color:var(--gold-2);
+    box-shadow:0 0 0 3px rgba(212,175,55,.15);
+  }
+
+  /* RESULT */
+  .result-panel{
+    margin-top:30px;
+    padding:30px;
+    background:linear-gradient(135deg, rgba(212,175,55,.08), rgba(139,105,20,.03));
+    border:1px solid var(--gold-2);
+    border-radius:18px;
+    text-align:center;
+    display:none;
+  }
+  .result-panel.show{ display:block; animation:fadeIn .6s ease; }
+  @keyframes fadeIn{
+    from{ opacity:0; transform:translateY(20px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .result-panel h3{
+    font-family:'Playfair Display', serif;
+    color:var(--gold-1); font-size:1.4rem;
+    margin-bottom:20px;
+  }
+  .score-grid{
+    display:grid; grid-template-columns: repeat(3,1fr);
+    gap:16px; margin-bottom:24px;
+  }
+  @media (max-width:640px){ .score-grid{ grid-template-columns:1fr; } }
+  .score-item{
+    padding:20px;
+    background:rgba(10,14,26,.5);
+    border:1px solid var(--line);
+    border-radius:14px;
+  }
+  .score-item .label{
+    font-size:.75rem; letter-spacing:2px; text-transform:uppercase;
+    color:var(--muted); margin-bottom:8px;
+  }
+  .score-item .value{
+    font-family:'Playfair Display', serif;
+    font-size:2rem; font-weight:700;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .total-score{
+    font-family:'Playfair Display', serif;
+    font-size:3rem; font-weight:900;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin:10px 0;
+  }
+  .grade-badge{
+    display:inline-block;
+    padding:8px 24px;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1);
+    font-weight:700;
+    border-radius:999px;
+    font-size:1rem;
+    letter-spacing:2px;
+    margin-top:10px;
+  }
+
+  /* ACTION BUTTONS */
+  .action-row{
+    display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+    margin-top:24px;
+  }
+  .btn-action{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px;
+    border-radius:999px;
+    font-size:.85rem; font-weight:500;
+    cursor:pointer;
+    border:1px solid var(--line);
+    background:rgba(26,31,53,.5);
+    color:var(--cream);
+    transition:all .3s;
+  }
+  .btn-action:hover{
+    border-color:var(--gold-2);
+    color:var(--gold-1);
+    transform:translateY(-2px);
+  }
+  .btn-action.primary{
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1);
+    font-weight:600;
+    border:none;
+    box-shadow: var(--shadow-gold);
+  }
+  .btn-action.primary:hover{ box-shadow: 0 20px 50px -15px rgba(212,175,55,.5); }
+
+  /* FOOTER */
+  footer{
+    border-top:1px solid var(--line);
+    padding:40px 32px;
+    text-align:center;
+    color:var(--muted);
+    font-size:.85rem;
+  }
+  footer .brand-foot{
+    font-family:'Playfair Display', serif;
+    color:var(--cream); font-size:1.1rem; margin-bottom:8px;
+  }
+  footer em{ color:var(--gold-2); font-style:italic; }
+
+  /* SCROLL TOP */
+  .scroll-top{
+    position:fixed; bottom:30px; right:30px;
+    width:48px; height:48px; border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-1),var(--gold-3));
+    color:var(--ink-1);
+    display:grid; place-items:center;
+    cursor:pointer;
+    box-shadow: var(--shadow-gold);
+    opacity:0; pointer-events:none;
+    transition:all .3s;
+    z-index:100;
+    border:none;
+    font-size:1.2rem;
+    font-weight:900;
+  }
+  .scroll-top.show{ opacity:1; pointer-events:auto; }
+  .scroll-top:hover{ transform:translateY(-4px); }
+
+  /* PROGRESS BAR */
+  .progress-bar{
+    position:fixed; top:0; left:0; right:0;
+    height:3px;
+    background:linear-gradient(90deg,var(--gold-1),var(--gold-3));
+    z-index:100;
+    transform-origin:left;
+    transform:scaleX(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAVBAR -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-mark">B</div>
+      <span>Bahasa Indonesia — PTI</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Beranda</a>
+      <a href="index.html#tentang">Tentang</a>
+      <a href="index.html#pertemuan">Daftar Pertemuan</a>
+      <a href="index.html#penulis">Penulis</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <span class="chapter-tag">Pertemuan 05 · Ejaan Bagian II</span>
+  <h1 class="chapter-title">
+    Ejaan Bahasa Indonesia<br/>
+    <span class="accent">Penulisan Kata & Tanda Baca</span>
+  </h1>
+  <p class="chapter-subtitle">
+    Menguasai kaidah penulisan kata depan, imbuhan, kata ulang, gabungan kata, serta penggunaan 15 jenis tanda baca sesuai EYD Edisi V untuk menghasilkan tulisan akademik yang presisi dan profesional.
+  </p>
+  <div class="hero-actions">
+    <a href="4.html" class="btn btn-ghost">← Pertemuan Sebelumnya</a>
+    <a href="#mulai" class="btn btn-primary">Mulai Membaca</a>
+    <a href="6.html" class="btn btn-ghost">Pertemuan Selanjutnya →</a>
+  </div>
+</header>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h3>📑 Daftar Isi Pertemuan 5</h3>
+  <ol>
+    <li><a href="#pendahuluan">Pendahuluan</a></li>
+    <li><a href="#landasan-spiritual">Landasan Spiritual</a></li>
+    <li><a href="#hakikat">5.1 Hakikat Penulisan Kata & Tanda Baca</a></li>
+    <li><a href="#landasan-teoretis">5.2 Landasan Teoretis</a></li>
+    <li><a href="#kata-depan">5.3 Kata Depan vs. Imbuhan</a></li>
+    <li><a href="#kata-ulang">5.4 Penulisan Kata Ulang</a></li>
+    <li><a href="#gabungan-kata">5.5 Penulisan Gabungan Kata</a></li>
+    <li><a href="#imbuhan">5.6 Penulisan Kata Berimbuhan</a></li>
+    <li><a href="#tanda-baca">5.7 Penggunaan Tanda Baca</a></li>
+    <li><a href="#analisis-kesalahan">5.8 Analisis Kesalahan Umum</a></li>
+    <li><a href="#kesimpulan">Kesimpulan</a></li>
+  </ol>
+</div>
+
+<!-- CONTENT -->
+<main class="content" id="mulai">
+
+  <h2 id="pendahuluan">Pendahuluan</h2>
+  <p class="lead">
+    Jika Pertemuan 4 telah membekali kita dengan kaidah penulisan huruf, maka Pertemuan 5 ini melangkah lebih jauh ke ranah yang lebih kompleks: <strong>penulisan kata</strong> dan <strong>penggunaan tanda baca</strong>. Keduanya merupakan "jembatan" antara huruf dan makna — kesalahan kecil di sini dapat mengubah seluruh makna kalimat.
+  </p>
+  <p>
+    Penulisan kata mencakup bagaimana kita memperlakukan <strong>kata depan</strong> (di, ke, dari), <strong>imbuhan</strong> (di-, ke-, meN-), <strong>kata ulang</strong>, <strong>gabungan kata</strong>, dan <strong>kata berimbuhan</strong>. Sementara itu, tanda baca — seperti titik, koma, tanda tanya, tanda seru, tanda hubung, dan tanda pisah — berfungsi sebagai "rambu lalu lintas" dalam tulisan yang mengatur ritme, intonasi, dan makna.
+  </p>
+  <p>
+    Berdasarkan penelitian <strong>Kadariyah (2015)</strong> dan <strong>Wahyono (2016)</strong>, kesalahan penulisan kata dan tanda baca merupakan jenis kesalahan ejaan yang paling sering dilakukan oleh mahasiswa dan bahkan guru. Kesalahan seperti menulis <em>"di makan"</em> (seharusnya <em>dimakan</em>), <em>"di sekolah"</em> (seharusnya terpisah), atau penggunaan koma yang salah, dapat mengubah makna secara drastis dan menurunkan kredibilitas tulisan akademik.
+  </p>
+
+  <div class="info-box">
+    <h4>🎯 Tujuan Pembelajaran Pertemuan 5</h4>
+    <p>Setelah mengikuti pertemuan ini, mahasiswa diharapkan mampu:</p>
+    <ol>
+      <li>Membedakan penulisan kata depan (di, ke, dari) dengan imbuhan (di-, ke-) secara tepat</li>
+      <li>Menerapkan kaidah penulisan kata ulang, gabungan kata, dan kata berimbuhan sesuai EYD Edisi V</li>
+      <li>Menggunakan 15 jenis tanda baca (titik, koma, titik dua, tanda hubung, tanda pisah, dll.) dengan benar</li>
+      <li>Mengidentifikasi dan menganalisis kesalahan penulisan kata dan tanda baca dalam teks akademik</li>
+      <li>Menyusun teks akademik yang konsisten dan sesuai kaidah ejaan Bahasa Indonesia</li>
+      <li>Menunjukkan sikap disiplin dan keteladanan dalam menulis sesuai kaidah ejaan</li>
+    </ol>
+  </div>
+
+  <h2 id="landasan-spiritual">Landasan Spiritual: Pena dan Keadilan dalam Tulisan</h2>
+  <p>
+    Selain Q.S. Al-'Alaq ayat 1-5 yang telah kita kaji pada Pertemuan 4, ada ayat lain yang sangat relevan dengan pertemuan ini, yaitu perintah Allah untuk menulis dengan adil dan benar.
+  </p>
+
+  <div class="quran-box">
+    <div class="arabic">يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ إِذَا تَدَايَنتُم بِدَيْنٍ إِلَىٰٓ أَجَلٍ مُّسَمًّى فَٱكْتُبُوهُ وَلْيَكْتُب بَّيْنَكُمْ كَاتِبٌ بِٱلْعَدْلِ</div>
+    <div class="translation">"Wahai orang-orang yang beriman! Apabila kamu bermuamalah tidak secara tunai untuk waktu yang ditentukan, hendaklah kamu menuliskannya dan hendaklah seorang penulis di antara kamu menuliskannya dengan benar."</div>
+    <div class="reference">— Q.S. Al-Baqarah [2]: 282</div>
+    <div class="tafsir">
+      <strong>Tafsir Ringkas:</strong> Ayat ini — yang merupakan ayat terpanjang dalam Al-Qur'an — menekankan pentingnya <strong>menulis dengan benar (bil-'adli)</strong>. Kata <em>bil-'adli</em> mengandung makna keadilan, ketepatan, dan kejujuran. Dalam konteks kebahasaan, ini berarti seorang penulis harus menulis dengan ejaan yang benar, tanda baca yang tepat, dan kata-kata yang akurat. Kesalahan ejaan bukan hanya masalah teknis, melainkan bentuk <strong>ketidakadilan</strong> terhadap pembaca dan ilmu yang ditulis.
+    </div>
+  </div>
+
+  <div class="video-box">
+    <div class="icon">▶</div>
+    <h4>Video: Penggunaan Tanda Baca yang Tepat</h4>
+    <p>Simak penjelasan singkat ini untuk memahami cara menggunakan tanda baca yang tepat dalam berbagai konteks tulisan.</p>
+    <p style="margin-top:10px; font-size:.8rem; color:var(--gold-2);">Sumber: Kanal Badan Bahasa Kemendikbudristek · Durasi: 12 menit</p>
+  </div>
+
+  <div class="concept-box">
+    <h4>Konsep Kunci Pertemuan 5</h4>
+    <ul>
+      <li><strong>Kata Depan (Preposisi):</strong> Kata yang merangkaikan kata atau bagian kalimat dengan kata lain, ditulis <strong>terpisah</strong> (di, ke, dari, pada, dalam, kepada, terhadap).</li>
+      <li><strong>Imbuhan (Afiks):</strong> Unsur yang dilekatkan pada kata dasar untuk mengubah makna, ditulis <strong>serangkai</strong> (di-, ke-, meN-, -kan, -i, peN-).</li>
+      <li><strong>Kata Ulang:</strong> Bentuk ulang dari kata dasar, ditulis dengan <strong>tanda hubung</strong> (buku-buku, berjalan-jalan).</li>
+      <li><strong>Gabungan Kata:</strong> Dua kata atau lebih yang membentuk satu kesatuan makna, umumnya ditulis <strong>terpisah</strong> (kecuali yang sudah padu seperti <em>matahari</em>).</li>
+      <li><strong>Tanda Baca:</strong> Simbol yang digunakan untuk mengatur struktur dan intonasi tulisan (titik, koma, tanda tanya, tanda seru, tanda hubung, tanda pisah, dll.).</li>
+      <li><strong>Disambigiasi:</strong> Penggunaan tanda baca untuk membedakan makna kata yang sama ejaannya tetapi berbeda makna (misal: <em>di ulang</em> vs. <em>diulang</em>).</li>
+    </ul>
+  </div>
+
+  <h2 id="hakikat">5.1 Hakikat Penulisan Kata dan Tanda Baca</h2>
+  <p>
+    Penulisan kata dan tanda baca merupakan bagian integral dari <strong>ortografi</strong> (ejaan). Ortografi bukan sekadar "aturan menulis", melainkan <strong>sistem simbol</strong> yang memiliki logika internal untuk menjamin <strong>keberterimaan</strong> dan <strong>konsistensi</strong> makna dalam komunikasi tulis.
+  </p>
+  <p>
+    Menurut <strong>Sriyanto (2014)</strong>, penulisan kata yang benar akan menghasilkan kalimat yang efektif, sedangkan penggunaan tanda baca yang tepat akan memberikan <strong>intonasi visual</strong> yang membantu pembaca memahami struktur dan makna kalimat.
+  </p>
+
+  <div class="case-box">
+    <h4>📖 Studi Kasus 1: Kesalahan Penulisan yang Mengubah Makna</h4>
+    <p>
+      Seorang mahasiswa menulis dalam esainya: <em>"Buku itu <strong>di ulang</strong> oleh adik."</em> Ia bermaksud menulis bahwa buku itu dibaca ulang oleh adiknya. Namun, karena ia menulis <em>"di ulang"</em> (terpisah), maknanya menjadi ambigu — bisa diartikan sebagai kata depan "di" + kata "ulang", yang tidak memiliki makna yang jelas. Penulisan yang benar adalah <em>"diulang"</em> (serangkai) karena "di-" di sini adalah imbuhan pasif.
+    </p>
+    <p>
+      Contoh lain: <em>"Ia pergi <strong>ke rumah</strong>."</em> (benar, karena "ke" adalah kata depan yang menunjukkan tempat). Namun, <em>"<strong>kerumah</strong>tangga"</em> (salah, seharusnya <em>kerumah-tangga-an</em> atau lebih tepat <em>rumah tangga</em> sebagai gabungan kata).
+    </p>
+    <div class="insight">
+      <strong>Pembelajaran:</strong> Kesalahan penulisan kata dan tanda baca bukan hanya masalah teknis, melainkan dapat <strong>mengubah makna</strong>, menimbulkan <strong>ambiguitas</strong>, dan <strong>menurunkan kredibilitas</strong> penulis. Dalam karya ilmiah, kesalahan seperti ini dapat menyebabkan penolakan dari reviewer.
+    </div>
+  </div>
+
+  <h2 id="landasan-teoretis">5.2 Landasan Teoretis</h2>
+
+  <div class="theory-box">
+    <h4>Teori Morfologi (Ramlan)</h4>
+    <div class="author">Ramlan, M. (2001). <em>Ilmu Bahasa Indonesia: Morfologi</em></div>
+    <p>
+      <strong>Konsep Utama:</strong> Morfologi adalah cabang linguistik yang mempelajari struktur internal kata dan proses pembentukannya. Dalam Bahasa Indonesia, proses morfologis utama adalah <strong>afiksasi</strong> (pengimbuhan), <strong>reduplikasi</strong> (pengulangan), dan <strong>komposisi</strong> (penggabungan).
+    </p>
+    <p>
+      <strong>Relevansi:</strong> Teori ini membantu kita memahami mengapa <em>di-</em> sebagai imbuhan ditulis serangkai, sedangkan <em>di</em> sebagai kata depan ditulis terpisah. Keduanya berasal dari bentuk yang sama, tetapi memiliki fungsi morfologis yang berbeda.
+    </p>
+  </div>
+
+  <div class="theory-box">
+    <h4>Teori Tanda Baca (Nababan)</h4>
+    <div class="author">Nababan, P.W.J. (1993). <em>Tata Bahasa Indonesia</em></div>
+    <p>
+      <strong>Konsep Utama:</strong> Tanda baca berfungsi sebagai <strong>suprasegmental grafemis</strong> — yaitu representasi visual dari unsur suprasegmental (intonasi, jeda, tekanan) yang dalam bahasa lisan diungkapkan melalui suara.
+    </p>
+    <p>
+      <strong>Relevansi:</strong> Tanda koma (,) merepresentasikan jeda pendek, tanda titik (.) merepresentasikan jeda panjang (akhir kalimat), dan tanda tanya (?) merepresentasikan intonasi tanya. Tanpa tanda baca, tulisan akan kehilangan "ritme" dan makna dapat berubah.
+    </p>
+  </div>
+
+  <div class="theory-box">
+    <h4>Teori Ambiguitas Struktural (Chomsky)</h4>
+    <div class="author">Chomsky, N. (1957). <em>Syntactic Structures</em></div>
+    <p>
+      <strong>Konsep Utama:</strong> Ambiguitas struktural terjadi ketika sebuah kalimat dapat memiliki lebih dari satu struktur sintaktik, sehingga menghasilkan makna ganda. Tanda baca berfungsi sebagai <strong>disambiguator</strong> yang menghilangkan ambiguitas ini.
+    </p>
+    <p>
+      <strong>Relevansi:</strong> Contoh klasik: <em>"Ibu saya memasak ayam goreng."</em> — tanpa tanda baca, kalimat ini ambigu (apakah ibu yang memasak, atau ayam yang digoreng oleh ibu?). Dengan tanda baca yang tepat, makna menjadi jelas.
+    </p>
+  </div>
+
+  <h2 id="kata-depan">5.3 Kata Depan vs. Imbuhan: Perbedaan Krusial</h2>
+  <p>
+    Salah satu kesalahan paling umum dalam penulisan Bahasa Indonesia adalah <strong>kebingungan antara kata depan dan imbuhan</strong>. Keduanya memiliki bentuk yang sama (<em>di</em>, <em>ke</em>), tetapi fungsi dan penulisan yang berbeda.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Aspek</th>
+          <th>Kata Depan (Preposisi)</th>
+          <th>Imbuhan (Afiks)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Bentuk</strong></td>
+          <td>di, ke, dari, pada, dalam, kepada, terhadap</td>
+          <td>di-, ke-, meN-, peN-, -kan, -i, -an</td>
+        </tr>
+        <tr>
+          <td><strong>Penulisan</strong></td>
+          <td><strong>Terpisah</strong> dari kata yang mengikutinya</td>
+          <td><strong>Serangkai</strong> dengan kata yang diimbuhinya</td>
+        </tr>
+        <tr>
+          <td><strong>Fungsi</strong></td>
+          <td>Menunjukkan tempat, arah, waktu, atau hubungan</td>
+          <td>Mengubah makna atau kelas kata dasar</td>
+        </tr>
+        <tr>
+          <td><strong>Contoh</strong></td>
+          <td>di rumah, ke pasar, dari sekolah</td>
+          <td>dimakan, pergi, membaca, tulisan</td>
+        </tr>
+        <tr>
+          <td><strong>Uji Coba</strong></td>
+          <td>Dapat diikuti kata benda atau kata keterangan tempat</td>
+          <td>Melekat pada kata kerja atau kata sifat</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="example-box">
+    <div class="label">Contoh Perbandingan Kata Depan vs. Imbuhan</div>
+    <p><strong>Kata Depan "di" (terpisah):</strong></p>
+    <p><span class="correct">✓ Benar:</span> Ayah sedang membaca <strong>di</strong> perpustakaan.</p>
+    <p><span class="correct">✓ Benar:</span> Buku itu diletakkan <strong>di</strong> atas meja.</p>
+    <p><span class="wrong">✗ Salah:</span> Ayah sedang membaca <strong>di</strong>perpustakaan.</p>
+    
+    <p style="margin-top:16px;"><strong>Imbuhan "di-" (serangkai):</strong></p>
+    <p><span class="correct">✓ Benar:</span> Buku itu <strong>di</strong>baca oleh adik.</p>
+    <p><span class="correct">✓ Benar:</span> Nasi sudah <strong>di</strong>masak oleh ibu.</p>
+    <p><span class="wrong">✗ Salah:</span> Buku itu <strong>di</strong> baca oleh adik.</p>
+  </div>
+
+  <div class="warning-box">
+    <h4>⚠️ Trik Membedakan Kata Depan dan Imbuhan</h4>
+    <p>Gunakan <strong>uji penggantian</strong>:</p>
+    <ul>
+      <li>Jika <em>di/ke</em> dapat diganti dengan <em>di dalam</em>, <em>di atas</em>, atau <em>ke arah</em>, maka itu adalah <strong>kata depan</strong> → tulis terpisah.</li>
+      <li>Jika <em>di/ke</em> membentuk kata kerja pasif atau menunjukkan arah tindakan, maka itu adalah <strong>imbuhan</strong> → tulis serangkai.</li>
+    </ul>
+    <p style="margin-top:10px;"><strong>Contoh:</strong></p>
+    <ul>
+      <li><em>"di pasar"</em> → dapat diganti <em>"di dalam pasar"</em> → kata depan → terpisah ✓</li>
+      <li><em>"dimakan"</em> → tidak dapat diganti <em>"di dalam makan"</em> → imbuhan → serangkai ✓</li>
+    </ul>
+  </div>
+
+  <h3>5.3.1 Kata Depan yang Sering Salah Ditulis</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Kata Depan</th>
+          <th>Contoh Benar</th>
+          <th>Contoh Salah</th>
+          <th>Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>di</strong></td>
+          <td>di rumah, di sana, di mana</td>
+          <td><span style="text-decoration:line-through; color:var(--error);">dirumah, disana, dimana</span></td>
+          <td>Selalu terpisah, kecuali dalam bentuk terikat seperti <em>di mana</em></td>
+        </tr>
+        <tr>
+          <td><strong>ke</strong></td>
+          <td>ke pasar, ke sekolah, ke luar</td>
+          <td><span style="text-decoration:line-through; color:var(--error);">kepasar, kesekolah, keluar</span></td>
+          <td>"keluar" sebagai kata kerja (imbuhan) berbeda dengan "ke luar" (kata depan)</td>
+        </tr>
+        <tr>
+          <td><strong>dari</strong></td>
+          <td>dari Jakarta, dari tadi</td>
+          <td><span style="text-decoration:line-through; color:var(--error);">dariJakarta</span></td>
+          <td>Selalu terpisah</td>
+        </tr>
+        <tr>
+          <td><strong>pada</strong></td>
+          <td>pada hari Senin, pada waktu itu</td>
+          <td><span style="text-decoration:line-through; color:var(--error);">padahari</span></td>
+          <td>Selalu terpisah</td>
+        </tr>
+        <tr>
+          <td><strong>dalam</strong></td>
+          <td>dalam rumah, dalam waktu</td>
+          <td><span style="text-decoration:line-through; color:var(--error);">dalamrumah</span></td>
+          <td>Selalu terpisah</td>
+        </tr>
+        <tr>
+          <td><strong>kepada</strong></td>
+          <td>kepada guru, kepada Tuhan</td>
+          <td><span style="text-decoration:line-through; color:var(--error);">kepadaguru</span></td>
+          <td>Selalu terpisah</td>
+        </tr>
+        <tr>
+          <td><strong>terhadap</strong></td>
+          <td>terhadap masalah, terhadap siswa</td>
+          <td><span style="text-decoration:line-through; color:var(--error);">terhadapmasalah</span></td>
+          <td>Selalu terpisah</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="kata-ulang">5.4 Penulisan Kata Ulang</h2>
+  <p>
+    Kata ulang (reduplikasi) adalah proses pengulangan kata dasar untuk membentuk makna baru. Dalam EYD Edisi V, kata ulang ditulis dengan <strong>tanda hubung (-)</strong> di antara unsur-unsurnya.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Jenis Kata Ulang</th>
+          <th>Contoh Benar</th>
+          <th>Contoh Salah</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Kata ulang utuh</strong></td>
+          <td>buku-buku, rumah-rumah, anak-anak</td>
+          <td><span style="text-decoration:line-through; color:var(--error);">buku2, rumah2, anak2</span></td>
+        </tr>
+        <tr>
+          <td><strong>Kata ulang berimbuhan</strong></td>
+          <td>bermain-main, mengorek-ngorek</td>
+          <td><span style="text-decoration:line-through; color:var(--error);">bermain2, mengorek2</span></td>
+        </tr>
+        <tr>
+          <td><strong>Kata ulang berubah bunyi</strong></td>
+          <td>sayur-mayur, lauk-pauk, mondar-mandir</td>
+          <td><span style="text-decoration:line-through; color:var(--error);">sayur mayur, lauk pauk</span></td>
+        </tr>
+        <tr>
+          <td><strong>Kata ulang semu</strong></td>
+          <td>kupu-kupu, kubu-kubu, undur-undur</td>
+          <td><span style="text-decoration:line-through; color:var(--error);">kupukupu, kubukubu</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box">
+    <h4>ℹ️ Catatan Penting tentang Angka "2"</h4>
+    <p>
+      Dalam tulisan <strong>formal dan akademik</strong>, penggunaan angka "2" sebagai pengganti tanda hubung pada kata ulang (misal: <em>buku2</em>, <em>anak2</em>) <strong>TIDAK DIBENARKAN</strong>. Angka "2" hanya boleh digunakan dalam tulisan informal atau catatan pribadi. Dalam karya ilmiah, selalu gunakan tanda hubung: <em>buku-buku</em>, <em>anak-anak</em>.
+    </p>
+  </div>
+
+  <h2 id="gabungan-kata">5.5 Penulisan Gabungan Kata</h2>
+  <p>
+    Gabungan kata (kompositum) adalah gabungan dua kata atau lebih yang membentuk satu kesatuan makna. Kaidah umum dalam EYD Edisi V: <strong>gabungan kata ditulis terpisah</strong>, <strong>kecuali</strong> yang sudah dianggap padu.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Kategori</th>
+          <th>Contoh Penulisan</th>
+          <th>Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Gabungan umum (terpisah)</strong></td>
+          <td>rumah sakit, meja tulis, kereta api, mata pelajaran, tanggung jawab</td>
+          <td>Ditulis terpisah karena belum padu</td>
+        </tr>
+        <tr>
+          <td><strong>Gabungan padu (serangkai)</strong></td>
+          <td>matahari, olahraga, kacamata, beasiswa, segitiga, sukarela</td>
+          <td>Sudah dianggap padu, ditulis serangkai</td>
+        </tr>
+        <tr>
+          <td><strong>Gabungan dengan imbuhan</strong></td>
+          <td>mengolahragakan, olahraga-olahraga</td>
+          <td>Imbuhan ditulis serangkai dengan kata yang diimbuhinya</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="example-box">
+    <div class="label">Contoh Lengkap Penulisan Gabungan Kata</div>
+    <p><span class="correct">✓ Benar:</span> Ayah pergi ke <strong>rumah sakit</strong> untuk berobat.</p>
+    <p><span class="correct">✓ Benar:</span> <strong>Matahari</strong> terbit dari timur.</p>
+    <p><span class="correct">✓ Benar:</span> Ia memakai <strong>kacamata</strong> baru.</p>
+    <p><span class="correct">✓ Benar:</span> <strong>Tanggung jawab</strong> adalah ciri orang dewasa.</p>
+    <p><span class="wrong">✗ Salah:</span> Ayah pergi ke <strong>rumahsakit</strong> untuk berobat.</p>
+    <p><span class="wrong">✗ Salah:</span> Ia memakai <strong>kaca mata</strong> baru.</p>
+  </div>
+
+  <h2 id="imbuhan">5.6 Penulisan Kata Berimbuhan</h2>
+  <p>
+    Kata berimbuhan adalah kata dasar yang mendapat imbuhan (prefiks, sufiks, konfiks, atau infiks). Dalam EYD Edisi V, imbuhan ditulis <strong>serangkai</strong> dengan kata yang diimbuhinya.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Jenis Imbuhan</th>
+          <th>Contoh</th>
+          <th>Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Prefiks (awalan)</strong></td>
+          <td>meN- + baca = membaca<br/>di- + tulis = ditulis<br/>peN- + ajar = pengajar</td>
+          <td>Ditulis serangkai dengan kata dasar</td>
+        </tr>
+        <tr>
+          <td><strong>Sufiks (akhiran)</strong></td>
+          <td>baca + -an = bacaan<br/>ajar + -kan = ajarkan<br/>tulis + -an = tulisan</td>
+          <td>Ditulis serangkai dengan kata dasar</td>
+        </tr>
+        <tr>
+          <td><strong>Konfiks (awalan+akhiran)</strong></td>
+          <td>ke- + indah + -an = keindahan<br/>peN- + didih + -an = pendidihan</td>
+          <td>Kedua unsur konfiks ditulis serangkai</td>
+        </tr>
+        <tr>
+          <td><strong>Infiks (sisipan)</strong></td>
+          <td>g + el + embung = gemelung<br/>t + el + unjuk = telunjuk</td>
+          <td>Disisipkan di tengah kata dasar</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="warning-box">
+    <h4>⚠️ Pengecualian Penting: Imbuhan dengan Kata Asing</h4>
+    <p>
+      Jika imbuhan Bahasa Indonesia dilekatkan pada <strong>kata asing yang ditulis dengan huruf miring</strong>, maka imbuhan tersebut ditulis <strong>serangkai</strong> dan diberi <strong>tanda hubung</strong> untuk memisahkan unsur Indonesia dan unsur asing.
+    </p>
+    <p style="margin-top:10px;"><strong>Contoh:</strong></p>
+    <ul>
+      <li><span class="correct">✓ Benar:</span> <em>di-upgrade</em>, <em>di-backup</em>, <em>pen-taati</em></li>
+      <li><span class="wrong">✗ Salah:</span> <em>diupgrade</em>, <em>dibackup</em>, <em>pentaati</em></li>
+    </ul>
+  </div>
+
+  <h2 id="tanda-baca">5.7 Penggunaan Tanda Baca</h2>
+  <p>
+    EYD Edisi V mengatur <strong>15 jenis tanda baca</strong>. Setiap tanda baca memiliki fungsi spesifik yang harus dipahami dan diterapkan dengan tepat.
+  </p>
+
+  <div class="punct-card">
+    <div class="symbol">.</div>
+    <h5>1. Tanda Titik (.)</h5>
+    <ul>
+      <li>Mengakhiri kalimat
